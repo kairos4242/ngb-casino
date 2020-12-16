@@ -33,6 +33,7 @@ if (place_meeting(x + x_speed, y, obj_Wall))
 		x += move
 	}
 }
+x += x_speed
 
 //Vertical Collision
 if (place_meeting(x, y + y_speed, obj_Wall))
@@ -44,8 +45,6 @@ if (place_meeting(x, y + y_speed, obj_Wall))
 	}
 	y_speed = 0
 }
-
-x += x_speed
 y += y_speed
 
 //Abilities
