@@ -13,6 +13,7 @@ var move = key_right - key_left
 x_speed = move * walk_speed
 y_speed = y_speed + grav
 
+
 if (place_meeting(x, y + 1, obj_Wall))
 {
 	jumps = max_jumps

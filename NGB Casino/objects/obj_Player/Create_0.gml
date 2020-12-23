@@ -2,7 +2,7 @@
 // You can write your code in this editor
 
 // Inherit the parent event
-event_inherited();
+event_inherited();//for gravwalk_spee
 walk_speed = 8
 jump_speed = 14
 jumps = 2
