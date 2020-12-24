@@ -1,7 +1,9 @@
 {
   "resources": [
     {"id":{"name":"network_player_join","path":"scripts/network_player_join/network_player_join.yy",},"order":1,},
+    {"id":{"name":"obj_Wall","path":"objects/obj_Wall/obj_Wall.yy",},"order":2,},
     {"id":{"name":"obj_Player","path":"objects/obj_Player/obj_Player.yy",},"order":1,},
+    {"id":{"name":"spr_Wall","path":"sprites/spr_Wall/spr_Wall.yy",},"order":1,},
     {"id":{"name":"spr_Player","path":"sprites/spr_Player/spr_Player.yy",},"order":0,},
     {"id":{"name":"obj_Server","path":"objects/obj_Server/obj_Server.yy",},"order":0,},
     {"id":{"name":"receive_packet","path":"scripts/receive_packet/receive_packet.yy",},"order":0,},

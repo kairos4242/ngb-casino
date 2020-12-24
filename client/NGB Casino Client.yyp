@@ -1,11 +1,13 @@
 {
   "resources": [
     {"id":{"name":"spr_Slave","path":"sprites/spr_Slave/spr_Slave.yy",},"order":1,},
+    {"id":{"name":"obj_Wall","path":"objects/obj_Wall/obj_Wall.yy",},"order":4,},
     {"id":{"name":"spr_Player","path":"sprites/spr_Player/spr_Player.yy",},"order":0,},
     {"id":{"name":"obj_Slave","path":"objects/obj_Slave/obj_Slave.yy",},"order":2,},
     {"id":{"name":"received_packet","path":"scripts/received_packet/received_packet.yy",},"order":0,},
     {"id":{"name":"obj_GameController","path":"objects/obj_GameController/obj_GameController.yy",},"order":3,},
     {"id":{"name":"rm_MainMenu","path":"rooms/rm_MainMenu/rm_MainMenu.yy",},"order":1,},
+    {"id":{"name":"spr_Wall","path":"sprites/spr_Wall/spr_Wall.yy",},"order":2,},
     {"id":{"name":"obj_Client","path":"objects/obj_Client/obj_Client.yy",},"order":0,},
     {"id":{"name":"obj_Player","path":"objects/obj_Player/obj_Player.yy",},"order":1,},
     {"id":{"name":"rm_Client","path":"rooms/rm_Client/rm_Client.yy",},"order":0,},
