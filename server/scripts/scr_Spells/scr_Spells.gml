@@ -1,10 +1,26 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
+
+//Target is an array of [x, y] ao target[0] will get target xpos and target[1] will get target ypos
+
 function spell_fireball(caster, target){
+	//create server representation
 	cast_direction = point_direction(caster.x, caster.y, mouse_x, mouse_y)
 	var fireball = instance_create_layer(caster.x + lengthdir_x(caster.sprite_width / 2, cast_direction), caster.y + lengthdir_y(caster.sprite_height / 2, cast_direction), "Instances", obj_Fireball)
 	with fireball {
+		network_id = new_network_id()
 		image_angle = other.cast_direction
+	}
+	//send packet to all players to create a fireball object
+	for (i = 0; i < ds_list_size(socket_list); i++)
+	{
+		var curr_socket = ds_list_find_value(socket_list, i)
+		buffer_seek(server_buffer, buffer_seek_start, 0);
+		buffer_write(server_buffer, buffer_u8, network.move);
+		buffer_write(server_buffer, buffer_u8, socket);
+		buffer_write(server_buffer, buffer_u16, move_x);
+		buffer_write(server_buffer, buffer_u16, move_y);
+		network_send_packet(curr_socket, server_buffer, buffer_tell(server_buffer))
 	}
 }
 
