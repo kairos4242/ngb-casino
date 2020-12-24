@@ -5,8 +5,21 @@ function receive_packet(buffer, socket){
 	switch msgid
 	{
 		case network.player_establish:
+			//player join
 			var player_username = buffer_read(buffer, buffer_string)
 			network_player_join(player_username)
+			show_debug_message("Num walls: " + string(instance_number(obj_Wall)))
+			//send player all walls that are in the level
+			for (i = 0; i < instance_number(obj_Wall); i++)
+			{
+				var current_object = instance_find(obj_Wall, i)
+				buffer_seek(server_buffer, buffer_seek_start, 0)
+				buffer_write(server_buffer, buffer_u8, network.add_object)
+				buffer_write(server_buffer, buffer_string, "obj_Wall")
+				buffer_write(server_buffer, buffer_u16, current_object.x)
+				buffer_write(server_buffer, buffer_u16, current_object.y)
+				network_send_packet(socket, server_buffer, buffer_tell(server_buffer))
+			}
 			break;
 		
 		case network.move:

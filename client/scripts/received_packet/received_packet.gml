@@ -8,11 +8,19 @@ function received_packet(buffer){
 		case network.player_establish:
 			var socket_read = buffer_read(buffer, buffer_u8);
 			global.my_socket = socket_read
-
+			
 			buffer_seek(client_buffer, buffer_seek_start, 0)
 			buffer_write(client_buffer, buffer_u8, network.player_establish)
 			buffer_write(client_buffer, buffer_string, obj_GameController.username)
 			network_send_packet(client, client_buffer, buffer_tell(client_buffer));
+			break;
+		
+		case network.add_object:
+			var name_of_object = buffer_read(buffer, buffer_string)
+			show_debug_message("Name of object: " + name_of_object)
+			var wall_x = buffer_read(buffer, buffer_u16)
+			var wall_y = buffer_read(buffer, buffer_u16)
+			instance_create_layer(wall_x, wall_y, "Instances", asset_get_index(name_of_object))
 			break;
 		
 		case network.player_connect:
@@ -61,7 +69,7 @@ function received_packet(buffer){
 			
 			var curr_player = ds_map_find_value(socket_to_instanceid, curr_socket)
 			
-			
+			if is_undefined(curr_player) break;
 			curr_player.x = move_x
 			curr_player.y = move_y
 			break;
