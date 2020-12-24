@@ -73,5 +73,14 @@ function received_packet(buffer){
 			curr_player.x = move_x
 			curr_player.y = move_y
 			break;
+			
+		case network.cast_spell:
+			//have the player who cast the spell cast a simulated version of said spell
+			var curr_socket = buffer_read(buffer, buffer_u8)
+			var spell_to_cast = buffer_read(buffer, buffer_string)
+			var curr_player = ds_map_find_value(socket_to_instanceid, curr_socket)
+			script_execute(spell_to_cast, curr_player, -1)
+			
+			
 	}	
 }

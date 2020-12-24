@@ -7,7 +7,8 @@ enum network {
 	player_joined,
 	player_disconnect,
 	move,
-	add_object
+	add_object,
+	cast_spell
 }
 
 

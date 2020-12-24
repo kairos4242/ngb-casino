@@ -55,5 +55,24 @@ function receive_packet(buffer, socket){
 			network_send_packet(socket, server_buffer, buffer_tell(server_buffer))*/
 			
 			break;
+		case network.cast_spell:
+			var spell_to_cast = buffer_read(buffer, buffer_string)
+			var casting_player = ds_map_find_value(socket_to_instanceid, socket)
+			//update server representation
+			script_execute(spell_to_cast, casting_player, -1)
+			
+			//inform all players said spell has been cast
+			for (i = 0; i < ds_list_size(socket_list); i++)
+			{
+				var curr_socket = ds_list_find_value(socket_list, i)
+				buffer_seek(server_buffer, buffer_seek_start, 0);
+				buffer_write(server_buffer, buffer_u8, network.cast_spell);
+				buffer_write(server_buffer, buffer_u8, socket);
+				buffer_write(server_buffer, buffer_string, spell_to_cast)
+				network_send_packet(curr_socket, server_buffer, buffer_tell(server_buffer))
+			}
+			
+			
+			break;
 	}
 }
