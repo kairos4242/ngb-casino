@@ -13,5 +13,5 @@ update_delay = 2//in frames
 alarm[0] = update_delay
 
 //Abilities
-abilities[0] = global.game_controller.spells[global.player_ability_1]
-abilities[1] = global.game_controller.spells[global.player_ability_2]
+abilities[0] = obj_GameController.spells[global.player_ability_1]
+abilities[1] = obj_GameController.spells[global.player_ability_2]
