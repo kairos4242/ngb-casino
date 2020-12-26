@@ -8,7 +8,9 @@ enum network {
 	player_disconnect,
 	move,
 	add_object,
-	cast_spell
+	cast_spell,
+	modify_property,
+	destroy_object
 }
 
 
@@ -18,3 +20,4 @@ network_connect(client, "127.0.0.1", 25565)
 client_buffer = buffer_create(1024, buffer_fixed, 1)
 
 socket_to_instanceid = ds_map_create();
+network_id_to_instanceid = ds_map_create()

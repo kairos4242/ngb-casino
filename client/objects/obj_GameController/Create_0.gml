@@ -7,15 +7,15 @@ username = get_string("Please Enter a Username", "")
 //Initialize Variables
 
 spells[0][0] = "Fireball"
-spells[0][1] = spell_fireball
+spells[0][1] = "spell_fireball"
 spells[1][0] = "Refresh Jumps"
-spells[1][1] = spell_refresh_jumps
+spells[1][1] = "spell_refresh_jumps"
 spells[2][0] = "Swap Places"
-spells[2][1] = spell_swap_places
+spells[2][1] = "spell_swap_places"
 spells[3][0] = "Wall"
-spells[3][1] = spell_wall
+spells[3][1] = "spell_wall"
 spells[4][0] = "Passive Jump Height Increase"
-spells[4][1] = spell_passive_jump_height_increase
+spells[4][1] = "spell_passive_jump_height_increase"
 
 global.player_ability_1 = 0 //Fireball by default
 global.player_ability_2 = 2 //Swap places by default

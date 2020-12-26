@@ -16,6 +16,7 @@ function receive_packet(buffer, socket){
 				buffer_seek(server_buffer, buffer_seek_start, 0)
 				buffer_write(server_buffer, buffer_u8, network.add_object)
 				buffer_write(server_buffer, buffer_string, "obj_Wall")
+				buffer_write(server_buffer, buffer_u16, current_object.network_id)
 				buffer_write(server_buffer, buffer_u16, current_object.x)
 				buffer_write(server_buffer, buffer_u16, current_object.y)
 				network_send_packet(socket, server_buffer, buffer_tell(server_buffer))
@@ -56,12 +57,13 @@ function receive_packet(buffer, socket){
 			
 			break;
 		case network.cast_spell:
-			var spell_to_cast = buffer_read(buffer, buffer_string)
+			var spell_to_cast = buffer_read(buffer, buffer_string)//should be the script name as a string
 			var casting_player = ds_map_find_value(socket_to_instanceid, socket)
 			var target_x = buffer_read(buffer, buffer_u16)
 			var target_y = buffer_read(buffer, buffer_u16)
-			//update server representation
-			script_execute(spell_to_cast, casting_player, [target_x, target_y])
+			var spell_to_cast_id = asset_get_index(spell_to_cast)
+			//update server representation, script will handle updating player representations
+			script_execute(spell_to_cast_id, casting_player, [target_x, target_y])
 			
 			
 			

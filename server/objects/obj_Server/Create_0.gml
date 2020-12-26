@@ -5,7 +5,9 @@ enum network {
 	player_disconnect,
 	move,
 	add_object,
-	cast_spell
+	cast_spell,
+	modify_property,
+	destroy_object
 }
 
 

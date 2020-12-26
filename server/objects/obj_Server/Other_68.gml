@@ -32,8 +32,6 @@ switch (type_event) {
 			buffer_write(server_buffer, buffer_u8, network.player_disconnect)//event is a server disconnect
 			buffer_write(server_buffer, buffer_u8, socket);//socket disconnecting is this socket
 			network_send_packet(curr_socket, server_buffer, buffer_tell(server_buffer));
-			
-			
 		}
 		break;
 		
