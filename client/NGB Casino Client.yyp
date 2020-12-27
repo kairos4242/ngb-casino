@@ -5,6 +5,7 @@
     {"id":{"name":"spr_Card","path":"sprites/spr_Card/spr_Card.yy",},"order":3,},
     {"id":{"name":"obj_Fireball","path":"objects/obj_Fireball/obj_Fireball.yy",},"order":6,},
     {"id":{"name":"obj_Wall","path":"objects/obj_Wall/obj_Wall.yy",},"order":4,},
+    {"id":{"name":"obj_Projectile","path":"objects/obj_Projectile/obj_Projectile.yy",},"order":7,},
     {"id":{"name":"spr_Player","path":"sprites/spr_Player/spr_Player.yy",},"order":0,},
     {"id":{"name":"obj_Slave","path":"objects/obj_Slave/obj_Slave.yy",},"order":2,},
     {"id":{"name":"received_packet","path":"scripts/received_packet/received_packet.yy",},"order":0,},

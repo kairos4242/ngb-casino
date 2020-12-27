@@ -1,19 +1,24 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 
-//Target is an array of [x, y] ao target[0] will get target xpos and target[1] will get target ypos
+//Target is an array of [x, y] so target[0] will get target xpos and target[1] will get target ypos
 
 function spell_fireball(caster, target){
 	//create server representation
+	fireball_speed = 10
 	cast_direction = point_direction(caster.x, caster.y, target[0], target[1])
 	var fireball = instance_create_layer(caster.x + lengthdir_x(caster.sprite_width / 2, cast_direction), caster.y + lengthdir_y(caster.sprite_height / 2, cast_direction), "Instances", obj_Fireball)
 	with fireball {
 		network_id = new_network_id()
 		image_angle = other.cast_direction
+		x_speed = lengthdir_x(other.fireball_speed, other.cast_direction)
+		y_speed = lengthdir_y(other.fireball_speed, other.cast_direction)
 	}
 	//send packet to all players to create a fireball object then send a packet to change fireball angle
 	network_create_object("obj_Fireball", fireball.network_id, fireball.x, fireball.y)
-	network_modify_property(fireball.network_id, "image_angle", cast_direction)
+	network_modify_property(fireball.network_id, "image_angle", "u16", cast_direction)
+	network_modify_property(fireball.network_id, "x_speed", "s16", lengthdir_x(fireball_speed, cast_direction))
+	network_modify_property(fireball.network_id, "y_speed", "s16", lengthdir_y(fireball_speed, cast_direction))
 }
 
 function spell_refresh_jumps(caster, target){

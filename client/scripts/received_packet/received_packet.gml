@@ -95,7 +95,17 @@ function received_packet(buffer){
 			//grab the object network id, what to change, and the value to set it too
 			var object_network_id = buffer_read(buffer, buffer_u16)
 			var property_to_modify = buffer_read(buffer, buffer_string)
-			var value_to_set = buffer_read(buffer, buffer_u16)
+			var type_to_write = buffer_read(buffer, buffer_string)
+			//read a diff data type depending on which type the data is
+			switch type_to_write {
+				default: break;
+				case "u16": var value_to_set = buffer_read(buffer, buffer_u16)
+				break;
+				case "s16": var value_to_set = buffer_read(buffer, buffer_s16)
+				break;
+				case "string": var value_to_set = buffer_read(buffer, buffer_string)
+				break;
+			}
 			//^maybe this will need to be a switch eventually based on what object property we are setting
 			//like for instance you can't set name in a u16
 			//either that or have network.modify_property_string, network.modify_property_u16, etc etc

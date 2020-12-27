@@ -30,7 +30,7 @@ function network_create_object(object_to_create, id_to_create, x_to_create, y_to
 	}
 }
 
-function network_modify_property(id_to_modify, property_to_modify, value_to_write)
+function network_modify_property(id_to_modify, property_to_modify, type_to_write, value_to_write)
 {
 	for (i = 0; i < ds_list_size(socket_list); i++)
 	{
@@ -40,7 +40,17 @@ function network_modify_property(id_to_modify, property_to_modify, value_to_writ
 		buffer_write(server_buffer, buffer_u8, network.modify_property)
 		buffer_write(server_buffer, buffer_u16, id_to_modify)
 		buffer_write(server_buffer, buffer_string, property_to_modify)
-		buffer_write(server_buffer, buffer_u16, value_to_write)
+		buffer_write(server_buffer, buffer_string, type_to_write)
+		//write a diff data type depending on which type the data is
+		switch type_to_write {
+			default: break;
+			case "u16": buffer_write(server_buffer, buffer_u16, value_to_write)
+			break;
+			case "s16": buffer_write(server_buffer, buffer_s16, value_to_write)
+			break;
+			case "string": buffer_write(server_buffer, buffer_string, value_to_write)
+			break;
+		}
 		network_send_packet(curr_socket, server_buffer, buffer_tell(server_buffer))
 	}
 }
