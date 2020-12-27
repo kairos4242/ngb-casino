@@ -10,6 +10,7 @@
     {"id":{"name":"spr_Fireball","path":"sprites/spr_Fireball/spr_Fireball.yy",},"order":2,},
     {"id":{"name":"obj_Server","path":"objects/obj_Server/obj_Server.yy",},"order":0,},
     {"id":{"name":"scr_Spells","path":"scripts/scr_Spells/scr_Spells.yy",},"order":0,},
+    {"id":{"name":"scr_network_events","path":"scripts/scr_network_events/scr_network_events.yy",},"order":4,},
     {"id":{"name":"obj_Fireball","path":"objects/obj_Fireball/obj_Fireball.yy",},"order":4,},
     {"id":{"name":"receive_packet","path":"scripts/receive_packet/receive_packet.yy",},"order":0,},
     {"id":{"name":"obj_Unit","path":"objects/obj_Unit/obj_Unit.yy",},"order":3,},

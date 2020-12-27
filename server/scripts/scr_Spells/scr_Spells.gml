@@ -12,10 +12,11 @@ function spell_fireball(caster, target){
 		image_angle = other.cast_direction
 	}
 	//send packet to all players to create a fireball object then send a packet to change fireball angle
-	for (i = 0; i < ds_list_size(socket_list); i++)
+	network_create_object("obj_Fireball", fireball.network_id, fireball.x, fireball.y)
+	network_modify_property(fireball.network_id, "image_angle", cast_direction)
+	/*for (i = 0; i < ds_list_size(socket_list); i++)
 	{
 		//send packet to create fireball
-		var curr_socket = ds_list_find_value(socket_list, i)
 		buffer_seek(server_buffer, buffer_seek_start, 0);
 		buffer_write(server_buffer, buffer_u8, network.add_object);
 		buffer_write(server_buffer, buffer_string, "obj_Fireball")
@@ -25,13 +26,14 @@ function spell_fireball(caster, target){
 		network_send_packet(curr_socket, server_buffer, buffer_tell(server_buffer))
 		
 		//now send packet for fireball angle
+		var curr_socket = ds_list_find_value(socket_list, i)
 		buffer_seek(server_buffer, buffer_seek_start, 0);
 		buffer_write(server_buffer, buffer_u8, network.modify_property)
 		buffer_write(server_buffer, buffer_u16, fireball.network_id)
 		buffer_write(server_buffer, buffer_string, "image_angle")
 		buffer_write(server_buffer, buffer_u16, cast_direction)
 		network_send_packet(curr_socket, server_buffer, buffer_tell(server_buffer))
-	}
+	}*/
 }
 
 function spell_refresh_jumps(caster, target){
