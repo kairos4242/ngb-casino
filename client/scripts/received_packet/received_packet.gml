@@ -15,14 +15,6 @@ function received_packet(buffer){
 			network_send_packet(client, client_buffer, buffer_tell(client_buffer));
 			break;
 		
-		/*case network.add_object:
-			var name_of_object = buffer_read(buffer, buffer_string)
-			show_debug_message("Name of object: " + name_of_object)
-			var wall_x = buffer_read(buffer, buffer_u16)
-			var wall_y = buffer_read(buffer, buffer_u16)
-			instance_create_layer(wall_x, wall_y, "Instances", asset_get_index(name_of_object))
-			break;*/
-		
 		case network.player_connect:
 			var socket_read = buffer_read(buffer, buffer_u8);
 			var player_x = buffer_read(buffer, buffer_u16);
