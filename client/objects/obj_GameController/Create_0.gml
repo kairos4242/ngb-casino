@@ -19,6 +19,8 @@ spells[5][0] = "Passive Jump Height Increase"
 spells[5][1] = "spell_passive_jump_height_increase"
 spells[6][0] = "Turret"
 spells[6][1] = "spell_turret"
+spells[7][0] = "Heal"
+spells[7][1] = "spell_heal"
 
 global.player_ability_1 = 1 //Fireball by default
 global.player_ability_2 = 6 //turret by default

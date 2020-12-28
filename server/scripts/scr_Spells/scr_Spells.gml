@@ -50,7 +50,8 @@ function spell_refresh_jumps(caster, target){
 }
 
 function spell_swap_places(caster, target){
-	target_object = collision_point(mouse_x, mouse_y, obj_Unit, false, true)
+	//update server representation
+	target_object = collision_point(target[0], target[1], obj_Player, false, true)
 	if target_object = noone exit
 	else
 	{
@@ -61,16 +62,34 @@ function spell_swap_places(caster, target){
 		caster.x = temp_x
 		caster.y = temp_y
 	}
+	
+	//update client representation
+	
+	//update player
+	network_modify_player_property(caster.socket, "x", "u16", caster.x)
+	network_modify_player_property(caster.socket, "y", "u16", caster.y)
+	
+	//update other player
+	network_modify_player_property(target_object.socket, "x", "u16", target_object.x)
+	network_modify_player_property(target_object.socket, "y", "u16", target_object.y)
 }
 
 function spell_wall(caster, target){
-	cast_direction = point_direction(caster.x, caster.y, mouse_x, mouse_y)
+	//server implementation
+	cast_direction = point_direction(caster.x, caster.y, target[0], target[1])
 	cast_direction = round(cast_direction / 90) * 90 //round to the nearest 90 degrees
 	var wall = instance_create_layer(caster.x + 2 * lengthdir_x(caster.sprite_width, cast_direction), caster.y + 2 * lengthdir_y(caster.sprite_height, cast_direction), "Instances", obj_Wall)
 	with wall {
 		image_angle = other.cast_direction
 		image_yscale = 3
+		network_id = new_network_id()
 	}
+	
+	//network implementation
+	network_create_object("obj_Wall", wall.network_id, wall.x, wall.y)
+	network_modify_property(wall.network_id, "image_angle", "u16", wall.image_angle)
+	network_modify_property(wall.network_id, "image_yscale", "u16", wall.image_yscale)
+	
 }
 
 function spell_passive_jump_height_increase(caster, target){
@@ -97,4 +116,12 @@ function spell_turret(caster, target){
 	}
 	//send packet to all players to create a turret object
 	network_create_object("obj_Turret", turret.network_id, turret.x, turret.y)
+}
+
+function spell_heal(caster, target){
+	//just a self heal right now, target does nothing
+	//can be changed later if game design team wants to make it more versatile
+	heal_amount = 7
+	caster.hp = min(caster.max_hp, caster.hp + heal_amount)
+	network_modify_player_property(caster.socket, "hp", "u16", caster.hp)
 }
