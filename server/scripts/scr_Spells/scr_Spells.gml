@@ -42,7 +42,11 @@ function spell_fireball(caster, target){
 }
 
 function spell_refresh_jumps(caster, target){
+	//change server side
 	caster.jumps = caster.max_jumps
+	
+	//change client side
+	network_modify_player_property(caster.socket, "jumps", "u16", caster.max_jumps)
 }
 
 function spell_swap_places(caster, target){
