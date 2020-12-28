@@ -1,6 +1,6 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
-function spell_fireball(caster, target){
+/*function spell_fireball(caster, target){
 	cast_direction = point_direction(caster.x, caster.y, mouse_x, mouse_y)
 	var fireball = instance_create_layer(caster.x + lengthdir_x(caster.sprite_width / 2, cast_direction), caster.y + lengthdir_y(caster.sprite_height / 2, cast_direction), "Instances", obj_Fireball)
 	with fireball {
@@ -47,4 +47,4 @@ function spell_passive_jump_height_increase(caster, target){
 		passive_target_variable: "grav"
 	}
 	create_effect(jump_passive, caster, target)
-}
+}*/

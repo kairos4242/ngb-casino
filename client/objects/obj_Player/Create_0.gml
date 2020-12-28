@@ -9,6 +9,9 @@ grav = 0.4
 x_speed = 0
 y_speed = 0
 
+hp = 100
+max_hp = 100
+
 update_delay = 2//in frames
 alarm[0] = update_delay
 

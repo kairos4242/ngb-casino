@@ -5,6 +5,7 @@ function network_player_join(username){
 	//create obj_Player in server
 	var player_instance = instance_create_depth(player_spawn_x, player_spawn_y, 0, obj_Player)
 	player_instance.username = username
+	player_instance.socket = socket
 	ds_map_add(socket_to_instanceid, socket, player_instance);//map player instance to socket
 	
 	//Create obj_Player for connecting client

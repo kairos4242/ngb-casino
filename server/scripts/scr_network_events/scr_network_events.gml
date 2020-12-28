@@ -54,3 +54,31 @@ function network_modify_property(id_to_modify, property_to_modify, type_to_write
 		network_send_packet(curr_socket, server_buffer, buffer_tell(server_buffer))
 	}
 }
+
+function network_modify_player_property(socket_to_modify, property_to_modify, type_to_write, value_to_write)
+{
+	//this needs to be a separate function because players don't have network IDs
+	//they have sockets instead
+	//so this works off the socket not the network id
+	for (i = 0; i < ds_list_size(socket_list); i++)
+	{
+		//send packet to modify property
+		var curr_socket = ds_list_find_value(socket_list, i)
+		buffer_seek(server_buffer, buffer_seek_start, 0);
+		buffer_write(server_buffer, buffer_u8, network.modify_player_property)
+		buffer_write(server_buffer, buffer_u16, socket_to_modify)
+		buffer_write(server_buffer, buffer_string, property_to_modify)
+		buffer_write(server_buffer, buffer_string, type_to_write)
+		//write a diff data type depending on which type the data is
+		switch type_to_write {
+			default: break;
+			case "u16": buffer_write(server_buffer, buffer_u16, value_to_write)
+			break;
+			case "s16": buffer_write(server_buffer, buffer_s16, value_to_write)
+			break;
+			case "string": buffer_write(server_buffer, buffer_string, value_to_write)
+			break;
+		}
+		network_send_packet(curr_socket, server_buffer, buffer_tell(server_buffer))
+	}
+}

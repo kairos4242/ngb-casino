@@ -2,8 +2,11 @@
   "resources": [
     {"id":{"name":"new_network_id","path":"scripts/new_network_id/new_network_id.yy",},"order":3,},
     {"id":{"name":"network_player_join","path":"scripts/network_player_join/network_player_join.yy",},"order":1,},
+    {"id":{"name":"spr_BasicProjectile","path":"sprites/spr_BasicProjectile/spr_BasicProjectile.yy",},"order":3,},
     {"id":{"name":"obj_Wall","path":"objects/obj_Wall/obj_Wall.yy",},"order":2,},
+    {"id":{"name":"deal_damage","path":"scripts/deal_damage/deal_damage.yy",},"order":1,},
     {"id":{"name":"obj_Projectile","path":"objects/obj_Projectile/obj_Projectile.yy",},"order":5,},
+    {"id":{"name":"obj_BasicProjectile","path":"objects/obj_BasicProjectile/obj_BasicProjectile.yy",},"order":6,},
     {"id":{"name":"obj_Player","path":"objects/obj_Player/obj_Player.yy",},"order":1,},
     {"id":{"name":"spr_Wall","path":"sprites/spr_Wall/spr_Wall.yy",},"order":1,},
     {"id":{"name":"spr_Player","path":"sprites/spr_Player/spr_Player.yy",},"order":0,},

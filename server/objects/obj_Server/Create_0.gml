@@ -7,7 +7,8 @@ enum network {
 	add_object,
 	cast_spell,
 	modify_property,
-	destroy_object
+	destroy_object,
+	modify_player_property
 }
 
 
