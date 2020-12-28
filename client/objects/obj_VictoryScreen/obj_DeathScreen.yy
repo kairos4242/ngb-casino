@@ -1,8 +1,5 @@
 {
-  "spriteId": {
-    "name": "spr_Wall",
-    "path": "sprites/spr_Wall/spr_Wall.yy",
-  },
+  "spriteId": null,
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
@@ -20,15 +17,17 @@
   "physicsStartAwake": true,
   "physicsKinematic": false,
   "physicsShapePoints": [],
-  "eventList": [],
+  "eventList": [
+    {"isDnD":false,"eventNum":0,"eventType":8,"collisionObjectId":null,"parent":{"name":"obj_DeathScreen","path":"objects/obj_DeathScreen/obj_DeathScreen.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+  ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Game",
-    "path": "folders/Objects/Game.yy",
+    "name": "Objects",
+    "path": "folders/Objects.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_Wall",
+  "name": "obj_DeathScreen",
   "tags": [],
   "resourceType": "GMObject",
 }

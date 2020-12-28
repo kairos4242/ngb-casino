@@ -95,3 +95,17 @@ function network_kill_player(socket_to_kill) {
 	}
 	
 }
+
+function network_declare_victory(socket_victorious, username_victorious) {
+	//in future, check if socket_victorious -1 and if so declare a draw
+	//for now, just tell each socket that socket_victorious is victorious
+	for (i = 0; i < ds_list_size(socket_list); i++)
+	{
+		var curr_socket = ds_list_find_value(socket_list, i)
+		buffer_seek(server_buffer, buffer_seek_start, 0);
+		buffer_write(server_buffer, buffer_u8, network.declare_victory)
+		buffer_write(server_buffer, buffer_u16, socket_victorious)
+		buffer_write(server_buffer, buffer_string, username_victorious)
+		network_send_packet(curr_socket, server_buffer, buffer_tell(server_buffer))
+	}
+}

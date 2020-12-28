@@ -172,5 +172,23 @@ function received_packet(buffer){
 				instance_to_kill.sprite_index = spr_DeadPlayer
 			}
 			break;
+			
+		case network.declare_victory:
+			//get socket and username of victorious player
+			var socket_victorious = buffer_read(buffer, buffer_u16)
+			var username_victorious = buffer_read(buffer, buffer_string)
+			
+			if (socket_victorious == global.my_socket)
+			{
+				//this player won, so congratulate them!
+				instance_create_layer(0, 0, "Instances", obj_VictoryScreen)
+			}
+			else
+			{
+				with (obj_DeathScreen)
+				{
+					text_to_draw = username_victorious + " won the match! Better luck next time you loser!"
+				}
+			}
 	}	
 }

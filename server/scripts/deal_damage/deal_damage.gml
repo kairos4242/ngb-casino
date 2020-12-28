@@ -18,8 +18,29 @@ function deal_damage(amount, source, target){
 			target.sprite_index = spr_DeadPlayer
 			with obj_Server
 			{
-				network_kill_player(other.target.socket)
-				
+				network_kill_player(other.target.socket)	
+			}
+			//if only one player left alive, declare victory for that player
+			alive_count = 0
+			alive_player = -1
+			for (i = 0; i < instance_number(obj_Player); i++)
+			{
+				if (instance_find(obj_Player, i).sprite_index != spr_DeadPlayer)
+				{
+					//player is alive, add one to our alive count
+					//note checking based on sprite is kinda hacky and we should probably
+					//have a boolean is_alive or something instead
+					alive_count++
+					alive_player = instance_find(obj_Player, i)
+				}
+			}
+			if alive_count == 1
+			{
+				//only one player alive, declare victory for said player
+				with obj_Server
+				{
+					network_declare_victory(other.alive_player.socket, other.alive_player.username)
+				}
 			}
 		}
 		else

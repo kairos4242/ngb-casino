@@ -12,7 +12,8 @@ enum network {
 	modify_property,
 	destroy_object,
 	modify_player_property,
-	kill_player
+	kill_player,
+	declare_victory
 }
 
 

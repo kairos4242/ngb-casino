@@ -1,8 +1,5 @@
 {
-  "spriteId": {
-    "name": "spr_Wall",
-    "path": "sprites/spr_Wall/spr_Wall.yy",
-  },
+  "spriteId": null,
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
@@ -20,7 +17,10 @@
   "physicsStartAwake": true,
   "physicsKinematic": false,
   "physicsShapePoints": [],
-  "eventList": [],
+  "eventList": [
+    {"isDnD":false,"eventNum":0,"eventType":8,"collisionObjectId":null,"parent":{"name":"obj_VictoryScreen","path":"objects/obj_VictoryScreen/obj_VictoryScreen.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"parent":{"name":"obj_VictoryScreen","path":"objects/obj_VictoryScreen/obj_VictoryScreen.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+  ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
@@ -28,7 +28,7 @@
     "path": "folders/Objects/Game.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_Wall",
+  "name": "obj_VictoryScreen",
   "tags": [],
   "resourceType": "GMObject",
 }
