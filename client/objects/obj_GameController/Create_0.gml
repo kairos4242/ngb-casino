@@ -17,9 +17,11 @@ spells[4][0] = "Wall"
 spells[4][1] = "spell_wall"
 spells[5][0] = "Passive Jump Height Increase"
 spells[5][1] = "spell_passive_jump_height_increase"
+spells[6][0] = "Turret"
+spells[6][1] = "spell_turret"
 
 global.player_ability_1 = 1 //Fireball by default
-global.player_ability_2 = 3 //Swap places by default
+global.player_ability_2 = 6 //turret by default
 
 
 //Create Cards

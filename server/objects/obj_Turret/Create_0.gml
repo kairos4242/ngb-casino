@@ -5,4 +5,7 @@
 event_inherited();
 
 hp = 50
-range = 150
+range = 750
+fire_cooldown = 60
+target = -1
+alarm[4] = 1800

@@ -1,6 +1,7 @@
 {
   "resources": [
     {"id":{"name":"spr_Slave","path":"sprites/spr_Slave/spr_Slave.yy",},"order":1,},
+    {"id":{"name":"obj_Turret","path":"objects/obj_Turret/obj_Turret.yy",},"order":9,},
     {"id":{"name":"obj_BasicProjectile","path":"objects/obj_BasicProjectile/obj_BasicProjectile.yy",},"order":8,},
     {"id":{"name":"spr_Turret","path":"sprites/spr_Turret/spr_Turret.yy",},"order":2,},
     {"id":{"name":"spr_BasicProjectile","path":"sprites/spr_BasicProjectile/spr_BasicProjectile.yy",},"order":0,},

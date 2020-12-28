@@ -85,12 +85,12 @@ function spell_passive_jump_height_increase(caster, target){
 function spell_turret(caster, target){
 	turret_max_cast_distance = 200
 	cast_distance = point_distance(caster.x, caster.y, target[0], target[1])
-	if cast_distance > turret_max_cast_distance break
+	if cast_distance > turret_max_cast_distance exit
 	var turret = instance_create_layer(target[0], target[1], "Instances", obj_Turret)
 	with turret {
 		owner = caster//for purposes of checking hit
 		network_id = new_network_id()
 	}
-	//send packet to all players to create a turret object then send a packet to change turret angle
-	network_create_object("obj_BasicProjectile", basic_projectile.network_id, basic_projectile.x, basic_projectile.y)
+	//send packet to all players to create a turret object
+	network_create_object("obj_Turret", turret.network_id, turret.x, turret.y)
 }
