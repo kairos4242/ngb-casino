@@ -92,8 +92,8 @@ function spell_wall(caster, target){
 	
 }
 
-function spell_passive_jump_height_increase(caster, target){
-	jump_passive = {
+function spell_antigravity(caster, target){
+	/*jump_passive = {
 		passive_id: "0000",
 		name: "Antigravity Passive",
 		type: "Subtract",
@@ -102,7 +102,27 @@ function spell_passive_jump_height_increase(caster, target){
 		passive_source: caster,
 		passive_target_variable: "grav"
 	}
-	create_effect(jump_passive, caster, target)
+	create_effect(jump_passive, caster, target)*/
+	if !(variable_instance_exists(id, "antigravity_on"))
+	{
+		antigravity_on = true
+		network_modify_player_property(caster.socket, "grav", "f16", 0.2)
+	}
+	else
+	{
+		//if antigravity off, turn it on
+		if (antigravity_on == false)
+		{
+			network_modify_player_property(caster.socket, "grav", "f16", 0.2)
+			antigravity_on = true
+		}
+		else
+		{
+			//antigravity on, turn it off
+			network_modify_player_property(caster.socket, "grav", "f16", 0.4)
+			antigravity_on = false
+		}
+	}
 }
 
 function spell_turret(caster, target){

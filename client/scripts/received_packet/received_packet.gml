@@ -105,11 +105,10 @@ function received_packet(buffer){
 				break;
 				case "string": var value_to_set = buffer_read(buffer, buffer_string)
 				break;
+				case "f16": var value_to_set = buffer_read(buffer, buffer_f16)
+				break;
 			}
-			//^maybe this will need to be a switch eventually based on what object property we are setting
-			//like for instance you can't set name in a u16
-			//either that or have network.modify_property_string, network.modify_property_u16, etc etc
-			//for now just reading unsigned 16 bit is good though
+			//more data types can be added as the need arises
 			
 			var object_instance_id = ds_map_find_value(network_id_to_instanceid, object_network_id)
 			variable_instance_set(object_instance_id, property_to_modify, value_to_set)
@@ -129,6 +128,8 @@ function received_packet(buffer){
 				case "s16": var value_to_set = buffer_read(buffer, buffer_s16)
 				break;
 				case "string": var value_to_set = buffer_read(buffer, buffer_string)
+				break;
+				case "f16": var value_to_set = buffer_read(buffer, buffer_f16)
 				break;
 			}
 			//^maybe this will need to be a switch eventually based on what object property we are setting
