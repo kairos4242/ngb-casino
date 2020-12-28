@@ -68,8 +68,8 @@
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"f6da8baf-ba23-49db-8f5b-c362119c5b24","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
-    "name": "Sprites",
-    "path": "folders/Sprites.yy",
+    "name": "Spell Objects",
+    "path": "folders/Sprites/Spell Objects.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_BasicProjectile",
