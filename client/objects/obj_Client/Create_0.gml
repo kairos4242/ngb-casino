@@ -11,7 +11,8 @@ enum network {
 	cast_spell,
 	modify_property,
 	destroy_object,
-	modify_player_property
+	modify_player_property,
+	kill_player
 }
 
 

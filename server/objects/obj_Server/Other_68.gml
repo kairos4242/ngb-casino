@@ -25,6 +25,7 @@ switch (type_event) {
 		
 		ds_map_delete(socket_to_instanceid, socket)
 		
+		//send packet to all players informing of disconnect
 		for (i = 0; i < ds_list_size(socket_list); i++)
 		{
 			var curr_socket = ds_list_find_value(socket_list, i)

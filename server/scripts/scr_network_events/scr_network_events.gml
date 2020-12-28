@@ -82,3 +82,16 @@ function network_modify_player_property(socket_to_modify, property_to_modify, ty
 		network_send_packet(curr_socket, server_buffer, buffer_tell(server_buffer))
 	}
 }
+
+function network_kill_player(socket_to_kill) {
+	for (i = 0; i < ds_list_size(socket_list); i++)
+	{
+		//send packet to kill player
+		var curr_socket = ds_list_find_value(socket_list, i)
+		buffer_seek(server_buffer, buffer_seek_start, 0);
+		buffer_write(server_buffer, buffer_u8, network.kill_player)
+		buffer_write(server_buffer, buffer_u16, socket_to_kill)
+		network_send_packet(curr_socket, server_buffer, buffer_tell(server_buffer))
+	}
+	
+}
