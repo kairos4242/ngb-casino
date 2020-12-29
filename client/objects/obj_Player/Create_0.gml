@@ -5,6 +5,7 @@ jump_speed = 14
 jumps = 2
 max_jumps = 2
 grav = 0.4
+can_move = 1
 
 x_speed = 0
 y_speed = 0

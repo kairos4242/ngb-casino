@@ -21,15 +21,20 @@ spells[6][0] = "Turret"
 spells[6][1] = "spell_turret"
 spells[7][0] = "Heal"
 spells[7][1] = "spell_heal"
+spells[8][0] = "Terrify"
+spells[8][1] = "spell_terrify"
+spells[9][0] = "Knockback"
+spells[9][1] = "spell_knockback"
 
 global.player_ability_1 = 1 //Fireball by default
 global.player_ability_2 = 6 //turret by default
 
 
 //Create Cards
+row_length = 5
 for (i = 1; i < array_length(spells); i++)//we start on i=1 so as to avoid including the basic attack in the list of pickable spells
 {
-	card = instance_create_layer(0 + (128 * ((i - 1) % 3)), 0 + (256 * floor((i - 1) / 3)), "Instances", obj_Card)
+	card = instance_create_layer(0 + (128 * ((i - 1) % row_length)), 0 + (256 * floor((i - 1) / row_length)), "Instances", obj_Card)
 	with card
 	{
 		name = other.spells[other.i][0]

@@ -145,3 +145,24 @@ function spell_heal(caster, target){
 	caster.hp = min(caster.max_hp, caster.hp + heal_amount)
 	network_modify_player_property(caster.socket, "hp", "u16", caster.hp)
 }
+
+function spell_terrify(caster, target){
+	//prevents player from moving themself, but does not freeze all player movement
+	var target_player = collision_point(target[0], target[1], obj_Player, false, false)
+	if (target_player == noone) exit
+	with obj_Server
+	{
+		network_modify_player_property(target_player.socket, "can_move", "u16", 0)
+		//reset player xspeed to 0 otherwise they keep skating for the two seconds
+		network_modify_player_property(target_player.socket, "x_speed", "u16", 0)
+	}
+	var passive = instance_create_layer(0, 0, "Instances", obj_Passive)
+	with passive
+	{
+		alarm[0] = 120
+		target_socket = target_player.socket
+		target_variable = "can_move"
+		target_variable_type = "u16"
+		target_value = 1
+	}
+}

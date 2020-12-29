@@ -32,8 +32,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "Spell Objects",
+    "path": "folders/Objects/Spell Objects.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_Turret",
