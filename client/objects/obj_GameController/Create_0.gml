@@ -1,6 +1,28 @@
 /// @description Insert description here
 // You can write your code in this editor
-username = get_string("Please Enter a Username", "")
+default_username = ""
+if (file_exists("preferences.ini"))
+{
+	//load username
+	ini_open("preferences.ini")
+	default_username = ini_read_string("user", "last_username", "")
+	ini_close()
+	
+}
+	
+username_rough = get_string("Please Enter a Username", default_username)
+username = string_delete(username_rough, 20, string_length(username_rough) - 19)
+
+//unfortunately I think it is necessary to have this file_exists structure twice here
+//because first one needs to come before the two lines in the middle
+
+if (!(file_exists("preferences.ini")))
+{
+	//write the username
+	ini_open("preferences.ini")
+	ini_write_string("user", "last_username", username)
+	ini_close()
+}
 
 //0 is name, 1 is script reference
 

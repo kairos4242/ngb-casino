@@ -47,3 +47,9 @@ if (place_meeting(x, y + y_speed, obj_Wall))
 	y_speed = 0
 }
 y += y_speed
+
+//snap to in bounds
+x = min(x, room_width)
+x = max(x, 0)
+y = max(y, 0)
+y = min(y, room_height)

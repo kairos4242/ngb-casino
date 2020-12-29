@@ -16,9 +16,9 @@ enum network {
 	declare_victory
 }
 
-
+address = get_string("Enter the IP of the server to connect to", "10.0.1.49")
 client = network_create_socket(network_socket_tcp)
-network_connect(client, "127.0.0.1", 25565)
+network_connect(client, address, 25565)
 
 client_buffer = buffer_create(1024, buffer_fixed, 1)
 
