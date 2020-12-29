@@ -18,6 +18,7 @@
     {"id":{"name":"scr_Spells","path":"scripts/scr_Spells/scr_Spells.yy",},"order":0,},
     {"id":{"name":"RoomViewTest","path":"rooms/RoomViewTest/RoomViewTest.yy",},"order":1,},
     {"id":{"name":"obj_Turret","path":"objects/obj_Turret/obj_Turret.yy",},"order":3,},
+    {"id":{"name":"obj_TagProjectile","path":"objects/obj_TagProjectile/obj_TagProjectile.yy",},"order":4,},
     {"id":{"name":"scr_network_events","path":"scripts/scr_network_events/scr_network_events.yy",},"order":4,},
     {"id":{"name":"obj_Fireball","path":"objects/obj_Fireball/obj_Fireball.yy",},"order":1,},
     {"id":{"name":"receive_packet","path":"scripts/receive_packet/receive_packet.yy",},"order":0,},

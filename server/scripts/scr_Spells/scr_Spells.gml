@@ -202,3 +202,49 @@ function spell_knockback(caster, target){
 		target_value = 1
 	}
 }
+
+function spell_tag(caster, target)
+{
+	//check if variable exists
+	if !variable_instance_exists(caster, "tag_active")
+	{
+		caster.tag_active = 0//initialize to false
+	}
+	//check if projectile already cast or not
+	if (caster.tag_active == 0)
+	{
+		//projectile not cast, cast projectile
+		caster.tag_active = 1
+		tag_projectile_speed = 10
+		cast_direction = point_direction(caster.x, caster.y, target[0], target[1])
+		caster.tag_projectile = instance_create_layer(caster.x + lengthdir_x(caster.sprite_width, cast_direction), caster.y + lengthdir_y(caster.sprite_height, cast_direction), "Instances", obj_TagProjectile)
+		with caster.tag_projectile {
+			owner = caster//for purposes of checking hit
+			network_id = new_network_id()
+			image_angle = other.cast_direction
+			x_speed = lengthdir_x(other.tag_projectile_speed, other.cast_direction)
+			y_speed = lengthdir_y(other.tag_projectile_speed, other.cast_direction)
+		}
+		//send packet to all players to create a tag object then send a packet to change tag angle
+		network_create_object("obj_TagProjectile", caster.tag_projectile.network_id, caster.tag_projectile.x, caster.tag_projectile.y)
+		network_modify_property(caster.tag_projectile.network_id, "image_angle", "u16", cast_direction)
+		network_modify_property(caster.tag_projectile.network_id, "x_speed", "s16", lengthdir_x(tag_projectile_speed, cast_direction))
+		network_modify_property(caster.tag_projectile.network_id, "y_speed", "s16", lengthdir_y(tag_projectile_speed, cast_direction))
+	}
+	else
+	{
+		//projectile exists, teleport to it
+		caster.tag_active = 0
+		caster.x = caster.tag_projectile.x
+		caster.y = caster.tag_projectile.y
+		
+		//send out network information
+		network_modify_player_property(caster.socket, "x", "u16", caster.x)
+		network_modify_player_property(caster.socket, "y", "u16", caster.y)
+		network_destroy_object(caster.tag_projectile.network_id)
+		
+		//destroy tag as it has been used
+		instance_destroy(caster.tag_projectile)
+		
+	}
+}

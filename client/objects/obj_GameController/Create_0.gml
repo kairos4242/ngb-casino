@@ -15,6 +15,8 @@ username = string_delete(username_rough, 20, string_length(username_rough) - 19)
 
 //unfortunately I think it is necessary to have this file_exists structure twice here
 //because first one needs to come before the two lines in the middle
+//so we cant put it in an if/else construction
+//could save in a variable but thats only marginally cleaner
 
 if (!(file_exists("preferences.ini")))
 {
@@ -47,6 +49,8 @@ spells[8][0] = "Terrify"
 spells[8][1] = "spell_terrify"
 spells[9][0] = "Knockback"
 spells[9][1] = "spell_knockback"
+spells[10][0] = "Tag"
+spells[10][1] = "spell_tag"
 
 global.player_ability_1 = 1 //Fireball by default
 global.player_ability_2 = 6 //turret by default
