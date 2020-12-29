@@ -1,6 +1,7 @@
 {
   "resources": [
     {"id":{"name":"spr_Slave","path":"sprites/spr_Slave/spr_Slave.yy",},"order":1,},
+    {"id":{"name":"rm_ClientNewTest","path":"rooms/rm_ClientNewTest/rm_ClientNewTest.yy",},"order":2,},
     {"id":{"name":"obj_Turret","path":"objects/obj_Turret/obj_Turret.yy",},"order":6,},
     {"id":{"name":"obj_BasicProjectile","path":"objects/obj_BasicProjectile/obj_BasicProjectile.yy",},"order":0,},
     {"id":{"name":"spr_Turret","path":"sprites/spr_Turret/spr_Turret.yy",},"order":2,},
@@ -15,6 +16,7 @@
     {"id":{"name":"obj_Slave","path":"objects/obj_Slave/obj_Slave.yy",},"order":5,},
     {"id":{"name":"received_packet","path":"scripts/received_packet/received_packet.yy",},"order":0,},
     {"id":{"name":"obj_GameController","path":"objects/obj_GameController/obj_GameController.yy",},"order":0,},
+    {"id":{"name":"obj_Camera","path":"objects/obj_Camera/obj_Camera.yy",},"order":3,},
     {"id":{"name":"rm_MainMenu","path":"rooms/rm_MainMenu/rm_MainMenu.yy",},"order":1,},
     {"id":{"name":"obj_Card","path":"objects/obj_Card/obj_Card.yy",},"order":1,},
     {"id":{"name":"spr_Wall","path":"sprites/spr_Wall/spr_Wall.yy",},"order":2,},
@@ -40,6 +42,7 @@
   },
   "RoomOrderNodes": [
     {"roomId":{"name":"rm_MainMenu","path":"rooms/rm_MainMenu/rm_MainMenu.yy",},},
+    {"roomId":{"name":"rm_ClientNewTest","path":"rooms/rm_ClientNewTest/rm_ClientNewTest.yy",},},
     {"roomId":{"name":"rm_Client","path":"rooms/rm_Client/rm_Client.yy",},},
   ],
   "Folders": [
@@ -57,9 +60,9 @@
     {"folderPath":"folders/Animation Curves.yy","order":12,"resourceVersion":"1.0","name":"Animation Curves","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Notes.yy","order":13,"resourceVersion":"1.0","name":"Notes","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Extensions.yy","order":14,"resourceVersion":"1.0","name":"Extensions","tags":[],"resourceType":"GMFolder",},
-    {"folderPath":"folders/Objects/Menu.yy","order":5,"resourceVersion":"1.0","name":"Menu","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Objects/Menu.yy","order":1,"resourceVersion":"1.0","name":"Menu","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Sprites/Spell Objects.yy","order":6,"resourceVersion":"1.0","name":"Spell Objects","tags":[],"resourceType":"GMFolder",},
-    {"folderPath":"folders/Objects/Game.yy","order":12,"resourceVersion":"1.0","name":"Game","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Objects/Game.yy","order":2,"resourceVersion":"1.0","name":"Game","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [
     {"targets":-1,"resourceVersion":"1.3","name":"audiogroup_default","resourceType":"GMAudioGroup",},

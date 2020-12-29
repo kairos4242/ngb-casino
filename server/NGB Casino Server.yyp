@@ -16,6 +16,7 @@
     {"id":{"name":"spr_Fireball","path":"sprites/spr_Fireball/spr_Fireball.yy",},"order":1,},
     {"id":{"name":"obj_Server","path":"objects/obj_Server/obj_Server.yy",},"order":0,},
     {"id":{"name":"scr_Spells","path":"scripts/scr_Spells/scr_Spells.yy",},"order":0,},
+    {"id":{"name":"RoomViewTest","path":"rooms/RoomViewTest/RoomViewTest.yy",},"order":1,},
     {"id":{"name":"obj_Turret","path":"objects/obj_Turret/obj_Turret.yy",},"order":3,},
     {"id":{"name":"scr_network_events","path":"scripts/scr_network_events/scr_network_events.yy",},"order":4,},
     {"id":{"name":"obj_Fireball","path":"objects/obj_Fireball/obj_Fireball.yy",},"order":1,},
@@ -37,6 +38,7 @@
     "children": [],
   },
   "RoomOrderNodes": [
+    {"roomId":{"name":"RoomViewTest","path":"rooms/RoomViewTest/RoomViewTest.yy",},},
     {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
   ],
   "Folders": [
