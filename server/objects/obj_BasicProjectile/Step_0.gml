@@ -13,6 +13,16 @@ if (x < 0) or (y < 0) or (x > room_width) or (y > room_height)
 	instance_destroy()
 }
 
+//if colliding with wall, destroy self
+if place_meeting(x, y, obj_Wall)
+{
+	with obj_Server
+	{
+		network_destroy_object(other.network_id)
+	}
+	instance_destroy()
+}
+
 //if colliding with player, damage said player
 collision = instance_place(x, y, obj_Player)
 if (collision != noone) and (collision != owner)
