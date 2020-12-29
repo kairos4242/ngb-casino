@@ -148,6 +148,7 @@ function received_packet(buffer){
 			
 			//find the object and destroy it
 			var object_instance_id = ds_map_find_value(network_id_to_instanceid, object_network_id)
+			if (is_undefined(ds_map_find_value(network_id_to_instanceid, object_network_id))) break;
 			with object_instance_id
 			{
 				instance_destroy()
