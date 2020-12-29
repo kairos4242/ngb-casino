@@ -166,3 +166,39 @@ function spell_terrify(caster, target){
 		target_value = 1
 	}
 }
+
+function spell_knockback(caster, target){
+	//prevent object player from moving for duration of knockback
+	
+	//setup
+	var knockback_duration = 15
+	var knockback_amount = 20
+	var target_player = collision_point(target[0], target[1], obj_Player, false, true)
+	if (target_player == noone) exit
+	var knockback_direction = point_direction(caster.x, caster.y, target[0], target[1])
+	var knockback_x = lengthdir_x(knockback_amount, knockback_direction)
+	var knockback_y = lengthdir_y(knockback_amount, knockback_direction)
+	//change variables
+	target_player.can_move = 0
+	target_player.x_speed = knockback_x
+	target_player.y_speed = knockback_y
+	
+	//send messages
+	with obj_Server
+	{
+		network_modify_player_property(target_player.socket, "can_move", "u16", 0)
+		network_modify_player_property(target_player.socket, "x_speed", "s16", knockback_x)
+		network_modify_player_property(target_player.socket, "y_speed", "s16", knockback_y)
+	}
+	
+	//create passive to undo movement
+	var passive = instance_create_layer(0, 0, "Instances", obj_Passive)
+	with passive
+	{
+		alarm[0] = knockback_duration
+		target_socket = target_player.socket
+		target_variable = "can_move"
+		target_variable_type = "u16"
+		target_value = 1
+	}
+}
