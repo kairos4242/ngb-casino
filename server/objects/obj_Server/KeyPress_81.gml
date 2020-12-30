@@ -34,3 +34,10 @@ for (i = 0; i < ds_list_size(socket_list); i++)
 	buffer_write(server_buffer, buffer_u8, network.refresh_room);
 	network_send_packet(curr_socket, server_buffer, buffer_tell(server_buffer))
 }
+
+//create a poker controller and give a copy to all players
+poker_controller = instance_create_layer(0, 0, "Instances", obj_PokerController)
+with poker_controller {
+	network_id = new_network_id()
+}
+network_create_object("obj_PokerController", poker_controller.id, 0, 0)
