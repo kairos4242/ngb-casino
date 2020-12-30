@@ -28,11 +28,11 @@ if (key_jump) && (jumps > 0)
 //Horizontal Collision
 if (place_meeting(x + x_speed, y, obj_Wall))
 {
-	x_speed = 0
-	while (!place_meeting(x + move, y, obj_Wall))
+	while (!place_meeting(x + sign(x_speed), y, obj_Wall))
 	{
-		x += move
+		x += sign(x_speed)
 	}
+	x_speed = 0
 }
 x += x_speed
 
