@@ -28,3 +28,16 @@ socket_to_instanceid = ds_map_create();
 
 player_spawn_x = 100
 player_spawn_y = 100
+//hardcode positions for players going into poker
+poker_spawns[0][0] = 672
+poker_spawns[0][1] = 352
+poker_spawns[1][0] = 1056
+poker_spawns[1][1] = 352
+poker_spawns[2][0] = 1440
+poker_spawns[2][1] = 352
+poker_spawns[3][0] = 672
+poker_spawns[3][1] = 736
+poker_spawns[4][0] = 1056
+poker_spawns[4][1] = 736
+poker_spawns[5][0] = 1440
+poker_spawns[5][1] = 736

@@ -83,6 +83,5 @@ function receive_packet(buffer, socket){
 				network_send_packet(socket, server_buffer, buffer_tell(server_buffer))
 			}
 			break;
-			break;
 	}
 }

@@ -196,13 +196,13 @@ function received_packet(buffer){
 		case network.refresh_room:
 			//clear all instances and request them again from server
 			//just walls right now but later can expand this to background tiles/other level objects/etc
-			for (i = 0; i < instance_number(obj_Wall); i++)
+			with (obj_Wall)
 			{
-				//delete this wall
-				instance_destroy(instance_find(obj_Wall, i))
+				instance_destroy()
 			}
 			
 			//request all other walls
+			var num_of_walls = instance_number(obj_Wall)
 			buffer_seek(client_buffer, buffer_seek_start, 0)
 			buffer_write(client_buffer, buffer_u8, network.request_objects)
 			network_send_packet(client, client_buffer, buffer_tell(client_buffer));
