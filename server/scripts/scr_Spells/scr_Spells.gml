@@ -4,7 +4,7 @@
 //Target is an array of [x, y] so target[0] will get target xpos and target[1] will get target ypos
 
 function spell_basic_attack(caster, target){
-	basic_projectile_speed = 10
+	basic_projectile_speed = 30
 	cast_direction = point_direction(caster.x, caster.y, target[0], target[1])
 	var basic_projectile = instance_create_layer(caster.x + lengthdir_x(caster.sprite_width, cast_direction), caster.y + lengthdir_y(caster.sprite_height, cast_direction), "Instances", obj_BasicProjectile)
 	with basic_projectile {
