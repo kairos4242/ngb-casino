@@ -10,7 +10,9 @@ enum network {
 	destroy_object,
 	modify_player_property,
 	kill_player,
-	declare_victory
+	declare_victory,
+	refresh_room,
+	request_objects
 }
 
 

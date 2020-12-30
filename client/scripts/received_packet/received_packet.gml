@@ -192,5 +192,20 @@ function received_packet(buffer){
 					text_to_draw = username_victorious + " won the match! Better luck next time you loser!"
 				}
 			}
+			break;
+		case network.refresh_room:
+			//clear all instances and request them again from server
+			//just walls right now but later can expand this to background tiles/other level objects/etc
+			for (i = 0; i < instance_number(obj_Wall); i++)
+			{
+				//delete this wall
+				instance_destroy(instance_find(obj_Wall, i))
+			}
+			
+			//request all other walls
+			buffer_seek(client_buffer, buffer_seek_start, 0)
+			buffer_write(client_buffer, buffer_u8, network.request_objects)
+			network_send_packet(client, client_buffer, buffer_tell(client_buffer));
+			break;
 	}	
 }

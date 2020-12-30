@@ -27,7 +27,6 @@
     {"id":{"name":"obj_VictoryScreen","path":"objects/obj_VictoryScreen/obj_VictoryScreen.yy",},"order":7,},
     {"id":{"name":"spr_Fireball","path":"sprites/spr_Fireball/spr_Fireball.yy",},"order":1,},
     {"id":{"name":"obj_Player","path":"objects/obj_Player/obj_Player.yy",},"order":3,},
-    {"id":{"name":"rm_Client","path":"rooms/rm_Client/rm_Client.yy",},"order":0,},
   ],
   "Options": [
     {"name":"Linux","path":"options/linux/options_linux.yy",},
@@ -45,7 +44,6 @@
   "RoomOrderNodes": [
     {"roomId":{"name":"rm_MainMenu","path":"rooms/rm_MainMenu/rm_MainMenu.yy",},},
     {"roomId":{"name":"rm_ClientNewTest","path":"rooms/rm_ClientNewTest/rm_ClientNewTest.yy",},},
-    {"roomId":{"name":"rm_Client","path":"rooms/rm_Client/rm_Client.yy",},},
   ],
   "Folders": [
     {"folderPath":"folders/Sprites.yy","order":1,"resourceVersion":"1.0","name":"Sprites","tags":[],"resourceType":"GMFolder",},
