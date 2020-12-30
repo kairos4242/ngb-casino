@@ -33,12 +33,21 @@ for (i = 0; i < ds_list_size(obj_Server.socket_list); i++)
 	var curr_socket = ds_list_find_value(obj_Server.socket_list, i)
 	with obj_Server
 	{
-		//send packet to modify property
-		var curr_socket = ds_list_find_value(socket_list, i)
+		var curr_socket = ds_list_find_value(socket_list, other.i)
+		//send packet to modify card 1
 		buffer_seek(server_buffer, buffer_seek_start, 0);
 		buffer_write(server_buffer, buffer_u8, network.modify_property)
-		buffer_write(server_buffer, buffer_u16, other.network_id)
+		buffer_write(server_buffer, buffer_u16, poker_controller_id)
 		buffer_write(server_buffer, buffer_string, "card_1")
+		buffer_write(server_buffer, buffer_string, "u16")
+		buffer_write(server_buffer, buffer_u16, card_1)
+		network_send_packet(curr_socket, server_buffer, buffer_tell(server_buffer))
+		
+		//send packet to modify card 2
+		buffer_seek(server_buffer, buffer_seek_start, 0);
+		buffer_write(server_buffer, buffer_u8, network.modify_property)
+		buffer_write(server_buffer, buffer_u16, poker_controller_id)
+		buffer_write(server_buffer, buffer_string, "card_2")
 		buffer_write(server_buffer, buffer_string, "u16")
 		buffer_write(server_buffer, buffer_u16, card_1)
 		network_send_packet(curr_socket, server_buffer, buffer_tell(server_buffer))

@@ -35,9 +35,12 @@ for (i = 0; i < ds_list_size(socket_list); i++)
 	network_send_packet(curr_socket, server_buffer, buffer_tell(server_buffer))
 }
 
+
 //create a poker controller and give a copy to all players
+poker_controller_id = new_network_id()//this needs to be generated here because poker controller uses it in the create event
+//and as such needs access to it before the with statement
+network_create_object("obj_PokerController", poker_controller_id, 0, 0)
 poker_controller = instance_create_layer(0, 0, "Instances", obj_PokerController)
 with poker_controller {
-	network_id = new_network_id()
+	network_id = other.poker_controller_id
 }
-network_create_object("obj_PokerController", poker_controller.id, 0, 0)
