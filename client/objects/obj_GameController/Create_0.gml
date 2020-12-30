@@ -10,7 +10,7 @@ if (file_exists("preferences.ini"))
 	
 }
 	
-username_rough = get_string("Please Enter a Username", default_username)
+username_rough = get_string_async("Please Enter a Username", default_username)
 username = string_delete(username_rough, 20, string_length(username_rough) - 19)
 
 //unfortunately I think it is necessary to have this file_exists structure twice here
