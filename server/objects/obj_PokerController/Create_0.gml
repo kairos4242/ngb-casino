@@ -28,7 +28,7 @@ for (i = 0; i < ds_list_size(obj_Server.socket_list); i++)
 {
 	//deal two cards to player
 	var card_1 = irandom(8) + 1 //to avoid somebody getting a second basic attack
-	var card_2 = irandom(8) + 1
+	var card_2 = irandom(8) + 1//see prev
 	//send the cards to the player
 	var curr_socket = ds_list_find_value(obj_Server.socket_list, i)
 	with obj_Server
@@ -53,4 +53,6 @@ for (i = 0; i < ds_list_size(obj_Server.socket_list); i++)
 		network_send_packet(curr_socket, server_buffer, buffer_tell(server_buffer))
 	}
 }
-alarm[0] = 1500
+alarm[0] = 1500//timeout alarm
+
+//send out first packet to inform player it is their turn
