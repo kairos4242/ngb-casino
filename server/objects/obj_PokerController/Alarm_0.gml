@@ -94,6 +94,25 @@ if (is_undefined(current_player))
 					network_modify_property(poker_controller_id, "common_card_3", "u16", other.common_card_3)
 				}
 				break;
+			case 3:
+				//all done betting, now its time to go to the game
+				obj_Server.pot = pot
+				room_goto(RoomViewTest)//temporary, eventually this will be whatever map was selected
+				with obj_Server
+				{
+					//tell all clients to refresh their room
+					for (i = 0; i < ds_list_size(socket_list); i++)
+					{
+						//send packet to create object
+						var curr_socket = ds_list_find_value(socket_list, i)
+						buffer_seek(server_buffer, buffer_seek_start, 0);
+						buffer_write(server_buffer, buffer_u8, network.refresh_room);
+						network_send_packet(curr_socket, server_buffer, buffer_tell(server_buffer))
+					}
+					network_destroy_object(poker_controller_id)
+				}
+				instance_destroy()
+				exit;
 		}
 		//now that we have flipped cards, time for the next betting round
 		//reset the round_bet of all players to 0
