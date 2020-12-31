@@ -5,19 +5,19 @@ current_player = 0//controls who is currently betting
 turn_length = 1500
 
 master_turn_order = ds_priority_create()
+temp_order = ds_priority_create()//for checking if everyone is settled after a bet
 
 //initialize player balances
 for (i = 0; i < ds_list_size(obj_Server.socket_list); i++)
 {
-	player_balance[i] = 10000
 	player_socket[i] = ds_list_find_value(obj_Server.socket_list, i)
 	player_object[i] = ds_map_find_value(obj_Server.socket_to_instanceid, player_socket[i])
-	player_pot[i] = 0
-	player_state[i] = "In"
 	ds_priority_add(master_turn_order, player_object[i], i)
 }
 
 current_max_bet = 0
+current_bet = 0
+pot = 0
 
 turn_order = ds_priority_create()
 ds_priority_copy(turn_order, master_turn_order)
@@ -54,12 +54,11 @@ for (i = 0; i < ds_list_size(obj_Server.socket_list); i++)
 	}
 }
 alarm[0] = 1500//timeout alarm
-current_highest_bet = 0
-current_bet = 0
+
 //send out first packet to inform player it is their turn
+current_player = ds_priority_find_max(other.turn_order)
 with obj_Server {
-	var curr_object = ds_priority_find_max(other.turn_order)
-	var curr_socket = curr_object.socket
+	var curr_socket = other.current_player.socket
 	//send packet to modify property
 	buffer_seek(server_buffer, buffer_seek_start, 0);
 	buffer_write(server_buffer, buffer_u8, network.modify_property)
@@ -68,5 +67,4 @@ with obj_Server {
 	buffer_write(server_buffer, buffer_string, "u16")
 	buffer_write(server_buffer, buffer_u16, 1)
 	network_send_packet(curr_socket, server_buffer, buffer_tell(server_buffer))
-	ds_priority_delete_max(other.turn_order)
 }
