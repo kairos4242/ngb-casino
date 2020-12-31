@@ -263,3 +263,23 @@ function spell_immolate(caster, target)
 	caster.hp -= 10
 	network_modify_player_property(caster.socket, "hp", "u16", caster.hp)
 }
+function spell_boomerang(caster, target)
+{
+	boomerang_speed = 30
+	cast_direction = point_direction(caster.x, caster.y, target[0], target[1])
+	var boomerang  = instance_create_layer( caster.x + lengthdir_x(caster.sprite_width, cast_direction), caster.y + lengthdir_y(caster.sprite_height, cast_direction), "Instances", obj_Boomerang)
+	with boomerang {
+		owner = caster//for purposes of checking hit
+		network_id = new_network_id()
+		image_angle = other.cast_direction
+		x_speed = lengthdir_x(other.boomerang_speed, other.cast_direction)
+		y_speed = lengthdir_y(other.boomerang_speed, other.cast_direction)
+		x_dir = dcos(other.cast_direction)
+		y_dir = -dsin(other.cast_direction)
+	}
+	//send packet to all players to create a fireball object then send a packet to change fireball angle
+	network_create_object("obj_Boomerang", boomerang.network_id, boomerang.x, boomerang.y)
+	network_modify_property(boomerang.network_id, "image_angle", "u16", cast_direction)
+	network_modify_property(boomerang.network_id, "x_speed", "s16", lengthdir_x(boomerang_speed, cast_direction))
+	network_modify_property(boomerang.network_id, "y_speed", "s16", lengthdir_y(boomerang_speed, cast_direction))
+}
