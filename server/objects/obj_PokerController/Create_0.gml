@@ -11,9 +11,9 @@ for (i = 0; i < ds_list_size(obj_Server.socket_list); i++)
 {
 	player_balance[i] = 10000
 	player_socket[i] = ds_list_find_value(obj_Server.socket_list, i)
-	player_object[i] = ds_list_find_value(obj_Server.socket_to_instanceid, player_socket[i])
-	player_pot = 0
-	player_state = "In"
+	player_object[i] = ds_map_find_value(obj_Server.socket_to_instanceid, player_socket[i])
+	player_pot[i] = 0
+	player_state[i] = "In"
 	ds_priority_add(master_turn_order, player_object[i], i)
 }
 
@@ -56,3 +56,15 @@ for (i = 0; i < ds_list_size(obj_Server.socket_list); i++)
 alarm[0] = 1500//timeout alarm
 
 //send out first packet to inform player it is their turn
+with obj_Server {
+	var curr_object = ds_priority_find_max(other.turn_order)
+	var curr_socket = curr_object.socket
+	//send packet to modify property
+	buffer_seek(server_buffer, buffer_seek_start, 0);
+	buffer_write(server_buffer, buffer_u8, network.modify_property)
+	buffer_write(server_buffer, buffer_u16, poker_controller_id)
+	buffer_write(server_buffer, buffer_string, "my_turn")
+	buffer_write(server_buffer, buffer_string, "u16")
+	buffer_write(server_buffer, buffer_u16, 1)
+	network_send_packet(curr_socket, server_buffer, buffer_tell(server_buffer))
+}

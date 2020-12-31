@@ -12,7 +12,8 @@ enum network {
 	kill_player,
 	declare_victory,
 	refresh_room,
-	request_objects
+	request_objects,
+	poker_bet
 }
 
 

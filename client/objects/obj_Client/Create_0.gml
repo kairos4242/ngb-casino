@@ -15,7 +15,8 @@ enum network {
 	kill_player,
 	declare_victory,
 	refresh_room,
-	request_objects
+	request_objects,
+	poker_bet
 }
 
 address = get_string("Enter the IP of the server to connect to", "10.0.1.49")

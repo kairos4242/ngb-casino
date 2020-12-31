@@ -8,4 +8,4 @@ map = -1
 card_common_1 = -1
 card_common_2 = -1
 card_common_3 = -1
-my_turn = false
+my_turn = 0
