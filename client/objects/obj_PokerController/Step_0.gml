@@ -41,3 +41,11 @@ if (my_turn == 1)
 		}
 	}
 }
+//check whether to send spells to player
+if abilities_sent == false
+{
+	//send spells to player
+	obj_Player.card_1 = card_1
+	obj_Player.card_2 = card_2
+	abilities_sent = true
+}

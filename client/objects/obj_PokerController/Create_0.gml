@@ -9,3 +9,4 @@ common_card_1 = "?"
 common_card_2 = "?"
 common_card_3 = "?"
 my_turn = 0
+abilities_sent = false
