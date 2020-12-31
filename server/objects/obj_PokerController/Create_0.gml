@@ -53,7 +53,7 @@ for (i = 0; i < ds_list_size(obj_Server.socket_list); i++)
 		buffer_write(server_buffer, buffer_u16, poker_controller_id)
 		buffer_write(server_buffer, buffer_string, "card_2")
 		buffer_write(server_buffer, buffer_string, "u16")
-		buffer_write(server_buffer, buffer_u16, card_1)
+		buffer_write(server_buffer, buffer_u16, card_2)
 		network_send_packet(curr_socket, server_buffer, buffer_tell(server_buffer))
 	}
 }
