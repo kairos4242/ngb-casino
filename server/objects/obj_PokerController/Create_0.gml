@@ -54,7 +54,8 @@ for (i = 0; i < ds_list_size(obj_Server.socket_list); i++)
 	}
 }
 alarm[0] = 1500//timeout alarm
-
+current_highest_bet = 0
+current_bet = 0
 //send out first packet to inform player it is their turn
 with obj_Server {
 	var curr_object = ds_priority_find_max(other.turn_order)

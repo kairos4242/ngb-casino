@@ -83,5 +83,14 @@ function receive_packet(buffer, socket){
 				network_send_packet(socket, server_buffer, buffer_tell(server_buffer))
 			}
 			break;
+			
+		case network.poker_bet:
+			//get amount to bet
+			var bet_amount = buffer_read(buffer, buffer_u16)
+			
+			//give it to poker controller and decrease the alarm to 0 as there is no need to wait further
+			obj_PokerController.current_bet = bet_amount
+			obj_PokerController.alarm[0] = 1
+			
 	}
 }
