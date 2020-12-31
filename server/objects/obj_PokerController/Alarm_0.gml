@@ -13,6 +13,7 @@ with (current_player)
 	balance -= other.current_bet
 	current_bet = other.current_bet
 	round_bet += other.current_bet
+	total_bet += other.current_bet
 }
 if (current_bet == 0) and (current_max_bet != 0)
 {
@@ -41,7 +42,7 @@ if (is_undefined(current_player))
 	everyone_even = true
 	while !(is_undefined(ds_priority_find_max(temp_order)))
 	{
-		if (ds_priority_find_max(temp_order).round_bet == current_max_bet)
+		if (ds_priority_find_max(temp_order).total_bet == current_max_bet)
 		{
 			ds_priority_delete_max(temp_order)
 		}
@@ -60,11 +61,66 @@ if (is_undefined(current_player))
 	{
 		//go to next round and flip a card
 		show_message("Go to next round and flip a card")
+		switch (poker_step)
+		{
+			default: break;
+			case 0:
+				//preflop done, flip the first card
+				poker_step++
+				with obj_Server
+				{
+					//send out notification of what the first card is
+					network_modify_property(poker_controller_id, "common_card_1", "u16", other.common_card_1)
+				}
+				break;
+			case 1:
+				//second step, flip the second card
+				poker_step++
+				with obj_Server
+				{
+					//send out notification of what the second card is
+					network_modify_property(poker_controller_id, "common_card_2", "u16", other.common_card_2)
+				}
+				break;
+			case 2:
+				//third step, flip the third card
+				poker_step++
+				with obj_Server
+				{
+					//send out notification of what the third card is
+					network_modify_property(poker_controller_id, "common_card_3", "u16", other.common_card_3)
+				}
+				break;
+		}
+		//now that we have flipped cards, time for the next betting round
+		//reset the round_bet of all players to 0
+		with obj_Player
+		{
+			round_bet = 0
+		}
+		//reset the turn order, and send out the first packet so we go again
+		ds_priority_copy(turn_order, master_turn_order)//note this will exclude players who have folded
+		alarm[0] = turn_length
+		//get the next player's bet
+		current_player = ds_priority_find_max(turn_order)
+		with obj_Server
+		{
+			var curr_socket = other.current_player.socket
+			//send packet to modify property
+			buffer_seek(server_buffer, buffer_seek_start, 0);
+			buffer_write(server_buffer, buffer_u8, network.modify_property)
+			buffer_write(server_buffer, buffer_u16, poker_controller_id)
+			buffer_write(server_buffer, buffer_string, "my_turn")
+			buffer_write(server_buffer, buffer_string, "u16")
+			buffer_write(server_buffer, buffer_u16, 1)
+			network_send_packet(curr_socket, server_buffer, buffer_tell(server_buffer))
+		}
+		
 	}
 	else
 	{
 		//somebody is still causing issues, so get their bet
-		alarm[0] = 1500
+		alarm[0] = turn_length
 		//get the next player's bet
 		current_player = ds_priority_find_max(turn_order)
 		with obj_Server

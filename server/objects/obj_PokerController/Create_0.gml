@@ -3,6 +3,10 @@
 poker_step = 0//step controls which phase of the hand we are on
 current_player = 0//controls who is currently betting
 turn_length = 1500
+card_count = 8//not actually 8, just temporary
+common_card_1 = irandom(card_count) + 1
+common_card_2 = irandom(card_count) + 1
+common_card_3 = irandom(card_count) + 1
 
 master_turn_order = ds_priority_create()
 temp_order = ds_priority_create()//for checking if everyone is settled after a bet
@@ -27,8 +31,8 @@ map = "Only Map"//obviously change this to an irandom later once we have more th
 for (i = 0; i < ds_list_size(obj_Server.socket_list); i++)
 {
 	//deal two cards to player
-	var card_1 = irandom(8) + 1 //to avoid somebody getting a second basic attack
-	var card_2 = irandom(8) + 1//see prev
+	var card_1 = irandom(card_count) + 1 //to avoid somebody getting a second basic attack
+	var card_2 = irandom(card_count) + 1//see prev
 	//send the cards to the player
 	var curr_socket = ds_list_find_value(obj_Server.socket_list, i)
 	with obj_Server
@@ -53,7 +57,7 @@ for (i = 0; i < ds_list_size(obj_Server.socket_list); i++)
 		network_send_packet(curr_socket, server_buffer, buffer_tell(server_buffer))
 	}
 }
-alarm[0] = 1500//timeout alarm
+alarm[0] = turn_length//timeout alarm
 
 //send out first packet to inform player it is their turn
 current_player = ds_priority_find_max(other.turn_order)

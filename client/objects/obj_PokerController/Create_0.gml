@@ -5,7 +5,7 @@
 card_1 = -1
 card_2 = -1
 map = -1
-card_common_1 = -1
-card_common_2 = -1
-card_common_3 = -1
+common_card_1 = "?"
+common_card_2 = "?"
+common_card_3 = "?"
 my_turn = 0
