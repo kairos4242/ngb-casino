@@ -5,8 +5,6 @@
 //first player is out of time or a bet has been received
 show_message("Player bet " + string(current_bet))
 pot += current_bet
-
-if current_bet > current_max_bet current_max_bet = current_bet
 with (current_player)
 {
 	//decrease balance by how much they bet
@@ -14,6 +12,10 @@ with (current_player)
 	current_bet = other.current_bet
 	round_bet += other.current_bet
 	total_bet += other.current_bet
+}
+if (current_player.round_bet > current_max_bet) 
+{
+	current_max_bet = current_player.round_bet
 }
 if (current_bet == 0) and (current_max_bet != 0)
 {
@@ -42,15 +44,16 @@ if (is_undefined(current_player))
 	everyone_even = true
 	while !(is_undefined(ds_priority_find_max(temp_order)))
 	{
-		if (ds_priority_find_max(temp_order).total_bet == current_max_bet)
+		if (ds_priority_find_max(temp_order).round_bet == current_max_bet)
 		{
+			//if current player has matched the maximum bet, move past them
 			ds_priority_delete_max(temp_order)
 		}
 		else
 		{
 			everyone_even = false;
-			var player_uneven = ds_priority_find_max(temp_order)
-			ds_priority_add(turn_order, player_uneven, ds_priority_find_priority(temp_order, player_uneven))
+			current_player = ds_priority_find_max(temp_order)
+			ds_priority_add(turn_order, current_player, ds_priority_find_priority(temp_order, current_player))
 			break;
 		}
 	}
@@ -98,6 +101,8 @@ if (is_undefined(current_player))
 		{
 			round_bet = 0
 		}
+		//reset the max bet to 0
+		current_max_bet = 0
 		//reset the turn order, and send out the first packet so we go again
 		ds_priority_copy(turn_order, master_turn_order)//note this will exclude players who have folded
 		alarm[0] = turn_length
