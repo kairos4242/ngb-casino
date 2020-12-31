@@ -40,8 +40,6 @@ spells[10][0] = "Tag"
 spells[10][1] = "spell_tag"
 spells[11][0] = "Immolate"
 spells[11][1] = "spell_immolate"
-spells[12][0] = "Boomerang"
-spells[12][1] = "spell_boomerang"
 
 global.player_ability_1 = 1 //Fireball by default
 global.player_ability_2 = 6 //turret by default
