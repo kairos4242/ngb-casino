@@ -248,3 +248,18 @@ function spell_tag(caster, target)
 		
 	}
 }
+
+function spell_immolate(caster, target)
+{
+	var immolate = instance_create_layer(caster.x, caster.y, "Instances", obj_Immolate)
+	with immolate {
+		owner = caster//for purposes of checking hit
+		network_id = new_network_id()
+	}
+	//send packet to all players to create a turret object
+	network_create_object("obj_Immolate", immolate.network_id, immolate.x, immolate.y)
+	network_modify_property(immolate.network_id, "owner", "u16", caster.socket)
+	//damage self
+	caster.hp -= 10
+	network_modify_player_property(caster.socket, "hp", "u16", caster.hp)
+}
