@@ -20,9 +20,12 @@ if (my_turn == 1)
 	{
 		//send packet to fold
 		my_turn = 0
-		buffer_seek(client_buffer, buffer_seek_start, 0)
-		buffer_write(client_buffer, buffer_u8, network.poker_bet)
-		buffer_write(client_buffer, buffer_u16, 0)
-		network_send_packet(client, client_buffer, buffer_tell(client_buffer));
+		with obj_Client
+		{
+			buffer_seek(client_buffer, buffer_seek_start, 0)
+			buffer_write(client_buffer, buffer_u8, network.poker_bet)
+			buffer_write(client_buffer, buffer_u16, 0)
+			network_send_packet(client, client_buffer, buffer_tell(client_buffer));
+		}
 	}
 }

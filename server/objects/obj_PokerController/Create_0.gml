@@ -68,4 +68,5 @@ with obj_Server {
 	buffer_write(server_buffer, buffer_string, "u16")
 	buffer_write(server_buffer, buffer_u16, 1)
 	network_send_packet(curr_socket, server_buffer, buffer_tell(server_buffer))
+	ds_priority_delete_max(other.turn_order)
 }
