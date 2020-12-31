@@ -28,4 +28,16 @@ if (my_turn == 1)
 			network_send_packet(client, client_buffer, buffer_tell(client_buffer));
 		}
 	}
+	else if keyboard_check_pressed(ord("3"))
+	{
+		//send packet to bet 200
+		my_turn = 0
+		with obj_Client
+		{
+			buffer_seek(client_buffer, buffer_seek_start, 0)
+			buffer_write(client_buffer, buffer_u8, network.poker_bet)
+			buffer_write(client_buffer, buffer_u16, 200)
+			network_send_packet(client, client_buffer, buffer_tell(client_buffer));
+		}
+	}
 }
