@@ -10,7 +10,8 @@ for (j = 0; j < ds_list_size(socket_list); j++)
 	with curr_instance
 	{
 		hp = max_hp
-		alive = true
+		alive = 1
+		sprite = spr_Player
 	}
 	network_modify_player_property(curr_socket, "hp", "u16", curr_instance.hp)
 	network_modify_player_property(curr_socket, "alive", "u16", 1)

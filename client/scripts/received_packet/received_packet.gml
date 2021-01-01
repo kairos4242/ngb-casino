@@ -180,13 +180,6 @@ function received_packet(buffer){
 				//this player won, so congratulate them!
 				instance_create_layer(0, 0, "Instances", obj_VictoryScreen)
 			}
-			else
-			{
-				with (obj_DeathScreen)
-				{
-					text_to_draw = username_victorious + " won the match! Better luck next time you loser!"
-				}
-			}
 			break;
 		case network.refresh_room:
 			//clear all instances and request them again from server

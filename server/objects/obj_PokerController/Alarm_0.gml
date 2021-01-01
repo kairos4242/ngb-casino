@@ -57,13 +57,11 @@ if (is_undefined(current_player))
 			break;
 		}
 	}
-	show_message("Everyone even: " + string(everyone_even))
 	//if everyone even, go onto next round and flip a card
 	//otherwise, set alarm[0] to 1 which we are going to do now for testing
 	if (everyone_even == true)
 	{
 		//go to next round and flip a card
-		show_message("Go to next round and flip a card")
 		switch (poker_step)
 		{
 			default: break;
