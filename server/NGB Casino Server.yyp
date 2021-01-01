@@ -29,7 +29,6 @@
     {"id":{"name":"obj_Boomerang","path":"objects/obj_Boomerang/obj_Boomerang.yy",},"order":6,},
     {"id":{"name":"obj_Unit","path":"objects/obj_Unit/obj_Unit.yy",},"order":3,},
     {"id":{"name":"spr_Boomerang","path":"sprites/spr_Boomerang/spr_Boomerang.yy",},"order":4,},
-    {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},"order":0,},
   ],
   "Options": [
     {"name":"Linux","path":"options/linux/options_linux.yy",},
