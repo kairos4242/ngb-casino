@@ -139,6 +139,7 @@ if (is_undefined(current_player))
 			buffer_write(server_buffer, buffer_u16, 1)
 			network_send_packet(curr_socket, server_buffer, buffer_tell(server_buffer))
 		}
+		current_bet = 0
 		
 	}
 	else
@@ -159,6 +160,7 @@ if (is_undefined(current_player))
 			buffer_write(server_buffer, buffer_u16, 1)
 			network_send_packet(curr_socket, server_buffer, buffer_tell(server_buffer))
 		}
+		current_bet = 0
 	}
 	
 }
@@ -177,4 +179,5 @@ else
 		buffer_write(server_buffer, buffer_u16, 1)
 		network_send_packet(curr_socket, server_buffer, buffer_tell(server_buffer))
 	}
+	current_bet = 0
 }
