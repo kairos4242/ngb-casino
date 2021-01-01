@@ -10,7 +10,7 @@ function deal_damage(amount, source, target){
 	//next, check for death
 	if target.hp <= 0
 	{
-		//first set hp to 0 to avoid buffer overflow
+		//first set hp to 0 to avoid buffer overflow when sending hp
 		target.hp = 0
 		
 		//target has been killed, check what target is
