@@ -10,6 +10,9 @@ function deal_damage(amount, source, target){
 	//next, check for death
 	if target.hp <= 0
 	{
+		//first set hp to 0 to avoid buffer overflow
+		target.hp = 0
+		
 		//target has been killed, check what target is
 		if (object_get_name(target.object_index) == "obj_Player")
 		{
