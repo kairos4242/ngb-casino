@@ -41,7 +41,7 @@ function spell_fireball(caster, target){
 	network_modify_property(fireball.network_id, "y_speed", "s16", lengthdir_y(fireball_speed, cast_direction))
 }
 
-function spell_refresh_jumps(caster, target){
+function spell_acrobatics(caster, target){
 	//change server side
 	caster.jumps = caster.max_jumps
 	
@@ -49,7 +49,7 @@ function spell_refresh_jumps(caster, target){
 	network_modify_player_property(caster.socket, "jumps", "u16", caster.max_jumps)
 }
 
-function spell_swap_places(caster, target){
+function spell_switch(caster, target){
 	//update server representation
 	target_object = collision_point(target[0], target[1], obj_Player, false, true)
 	if target_object = noone exit
