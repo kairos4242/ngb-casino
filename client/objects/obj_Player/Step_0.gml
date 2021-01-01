@@ -1,6 +1,9 @@
 /// @description Insert description here
 // You can write your code in this editor
 
+//alive check
+if alive == false exit
+
 //Keyboard Input
 key_left = keyboard_check(ord("A"))
 key_right = keyboard_check(ord("D"))

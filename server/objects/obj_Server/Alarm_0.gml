@@ -10,9 +10,10 @@ for (j = 0; j < ds_list_size(socket_list); j++)
 	with curr_instance
 	{
 		hp = max_hp
-		//alive = true
+		alive = true
 	}
 	network_modify_player_property(curr_socket, "hp", "u16", curr_instance.hp)
+	network_modify_player_property(curr_socket, "alive", "u16", 1)
 }
 
 //go to poker room
@@ -43,6 +44,11 @@ for (i = 0; i < ds_list_size(socket_list); i++)
 
 //create a poker controller and give a copy to all players
 //NOTE we should already have a poker controller id so no need to generate a new one
+//but lets check just in case
+if (!variable_instance_exists(id, "poker_controller_id"))
+{
+	poker_controller_id = new_network_id()
+}
 network_create_object("obj_PokerController", poker_controller_id, 0, 0)
 poker_controller = instance_create_layer(0, 0, "Instances", obj_PokerController)
 with poker_controller {

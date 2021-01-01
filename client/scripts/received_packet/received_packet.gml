@@ -165,15 +165,9 @@ function received_packet(buffer){
 			{
 				//this player is the one getting deactivated, so create a "you died!" screen to inform player
 				instance_create_layer(0, 0, "Instances", obj_DeathScreen)
-				obj_Player.alive = false
-				sprite_index = spr_DeadPlayer
 			}
-			else
-			{
-				//it's a different player, so just change their sprite to an X
-				var instance_to_kill = ds_map_find_value(socket_to_instanceid, socket_to_kill)
-				instance_to_kill.sprite_index = spr_DeadPlayer
-			}
+			var instance_to_kill = ds_map_find_value(socket_to_instanceid, socket_to_kill)
+			instance_to_kill.alive = false
 			break;
 			
 		case network.declare_victory:
