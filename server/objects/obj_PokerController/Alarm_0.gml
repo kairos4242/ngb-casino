@@ -107,9 +107,6 @@ if (is_undefined(current_player))
 						buffer_write(server_buffer, buffer_u8, network.refresh_room);
 						network_send_packet(curr_socket, server_buffer, buffer_tell(server_buffer))
 						
-						//give all clients the common abilities
-						var curr_socket = ds_list_find_value(socket_list, other.i)
-						
 						//send packet to modify common card 1
 						buffer_seek(server_buffer, buffer_seek_start, 0);
 						buffer_write(server_buffer, buffer_u8, network.modify_player_property)

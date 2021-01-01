@@ -37,7 +37,7 @@ if keyboard_check_pressed(ord("Q"))
 	network_cast_spell(obj_GameController.spells[common_card_3][1],mouse_x, mouse_y)
 }
 
-//Keyboard Input
+//Keyboard Input for Movement
 key_left = keyboard_check(ord("A"))
 key_right = keyboard_check(ord("D"))
 key_jump = keyboard_check_pressed(vk_space)
