@@ -102,6 +102,10 @@ function network_declare_victory(socket_victorious, username_victorious) {
 	//in future, check if socket_victorious -1 and if so declare a draw
 	//for now, just tell each socket that socket_victorious is victorious
 	alarm[0] = 120//in two seconds, go to next poker round
+	var winning_object = ds_map_find_value(socket_to_instanceid, socket_victorious)
+	winning_object.balance += pot//give the winning player their winnings
+	pot = 0
+	network_modify_player_property(socket_victorious, "balance", "u16", winning_object.balance)
 	for (i = 0; i < ds_list_size(socket_list); i++)
 	{
 		var curr_socket = ds_list_find_value(socket_list, i)
