@@ -5,9 +5,9 @@ current_player = 0//controls who is currently betting
 turn_length = 1500
 card_count = 10///this needs to change whenever new cards are added, but surely there is a way to automate it
 //deserves further thought
-common_card_1 = irandom(card_count) + 1
-common_card_2 = irandom(card_count) + 1
-common_card_3 = irandom(card_count) + 1
+card_3 = irandom(card_count) + 1
+card_4 = irandom(card_count) + 1
+card_5 = irandom(card_count) + 1
 
 master_turn_order = ds_priority_create()
 temp_order = ds_priority_create()//for checking if everyone is settled after a bet

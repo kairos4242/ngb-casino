@@ -71,7 +71,7 @@ if (is_undefined(current_player))
 				with obj_Server
 				{
 					//send out notification of what the first card is
-					network_modify_property(poker_controller_id, "common_card_1", "u16", other.common_card_1)
+					network_modify_property(poker_controller_id, "card_3", "u16", other.card_3)
 				}
 				break;
 			case 1:
@@ -80,7 +80,7 @@ if (is_undefined(current_player))
 				with obj_Server
 				{
 					//send out notification of what the second card is
-					network_modify_property(poker_controller_id, "common_card_2", "u16", other.common_card_2)
+					network_modify_property(poker_controller_id, "card_4", "u16", other.card_4)
 				}
 				break;
 			case 2:
@@ -89,7 +89,7 @@ if (is_undefined(current_player))
 				with obj_Server
 				{
 					//send out notification of what the third card is
-					network_modify_property(poker_controller_id, "common_card_3", "u16", other.common_card_3)
+					network_modify_property(poker_controller_id, "card_5", "u16", other.card_5)
 				}
 				break;
 			case 3:
@@ -111,27 +111,27 @@ if (is_undefined(current_player))
 						buffer_seek(server_buffer, buffer_seek_start, 0);
 						buffer_write(server_buffer, buffer_u8, network.modify_player_property)
 						buffer_write(server_buffer, buffer_u16, curr_socket)
-						buffer_write(server_buffer, buffer_string, "common_card_1")
+						buffer_write(server_buffer, buffer_string, "card_3")
 						buffer_write(server_buffer, buffer_string, "u16")
-						buffer_write(server_buffer, buffer_u16, other.common_card_1)
+						buffer_write(server_buffer, buffer_u16, other.card_3)
 						network_send_packet(curr_socket, server_buffer, buffer_tell(server_buffer))
 						
 						//send packet to modify common card 2
 						buffer_seek(server_buffer, buffer_seek_start, 0);
 						buffer_write(server_buffer, buffer_u8, network.modify_player_property)
 						buffer_write(server_buffer, buffer_u16, curr_socket)
-						buffer_write(server_buffer, buffer_string, "common_card_2")
+						buffer_write(server_buffer, buffer_string, "card_4")
 						buffer_write(server_buffer, buffer_string, "u16")
-						buffer_write(server_buffer, buffer_u16, other.common_card_2)
+						buffer_write(server_buffer, buffer_u16, other.card_4)
 						network_send_packet(curr_socket, server_buffer, buffer_tell(server_buffer))
 						
 						//send packet to modify common card 3
 						buffer_seek(server_buffer, buffer_seek_start, 0);
 						buffer_write(server_buffer, buffer_u8, network.modify_player_property)
 						buffer_write(server_buffer, buffer_u16, curr_socket)
-						buffer_write(server_buffer, buffer_string, "common_card_3")
+						buffer_write(server_buffer, buffer_string, "card_5")
 						buffer_write(server_buffer, buffer_string, "u16")
-						buffer_write(server_buffer, buffer_u16, other.common_card_3)
+						buffer_write(server_buffer, buffer_u16, other.card_5)
 						network_send_packet(curr_socket, server_buffer, buffer_tell(server_buffer))
 						
 					}

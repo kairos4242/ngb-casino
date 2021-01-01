@@ -5,8 +5,8 @@
 card_1 = -1
 card_2 = -1
 map = -1
-common_card_1 = "?"
-common_card_2 = "?"
-common_card_3 = "?"
+card_3 = "?"
+card_4 = "?"
+card_5 = "?"
 my_turn = 0
 abilities_sent = false

@@ -20,9 +20,9 @@ alarm[0] = update_delay
 //Abilities
 card_1 = global.player_ability_1
 card_2 = global.player_ability_2
-common_card_1 = -1
-common_card_2 = -1
-common_card_3 = -1
+card_3 = -1
+card_4 = -1
+card_5 = -1
 
 
 balance = 1000//chips

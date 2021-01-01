@@ -16,6 +16,9 @@ username_callback = get_string_async("Please Enter a Username", default_username
 //0 is name, 1 is script reference
 
 //Initialize Variables
+
+//[0] is name [1] is script reference
+//to get card image, we're going to try and be fancy and do it dynamically
 spells[0][0] = "Basic Attack"
 spells[0][1] = "spell_basic_attack"
 spells[1][0] = "Fireball"
