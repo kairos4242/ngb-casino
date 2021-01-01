@@ -32,7 +32,6 @@
     {"id":{"name":"obj_Player","path":"objects/obj_Player/obj_Player.yy",},"order":3,},
     {"id":{"name":"obj_Boomerang","path":"objects/obj_Boomerang/obj_Boomerang.yy",},"order":11,},
     {"id":{"name":"obj_Immolate","path":"objects/obj_Immolate/obj_Immolate.yy",},"order":10,},
-    {"id":{"name":"rm_Client","path":"rooms/rm_Client/rm_Client.yy",},"order":0,},
   ],
   "Options": [
     {"name":"Linux","path":"options/linux/options_linux.yy",},
