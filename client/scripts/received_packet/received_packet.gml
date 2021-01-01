@@ -165,7 +165,8 @@ function received_packet(buffer){
 			{
 				//this player is the one getting deactivated, so create a "you died!" screen to inform player
 				instance_create_layer(0, 0, "Instances", obj_DeathScreen)
-				instance_destroy(instance_find(obj_Player, 0))
+				obj_Player.alive = false
+				sprite_index = spr_DeadPlayer
 			}
 			else
 			{

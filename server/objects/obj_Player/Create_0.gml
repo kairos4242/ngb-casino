@@ -12,3 +12,5 @@ balance = 1000
 current_bet = 0
 round_bet = 0
 total_bet = 0
+
+alive = true

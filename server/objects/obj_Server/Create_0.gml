@@ -42,3 +42,5 @@ poker_spawns[4][0] = 1056
 poker_spawns[4][1] = 736
 poker_spawns[5][0] = 1440
 poker_spawns[5][1] = 736
+
+pot = 0//server handles giving pot to winning player as pokercontroller is destroyed each round
