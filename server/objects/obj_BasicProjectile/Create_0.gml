@@ -4,4 +4,4 @@ event_inherited()
 //for testing destroy
 alarm[0] = 60
 
-damage = 10
+damage = 5
