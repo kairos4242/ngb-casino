@@ -68,5 +68,29 @@ function receive_packet(buffer, socket){
 			
 			
 			break;
+			
+		case network.request_objects:
+			//send requesting client all level objects
+			for (i = 0; i < instance_number(obj_Wall); i++)
+			{
+				var current_object = instance_find(obj_Wall, i)
+				buffer_seek(server_buffer, buffer_seek_start, 0)
+				buffer_write(server_buffer, buffer_u8, network.add_object)
+				buffer_write(server_buffer, buffer_string, "obj_Wall")
+				buffer_write(server_buffer, buffer_u16, current_object.network_id)
+				buffer_write(server_buffer, buffer_u16, current_object.x)
+				buffer_write(server_buffer, buffer_u16, current_object.y)
+				network_send_packet(socket, server_buffer, buffer_tell(server_buffer))
+			}
+			break;
+			
+		case network.poker_bet:
+			//get amount to bet
+			var bet_amount = buffer_read(buffer, buffer_u16)
+			
+			//give it to poker controller and decrease the alarm to 0 as there is no need to wait further
+			obj_PokerController.current_bet = bet_amount
+			obj_PokerController.alarm[0] = 1
+			
 	}
 }

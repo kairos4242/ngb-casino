@@ -6,6 +6,7 @@ jumps = 2
 max_jumps = 2
 grav = 0.4
 can_move = 1
+alive = true
 
 x_speed = 0
 y_speed = 0
@@ -17,5 +18,11 @@ update_delay = 2//in frames
 alarm[0] = update_delay
 
 //Abilities
-abilities[0] = obj_GameController.spells[global.player_ability_1]
-abilities[1] = obj_GameController.spells[global.player_ability_2]
+card_1 = global.player_ability_1
+card_2 = global.player_ability_2
+common_card_1 = -1
+common_card_2 = -1
+common_card_3 = -1
+
+
+balance = 1000//chips

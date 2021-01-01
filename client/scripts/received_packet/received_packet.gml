@@ -165,14 +165,9 @@ function received_packet(buffer){
 			{
 				//this player is the one getting deactivated, so create a "you died!" screen to inform player
 				instance_create_layer(0, 0, "Instances", obj_DeathScreen)
-				instance_destroy(instance_find(obj_Player, 0))
 			}
-			else
-			{
-				//it's a different player, so just change their sprite to an X
-				var instance_to_kill = ds_map_find_value(socket_to_instanceid, socket_to_kill)
-				instance_to_kill.sprite_index = spr_DeadPlayer
-			}
+			var instance_to_kill = ds_map_find_value(socket_to_instanceid, socket_to_kill)
+			instance_to_kill.alive = false
 			break;
 			
 		case network.declare_victory:
@@ -185,12 +180,20 @@ function received_packet(buffer){
 				//this player won, so congratulate them!
 				instance_create_layer(0, 0, "Instances", obj_VictoryScreen)
 			}
-			else
+			break;
+		case network.refresh_room:
+			//clear all instances and request them again from server
+			//just walls right now but later can expand this to background tiles/other level objects/etc
+			with (obj_Wall)
 			{
-				with (obj_DeathScreen)
-				{
-					text_to_draw = username_victorious + " won the match! Better luck next time you loser!"
-				}
+				instance_destroy()
 			}
+			
+			//request all other walls
+			var num_of_walls = instance_number(obj_Wall)
+			buffer_seek(client_buffer, buffer_seek_start, 0)
+			buffer_write(client_buffer, buffer_u8, network.request_objects)
+			network_send_packet(client, client_buffer, buffer_tell(client_buffer));
+			break;
 	}	
 }

@@ -10,12 +10,16 @@ function deal_damage(amount, source, target){
 	//next, check for death
 	if target.hp <= 0
 	{
+		//first set hp to 0 to avoid buffer overflow when sending hp
+		target.hp = 0
+		
 		//target has been killed, check what target is
 		if (object_get_name(target.object_index) == "obj_Player")
 		{
 			//a player has been killed, so we need to end the game for that player
 			show_debug_message("Player killed: " + string(target.socket))
 			target.sprite_index = spr_DeadPlayer
+			target.alive = 0
 			with obj_Server
 			{
 				network_kill_player(other.target.socket)	
@@ -25,7 +29,7 @@ function deal_damage(amount, source, target){
 			alive_player = -1
 			for (i = 0; i < instance_number(obj_Player); i++)
 			{
-				if (instance_find(obj_Player, i).sprite_index != spr_DeadPlayer)
+				if (instance_find(obj_Player, i).alive == 1)
 				{
 					//player is alive, add one to our alive count
 					//note checking based on sprite is kinda hacky and we should probably

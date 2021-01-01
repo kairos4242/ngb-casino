@@ -1,7 +1,43 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-//Keyboard Input
+//alive check
+if (alive == false) exit
+
+
+//Spells
+if mouse_check_button_pressed(mb_left)
+{
+	//notify the server that the basic attack was used
+	network_cast_spell("spell_basic_attack", mouse_x, mouse_y)
+}
+if mouse_check_button_pressed(mb_right)
+{
+	//notify the server that ability 1 was used
+	network_cast_spell(obj_GameController.spells[card_1][1],mouse_x, mouse_y)
+}
+if keyboard_check_pressed(ord("W"))
+{
+	//notify the server that ability 2 was used
+	network_cast_spell(obj_GameController.spells[card_2][1],mouse_x, mouse_y)
+}
+if keyboard_check_pressed(vk_shift)
+{
+	//use common ability 1
+	network_cast_spell(obj_GameController.spells[common_card_1][1],mouse_x, mouse_y)
+}
+if keyboard_check_pressed(ord("S"))
+{
+	//use common ability 2
+	network_cast_spell(obj_GameController.spells[common_card_2][1],mouse_x, mouse_y)
+}
+if keyboard_check_pressed(ord("Q"))
+{
+	//use common ability 3
+	network_cast_spell(obj_GameController.spells[common_card_3][1],mouse_x, mouse_y)
+}
+
+//Keyboard Input for Movement
 key_left = keyboard_check(ord("A"))
 key_right = keyboard_check(ord("D"))
 key_jump = keyboard_check_pressed(vk_space)
