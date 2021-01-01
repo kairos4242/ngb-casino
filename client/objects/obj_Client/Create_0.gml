@@ -19,11 +19,4 @@ enum network {
 	poker_bet
 }
 
-address = get_string("Enter the IP of the server to connect to", "10.0.1.49")
-client = network_create_socket(network_socket_tcp)
-network_connect(client, address, 25565)
-
-client_buffer = buffer_create(1024, buffer_fixed, 1)
-
-socket_to_instanceid = ds_map_create();
-network_id_to_instanceid = ds_map_create()
+address = get_string_async("Enter the IP of the server to connect to", "10.0.1.49")

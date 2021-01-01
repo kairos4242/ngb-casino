@@ -10,21 +10,8 @@ if (file_exists("preferences.ini"))
 	
 }
 	
-username_rough = get_string("Please Enter a Username", default_username)
-username = string_delete(username_rough, 20, string_length(username_rough) - 19)
+username_callback = get_string_async("Please Enter a Username", default_username)
 
-//unfortunately I think it is necessary to have this file_exists structure twice here
-//because first one needs to come before the two lines in the middle
-//so we cant put it in an if/else construction
-//could save in a variable but thats only marginally cleaner
-
-if (!(file_exists("preferences.ini")))
-{
-	//write the username
-	ini_open("preferences.ini")
-	ini_write_string("user", "last_username", username)
-	ini_close()
-}
 
 //0 is name, 1 is script reference
 
@@ -51,6 +38,10 @@ spells[9][0] = "Knockback"
 spells[9][1] = "spell_knockback"
 spells[10][0] = "Tag"
 spells[10][1] = "spell_tag"
+spells[11][0] = "Immolate"
+spells[11][1] = "spell_immolate"
+spells[12][0] = "Boomerang"
+spells[12][1] = "spell_boomerang"
 
 global.player_ability_1 = 1 //Fireball by default
 global.player_ability_2 = 6 //turret by default
