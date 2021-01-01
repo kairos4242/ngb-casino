@@ -12,14 +12,15 @@ else
 {
 	//go to poker room
 	room_goto(rm_Poker)
-	for (i = 0; i < ds_list_size(socket_list); i++)
+	list_size = ds_list_size(socket_list)
+	for (j = 0; j < list_size; j++)//using j because our function on the inside uses i
 	{
 		//move each player into their poker spawn position if we are in poker
-		var spawn_x = poker_spawns[i][0]
-		var spawn_y = poker_spawns[i][1]
-		instance_find(obj_Player, i).x = spawn_x
-		instance_find(obj_Player, i).y = spawn_y
-		var curr_socket = ds_list_find_value(socket_list, i)
+		var spawn_x = poker_spawns[j][0]
+		var spawn_y = poker_spawns[j][1]
+		instance_find(obj_Player, j).x = spawn_x
+		instance_find(obj_Player, j).y = spawn_y
+		var curr_socket = ds_list_find_value(socket_list, j)
 		network_modify_player_property(curr_socket, "x", "u16", spawn_x)
 		network_modify_player_property(curr_socket, "y", "u16", spawn_y)
 	}
