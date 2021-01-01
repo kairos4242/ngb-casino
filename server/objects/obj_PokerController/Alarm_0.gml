@@ -106,8 +106,40 @@ if (is_undefined(current_player))
 						buffer_seek(server_buffer, buffer_seek_start, 0);
 						buffer_write(server_buffer, buffer_u8, network.refresh_room);
 						network_send_packet(curr_socket, server_buffer, buffer_tell(server_buffer))
+						
+						//give all clients the common abilities
+						var curr_socket = ds_list_find_value(socket_list, other.i)
+						
+						//send packet to modify common card 1
+						buffer_seek(server_buffer, buffer_seek_start, 0);
+						buffer_write(server_buffer, buffer_u8, network.modify_player_property)
+						buffer_write(server_buffer, buffer_u16, curr_socket)
+						buffer_write(server_buffer, buffer_string, "common_card_1")
+						buffer_write(server_buffer, buffer_string, "u16")
+						buffer_write(server_buffer, buffer_u16, other.common_card_1)
+						network_send_packet(curr_socket, server_buffer, buffer_tell(server_buffer))
+						
+						//send packet to modify common card 2
+						buffer_seek(server_buffer, buffer_seek_start, 0);
+						buffer_write(server_buffer, buffer_u8, network.modify_player_property)
+						buffer_write(server_buffer, buffer_u16, curr_socket)
+						buffer_write(server_buffer, buffer_string, "common_card_2")
+						buffer_write(server_buffer, buffer_string, "u16")
+						buffer_write(server_buffer, buffer_u16, other.common_card_2)
+						network_send_packet(curr_socket, server_buffer, buffer_tell(server_buffer))
+						
+						//send packet to modify common card 3
+						buffer_seek(server_buffer, buffer_seek_start, 0);
+						buffer_write(server_buffer, buffer_u8, network.modify_player_property)
+						buffer_write(server_buffer, buffer_u16, curr_socket)
+						buffer_write(server_buffer, buffer_string, "common_card_3")
+						buffer_write(server_buffer, buffer_string, "u16")
+						buffer_write(server_buffer, buffer_u16, other.common_card_3)
+						network_send_packet(curr_socket, server_buffer, buffer_tell(server_buffer))
+						
 					}
 					network_destroy_object(poker_controller_id)
+					
 				}
 				instance_destroy()
 				exit;
