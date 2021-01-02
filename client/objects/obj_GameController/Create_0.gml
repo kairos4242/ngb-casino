@@ -114,3 +114,6 @@ classes[7][2] = 100
 classes[7][3] = 5
 classes[7][4] = 3
 classes[7][5] = 6
+
+//store selected class
+selected_class = 0
