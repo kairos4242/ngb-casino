@@ -11,7 +11,10 @@ function received_packet(buffer){
 			
 			buffer_seek(client_buffer, buffer_seek_start, 0)
 			buffer_write(client_buffer, buffer_u8, network.player_establish)
+			//write username
 			buffer_write(client_buffer, buffer_string, obj_GameController.username)
+			//write class
+			buffer_write(client_buffer, buffer_u8, obj_GameController.selected_class)
 			network_send_packet(client, client_buffer, buffer_tell(client_buffer));
 			break;
 		
