@@ -19,6 +19,10 @@ function spell_basic_attack(caster, target){
 	network_modify_property(basic_projectile.network_id, "image_angle", "u16", cast_direction)
 	network_modify_property(basic_projectile.network_id, "x_speed", "s16", lengthdir_x(basic_projectile_speed, cast_direction))
 	network_modify_property(basic_projectile.network_id, "y_speed", "s16", lengthdir_y(basic_projectile_speed, cast_direction))
+	
+	//send cooldown packets
+	network_modify_player_property(caster.socket, "cooldown_to_set", "u16", 60)
+	network_modify_player_property(caster.socket, "ability_to_set", "string", "Basic Attack")
 }
 
 function spell_fireball(caster, target){

@@ -8,32 +8,32 @@ if (alive == false) exit
 if mouse_check_button_pressed(mb_left)
 {
 	//notify the server that the basic attack was used
-	network_cast_spell("spell_basic_attack", mouse_x, mouse_y)
+	if (cooldown[0] == 0) network_cast_spell("spell_basic_attack", mouse_x, mouse_y)
 }
 if mouse_check_button_pressed(mb_right)
 {
 	//notify the server that ability 1 was used
-	network_cast_spell(obj_GameController.spells[card_1][1],mouse_x, mouse_y)
+	if (cooldown[1] == 0) network_cast_spell(obj_GameController.spells[card_1][1],mouse_x, mouse_y)
 }
 if keyboard_check_pressed(ord("W"))
 {
 	//notify the server that ability 2 was used
-	network_cast_spell(obj_GameController.spells[card_2][1],mouse_x, mouse_y)
+	if (cooldown[2] == 0) network_cast_spell(obj_GameController.spells[card_2][1],mouse_x, mouse_y)
 }
 if keyboard_check_pressed(vk_shift)
 {
 	//use common ability 1
-	network_cast_spell(obj_GameController.spells[card_3][1],mouse_x, mouse_y)
+	if (cooldown[3] == 0) network_cast_spell(obj_GameController.spells[card_3][1],mouse_x, mouse_y)
 }
 if keyboard_check_pressed(ord("S"))
 {
 	//use common ability 2
-	network_cast_spell(obj_GameController.spells[card_4][1],mouse_x, mouse_y)
+	if (cooldown[4] == 0) network_cast_spell(obj_GameController.spells[card_4][1],mouse_x, mouse_y)
 }
 if keyboard_check_pressed(ord("Q"))
 {
 	//use common ability 3
-	network_cast_spell(obj_GameController.spells[card_5][1],mouse_x, mouse_y)
+	if (cooldown[5] == 0) network_cast_spell(obj_GameController.spells[card_5][1],mouse_x, mouse_y)
 }
 
 //Keyboard Input for Movement
