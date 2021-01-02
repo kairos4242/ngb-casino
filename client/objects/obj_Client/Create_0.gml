@@ -20,3 +20,4 @@ enum network {
 }
 
 address = get_string_async("Enter the IP of the server to connect to", "10.0.1.49")
+port = 25566

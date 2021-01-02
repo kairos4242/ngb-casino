@@ -18,7 +18,7 @@ enum network {
 
 
 
-port = 25565
+port = 25566
 max_clients = 6
 
 network_create_server(network_socket_tcp, port, max_clients)
