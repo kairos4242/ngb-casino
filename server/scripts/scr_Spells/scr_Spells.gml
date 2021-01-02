@@ -43,6 +43,10 @@ function spell_fireball(caster, target){
 	network_modify_property(fireball.network_id, "image_angle", "u16", cast_direction)
 	network_modify_property(fireball.network_id, "x_speed", "s16", lengthdir_x(fireball_speed, cast_direction))
 	network_modify_property(fireball.network_id, "y_speed", "s16", lengthdir_y(fireball_speed, cast_direction))
+	
+	//send cooldown packets
+	network_modify_player_property(caster.socket, "cooldown_to_set", "u16", 120)
+	network_modify_player_property(caster.socket, "ability_to_set", "string", "Fireball")
 }
 
 function spell_acrobatics(caster, target){
@@ -51,6 +55,10 @@ function spell_acrobatics(caster, target){
 	
 	//change client side
 	network_modify_player_property(caster.socket, "jumps", "u16", caster.max_jumps)
+	
+	//send cooldown packets
+	network_modify_player_property(caster.socket, "cooldown_to_set", "u16", 240)
+	network_modify_player_property(caster.socket, "ability_to_set", "string", "Acrobatics")
 }
 
 function spell_switch(caster, target){
@@ -76,6 +84,10 @@ function spell_switch(caster, target){
 	//update other player
 	network_modify_player_property(target_object.socket, "x", "u16", target_object.x)
 	network_modify_player_property(target_object.socket, "y", "u16", target_object.y)
+	
+	//send cooldown packets
+	network_modify_player_property(caster.socket, "cooldown_to_set", "u16", 240)
+	network_modify_player_property(caster.socket, "ability_to_set", "string", "Switch")
 }
 
 function spell_wall(caster, target){
@@ -93,6 +105,10 @@ function spell_wall(caster, target){
 	network_create_object("obj_Wall", wall.network_id, wall.x, wall.y)
 	network_modify_property(wall.network_id, "image_angle", "u16", wall.image_angle)
 	network_modify_property(wall.network_id, "image_yscale", "u16", wall.image_yscale)
+	
+	//send cooldown packets
+	network_modify_player_property(caster.socket, "cooldown_to_set", "u16", 60)
+	network_modify_player_property(caster.socket, "ability_to_set", "string", "Wall")
 	
 }
 
@@ -127,6 +143,10 @@ function spell_antigravity(caster, target){
 			antigravity_on = false
 		}
 	}
+	
+	//send cooldown packets, but does antigravity even need a cooldown?
+	network_modify_player_property(caster.socket, "cooldown_to_set", "u16", 15)
+	network_modify_player_property(caster.socket, "ability_to_set", "string", "Antigravity")
 }
 
 function spell_turret(caster, target){
@@ -140,6 +160,10 @@ function spell_turret(caster, target){
 	}
 	//send packet to all players to create a turret object
 	network_create_object("obj_Turret", turret.network_id, turret.x, turret.y)
+	
+	//send cooldown packets
+	network_modify_player_property(caster.socket, "cooldown_to_set", "u16", 720)
+	network_modify_player_property(caster.socket, "ability_to_set", "string", "Turret")
 }
 
 function spell_heal(caster, target){
@@ -148,6 +172,10 @@ function spell_heal(caster, target){
 	heal_amount = 7
 	caster.hp = min(caster.max_hp, caster.hp + heal_amount)
 	network_modify_player_property(caster.socket, "hp", "u16", caster.hp)
+	
+	//send cooldown packets
+	network_modify_player_property(caster.socket, "cooldown_to_set", "u16", 60)
+	network_modify_player_property(caster.socket, "ability_to_set", "string", "Heal")
 }
 
 function spell_terrify(caster, target){
@@ -169,6 +197,10 @@ function spell_terrify(caster, target){
 		target_variable_type = "u16"
 		target_value = 1
 	}
+	
+	//send cooldown packets
+	network_modify_player_property(caster.socket, "cooldown_to_set", "u16", 480)
+	network_modify_player_property(caster.socket, "ability_to_set", "string", "Terrify")
 }
 
 function spell_knockback(caster, target){
@@ -205,6 +237,10 @@ function spell_knockback(caster, target){
 		target_variable_type = "u16"
 		target_value = 1
 	}
+	
+	//send cooldown packets
+	network_modify_player_property(caster.socket, "cooldown_to_set", "u16", 480)
+	network_modify_player_property(caster.socket, "ability_to_set", "string", "Knockback")
 }
 
 function spell_tag(caster, target)
@@ -250,6 +286,10 @@ function spell_tag(caster, target)
 		//destroy tag as it has been used
 		instance_destroy(caster.tag_projectile)
 		
+		//send cooldown packets (tag should only go on cooldown when you teleport to it)
+		network_modify_player_property(caster.socket, "cooldown_to_set", "u16", 120)
+		network_modify_player_property(caster.socket, "ability_to_set", "string", "Tag")
+		
 	}
 }
 
@@ -266,6 +306,10 @@ function spell_immolate(caster, target)
 	//damage self
 	caster.hp -= 10
 	network_modify_player_property(caster.socket, "hp", "u16", caster.hp)
+	
+	//send cooldown packets
+	network_modify_player_property(caster.socket, "cooldown_to_set", "u16", 120)
+	network_modify_player_property(caster.socket, "ability_to_set", "string", "Immolate")
 }
 
 function spell_boomerang(caster, target)
@@ -282,9 +326,13 @@ function spell_boomerang(caster, target)
 		x_dir = dcos(other.cast_direction)
 		y_dir = -dsin(other.cast_direction)
 	}
-	//send packet to all players to create a fireball object then send a packet to change fireball angle
+	//send packet to all players to create a fireball object then send a packet to change boomerang angle
 	network_create_object("obj_Boomerang", boomerang.network_id, boomerang.x, boomerang.y)
 	network_modify_property(boomerang.network_id, "image_angle", "u16", cast_direction)
 	network_modify_property(boomerang.network_id, "x_speed", "s16", lengthdir_x(boomerang_speed, cast_direction))
 	network_modify_property(boomerang.network_id, "y_speed", "s16", lengthdir_y(boomerang_speed, cast_direction))
+	
+	//send cooldown packets
+	network_modify_player_property(caster.socket, "cooldown_to_set", "u16", 60)
+	network_modify_player_property(caster.socket, "ability_to_set", "string", "Boomerang")
 }

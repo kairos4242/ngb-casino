@@ -109,9 +109,13 @@ if (cooldown_to_set != 0)
 		//this means that if you have multiple copies of a spell then all copies go on cooldown
 		for (i = 1; i < 6; i++)
 		{
-			if variable_instance_get(id, "card_" + string(i))
+			//if the name of the current spell equals the name of the spell to set cooldown on
+			if variable_instance_get(id, "card_" + string(i)) != -1//prevents crash from accessing the name of spell indexed to -1(no spell)
 			{
-				variable_instance_set(id, "card_" + string(i), cooldown_to_set)
+				if (obj_GameController.spells[variable_instance_get(id, "card_" + string(i))][0] == ability_to_set)
+				{
+					cooldown[i] = cooldown_to_set
+				}
 			}
 		}
 	}
