@@ -21,7 +21,7 @@ function spell_basic_attack(caster, target){
 	network_modify_property(basic_projectile.network_id, "y_speed", "s16", lengthdir_y(basic_projectile_speed, cast_direction))
 	
 	//send cooldown packets
-	network_modify_player_property(caster.socket, "cooldown_to_set", "u16", 60)
+	network_modify_player_property(caster.socket, "cooldown_to_set", "f32", 60)
 	network_modify_player_property(caster.socket, "ability_to_set", "string", "Basic Attack")
 }
 
@@ -57,7 +57,7 @@ function spell_acrobatics(caster, target){
 	network_modify_player_property(caster.socket, "jumps", "u16", caster.max_jumps)
 	
 	//send cooldown packets
-	network_modify_player_property(caster.socket, "cooldown_to_set", "u16", 240)
+	network_modify_player_property(caster.socket, "cooldown_to_set", "f32", 240)
 	network_modify_player_property(caster.socket, "ability_to_set", "string", "Acrobatics")
 }
 
@@ -86,7 +86,7 @@ function spell_switch(caster, target){
 	network_modify_player_property(target_object.socket, "y", "u16", target_object.y)
 	
 	//send cooldown packets
-	network_modify_player_property(caster.socket, "cooldown_to_set", "u16", 240)
+	network_modify_player_property(caster.socket, "cooldown_to_set", "f32", 240)
 	network_modify_player_property(caster.socket, "ability_to_set", "string", "Switch")
 }
 
@@ -107,7 +107,7 @@ function spell_wall(caster, target){
 	network_modify_property(wall.network_id, "image_yscale", "u16", wall.image_yscale)
 	
 	//send cooldown packets
-	network_modify_player_property(caster.socket, "cooldown_to_set", "u16", 60)
+	network_modify_player_property(caster.socket, "cooldown_to_set", "f32", 60)
 	network_modify_player_property(caster.socket, "ability_to_set", "string", "Wall")
 	
 }
@@ -145,7 +145,7 @@ function spell_antigravity(caster, target){
 	}
 	
 	//send cooldown packets, but does antigravity even need a cooldown?
-	network_modify_player_property(caster.socket, "cooldown_to_set", "u16", 15)
+	network_modify_player_property(caster.socket, "cooldown_to_set", "f32", 15)
 	network_modify_player_property(caster.socket, "ability_to_set", "string", "Antigravity")
 }
 
@@ -162,7 +162,7 @@ function spell_turret(caster, target){
 	network_create_object("obj_Turret", turret.network_id, turret.x, turret.y)
 	
 	//send cooldown packets
-	network_modify_player_property(caster.socket, "cooldown_to_set", "u16", 720)
+	network_modify_player_property(caster.socket, "cooldown_to_set", "f32", 720)
 	network_modify_player_property(caster.socket, "ability_to_set", "string", "Turret")
 }
 
@@ -174,7 +174,7 @@ function spell_heal(caster, target){
 	network_modify_player_property(caster.socket, "hp", "u16", caster.hp)
 	
 	//send cooldown packets
-	network_modify_player_property(caster.socket, "cooldown_to_set", "u16", 60)
+	network_modify_player_property(caster.socket, "cooldown_to_set", "f32", 60)
 	network_modify_player_property(caster.socket, "ability_to_set", "string", "Heal")
 }
 
@@ -199,7 +199,7 @@ function spell_terrify(caster, target){
 	}
 	
 	//send cooldown packets
-	network_modify_player_property(caster.socket, "cooldown_to_set", "u16", 480)
+	network_modify_player_property(caster.socket, "cooldown_to_set", "f32", 480)
 	network_modify_player_property(caster.socket, "ability_to_set", "string", "Terrify")
 }
 
@@ -239,7 +239,7 @@ function spell_knockback(caster, target){
 	}
 	
 	//send cooldown packets
-	network_modify_player_property(caster.socket, "cooldown_to_set", "u16", 480)
+	network_modify_player_property(caster.socket, "cooldown_to_set", "f32", 480)
 	network_modify_player_property(caster.socket, "ability_to_set", "string", "Knockback")
 }
 
@@ -287,7 +287,7 @@ function spell_tag(caster, target)
 		instance_destroy(caster.tag_projectile)
 		
 		//send cooldown packets (tag should only go on cooldown when you teleport to it)
-		network_modify_player_property(caster.socket, "cooldown_to_set", "u16", 120)
+		network_modify_player_property(caster.socket, "cooldown_to_set", "f32", 120)
 		network_modify_player_property(caster.socket, "ability_to_set", "string", "Tag")
 		
 	}
@@ -308,7 +308,7 @@ function spell_immolate(caster, target)
 	network_modify_player_property(caster.socket, "hp", "u16", caster.hp)
 	
 	//send cooldown packets
-	network_modify_player_property(caster.socket, "cooldown_to_set", "u16", 120)
+	network_modify_player_property(caster.socket, "cooldown_to_set", "f32", 120)
 	network_modify_player_property(caster.socket, "ability_to_set", "string", "Immolate")
 }
 
@@ -333,6 +333,6 @@ function spell_boomerang(caster, target)
 	network_modify_property(boomerang.network_id, "y_speed", "s16", lengthdir_y(boomerang_speed, cast_direction))
 	
 	//send cooldown packets
-	network_modify_player_property(caster.socket, "cooldown_to_set", "u16", 60)
+	network_modify_player_property(caster.socket, "cooldown_to_set", "f32", 60)
 	network_modify_player_property(caster.socket, "ability_to_set", "string", "Boomerang")
 }
