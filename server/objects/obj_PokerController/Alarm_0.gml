@@ -95,7 +95,7 @@ if (is_undefined(current_player))
 			case 3:
 				//all done betting, now its time to go to the game
 				obj_Server.pot = pot
-				room_goto(RoomViewTest)//temporary, eventually this will be whatever map was selected
+				room_goto(maps[map][1])//temporary, eventually this will be whatever map was selected
 				with obj_Server
 				{
 					//tell all clients to refresh their room

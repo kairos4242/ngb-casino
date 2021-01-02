@@ -27,8 +27,17 @@ pot = 0
 turn_order = ds_priority_create()
 ds_priority_copy(turn_order, master_turn_order)
 
+//Initialize Map Array
+maps[0][0] = "Default Map"
+maps[0][1] = RoomViewTest
+maps[1][0] = "Final Destination"
+maps[1][1] = rm_FinalDestination
+maps[2][0] = "Habitation Station"
+maps[2][1] = rm_HabitationStation
+
+
 //it is now the first round, choose the map and give each player their two cards
-map = "Only Map"//obviously change this to an irandom later once we have more than one map
+map = irandom(array_length(maps))
 for (i = 0; i < ds_list_size(obj_Server.socket_list); i++)
 {
 	//deal two cards to player
