@@ -15,7 +15,7 @@ username_callback = get_string_async("Please Enter a Username", default_username
 
 //0 is name, 1 is script reference
 
-//Initialize Variables
+//Initialize Spell Array
 
 //[0] is name [1] is script reference
 //to get card image, we're going to be fancy and do it dynamically
@@ -62,3 +62,55 @@ for (i = 1; i < array_length(spells); i++)//we start on i=1 so as to avoid inclu
 		card_id = other.i
 	}
 }
+
+//Initialize Class Array
+//0 name, 1 HP, 2 base mana, 3 mana regen, 4 speed, 5 jumps
+//going to try hardcoding attack into spell_basic_attack
+classes[0][0] = "Null"
+classes[0][1] = 100
+classes[0][2] = 100
+classes[0][3] = 5
+classes[0][4] = 8
+classes[0][5] = 2
+classes[1][0] = "Typhoon"
+classes[1][1] = 250
+classes[1][2] = 100
+classes[1][3] = 5
+classes[1][4] = 5
+classes[1][5] = 2
+classes[2][0] = "Akimbo"
+classes[2][1] = 50
+classes[2][2] = 75
+classes[2][3] = 5
+classes[2][4] = 10
+classes[2][5] = 3
+classes[3][0] = "Oracle"
+classes[3][1] = 75
+classes[3][2] = 150
+classes[3][3] = 10
+classes[3][4] = 8
+classes[3][5] = 2
+classes[4][0] = "Wraith"
+classes[4][1] = 80
+classes[4][2] = 0
+classes[4][3] = 0
+classes[4][4] = 10
+classes[4][5] = 3
+classes[5][0] = "Guerilla"
+classes[5][1] = 50
+classes[5][2] = 60
+classes[5][3] = 15
+classes[5][4] = 8
+classes[5][5] = 3
+classes[6][0] = "Redline"
+classes[6][1] = 150
+classes[6][2] = 100
+classes[6][3] = 5
+classes[6][4] = 11
+classes[6][5] = 1
+classes[7][0] = "Sentinel"
+classes[7][1] = 150
+classes[7][2] = 100
+classes[7][3] = 5
+classes[7][4] = 3
+classes[7][5] = 6
