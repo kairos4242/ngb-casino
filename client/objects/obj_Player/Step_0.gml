@@ -89,3 +89,27 @@ x = min(x, room_width)
 x = max(x, 0)
 y = max(y, 0)
 y = min(y, room_height)
+
+//check if we have received a cooldown from the server to update
+if (cooldown_to_set != 0)
+{
+	//check if basic attack first
+	if (ability_to_set == "Basic Attack")
+	{
+		cooldown[0] = cooldown_to_set
+	}
+	else
+	{
+		//iterate through all spells and if any of them match set their cooldown to 0
+		//this means that if you have multiple copies of a spell then all copies go on cooldown
+		for (i = 1; i < 6; i++)
+		{
+			if variable_instance_get(id, "card_" + string(i))
+			{
+				variable_instance_set(id, "card_" + string(i), cooldown_to_set)
+			}
+		}
+	}
+	cooldown_to_set = 0;//reset so we dont keep on resetting the cooldown
+	ability_to_set = ""//should never matter but a bit of extra safety never hurts
+}
