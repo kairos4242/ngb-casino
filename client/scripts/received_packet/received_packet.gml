@@ -105,7 +105,7 @@ function received_packet(buffer){
 				break;
 				case "string": var value_to_set = buffer_read(buffer, buffer_string)
 				break;
-				case "f16": var value_to_set = buffer_read(buffer, buffer_f16)
+				case "f32": var value_to_set = buffer_read(buffer, buffer_f32)
 				break;
 			}
 			//more data types can be added as the need arises
@@ -129,7 +129,7 @@ function received_packet(buffer){
 				break;
 				case "string": var value_to_set = buffer_read(buffer, buffer_string)
 				break;
-				case "f16": var value_to_set = buffer_read(buffer, buffer_f16)
+				case "f32": var value_to_set = buffer_read(buffer, buffer_f32)
 				break;
 			}
 			//^maybe this will need to be a switch eventually based on what object property we are setting

@@ -45,7 +45,7 @@ function spell_fireball(caster, target){
 	network_modify_property(fireball.network_id, "y_speed", "s16", lengthdir_y(fireball_speed, cast_direction))
 	
 	//send cooldown packets
-	network_modify_player_property(caster.socket, "cooldown_to_set", "u16", 120)
+	network_modify_player_property(caster.socket, "cooldown_to_set", "f32", 120)
 	network_modify_player_property(caster.socket, "ability_to_set", "string", "Fireball")
 }
 
@@ -126,20 +126,20 @@ function spell_antigravity(caster, target){
 	if !(variable_instance_exists(id, "antigravity_on"))
 	{
 		antigravity_on = true
-		network_modify_player_property(caster.socket, "grav", "f16", 0.2)
+		network_modify_player_property(caster.socket, "grav", "f32", 0.2)
 	}
 	else
 	{
 		//if antigravity off, turn it on
 		if (antigravity_on == false)
 		{
-			network_modify_player_property(caster.socket, "grav", "f16", 0.2)
+			network_modify_player_property(caster.socket, "grav", "f32", 0.2)
 			antigravity_on = true
 		}
 		else
 		{
 			//antigravity on, turn it off
-			network_modify_player_property(caster.socket, "grav", "f16", 0.4)
+			network_modify_player_property(caster.socket, "grav", "f32", 0.4)
 			antigravity_on = false
 		}
 	}

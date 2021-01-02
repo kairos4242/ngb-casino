@@ -9,8 +9,8 @@ y = owner.y
 
 with obj_Server
 {
-	network_modify_property(other.network_id, "image_xscale", "f16", other.image_xscale)
-	network_modify_property(other.network_id, "image_yscale", "f16", other.image_yscale)
+	network_modify_property(other.network_id, "image_xscale", "f32", other.image_xscale)
+	network_modify_property(other.network_id, "image_yscale", "f32", other.image_yscale)
 	network_modify_property(other.network_id, "x", "u16", other.x)
 	network_modify_property(other.network_id, "y", "u16", other.y)
 }

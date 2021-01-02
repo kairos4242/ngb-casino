@@ -48,7 +48,7 @@ function network_modify_property(id_to_modify, property_to_modify, type_to_write
 			break;
 			case "s16": buffer_write(server_buffer, buffer_s16, value_to_write)
 			break;
-			case "f16": buffer_write(server_buffer, buffer_f16, value_to_write)
+			case "f32": buffer_write(server_buffer, buffer_f32, value_to_write)
 			break;
 			case "string": buffer_write(server_buffer, buffer_string, value_to_write)
 			break;
@@ -80,7 +80,7 @@ function network_modify_player_property(socket_to_modify, property_to_modify, ty
 			break;
 			case "string": buffer_write(server_buffer, buffer_string, value_to_write)
 			break;
-			case "f16": buffer_write(server_buffer, buffer_f16, value_to_write)
+			case "f32": buffer_write(server_buffer, buffer_f32, value_to_write)
 			break;
 		}
 		network_send_packet(curr_socket, server_buffer, buffer_tell(server_buffer))

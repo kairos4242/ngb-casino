@@ -41,7 +41,7 @@ if ((sign(x_speed) != sign(x_dir)) and (damage_increased == false))
 image_angle -= 18
 with obj_Server
 {
-	network_modify_property(other.network_id, "x_speed", "f16", other.x_speed)
-	network_modify_property(other.network_id, "y_speed", "f16", other.y_speed)
-	network_modify_property(other.network_id, "image_angle", "f16", other.image_angle)
+	network_modify_property(other.network_id, "x_speed", "f32", other.x_speed)
+	network_modify_property(other.network_id, "y_speed", "f32", other.y_speed)
+	network_modify_property(other.network_id, "image_angle", "f32", other.image_angle)
 }
