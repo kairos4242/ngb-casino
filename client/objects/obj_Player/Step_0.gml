@@ -4,7 +4,6 @@
 //alive check
 if (alive == false) exit
 
-
 //Spells
 if mouse_check_button_pressed(mb_left)
 {
@@ -89,6 +88,12 @@ x = min(x, room_width)
 x = max(x, 0)
 y = max(y, 0)
 y = min(y, room_height)
+
+//decrement cooldowns
+for (i = 0; i < 6; i++)
+{
+	if (cooldown[i] > 0) cooldown[i]--//ensures cooldowns never go negative
+}
 
 //check if we have received a cooldown from the server to update
 if (cooldown_to_set != 0)
