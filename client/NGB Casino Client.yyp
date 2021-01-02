@@ -29,6 +29,7 @@
     {"id":{"name":"obj_Slave","path":"objects/obj_Slave/obj_Slave.yy",},"order":5,},
     {"id":{"name":"received_packet","path":"scripts/received_packet/received_packet.yy",},"order":0,},
     {"id":{"name":"card_wall","path":"sprites/card_wall/card_wall.yy",},"order":4,},
+    {"id":{"name":"draw_rectangle_cd_inverse","path":"scripts/draw_rectangle_cd_inverse/draw_rectangle_cd_inverse.yy",},"order":4,},
     {"id":{"name":"obj_GameController","path":"objects/obj_GameController/obj_GameController.yy",},"order":0,},
     {"id":{"name":"obj_Camera","path":"objects/obj_Camera/obj_Camera.yy",},"order":3,},
     {"id":{"name":"card_terrify","path":"sprites/card_terrify/card_terrify.yy",},"order":19,},

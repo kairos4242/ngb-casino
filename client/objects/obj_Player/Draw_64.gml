@@ -17,7 +17,7 @@ for (i = 0; i < 5; i++)
 	{
 		draw_set_alpha(0.5)
 		draw_set_color(c_black)
-		draw_rectangle_cd(165 * i, window_get_height() - 225, (165 * i) + 165, window_get_height(), box_value)
+		draw_rectangle_cd_inverse(165 * i, window_get_height() - 225, (165 * i) + 165, window_get_height(), box_value)
 		draw_set_color(c_white)
 		draw_set_alpha(1)
 	}

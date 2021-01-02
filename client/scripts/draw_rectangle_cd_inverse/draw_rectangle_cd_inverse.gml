@@ -1,12 +1,19 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
-function draw_rectangle_cd(x1, y1, x2, y2, v){
+function draw_rectangle_cd_inverse(x1, y1, x2, y2, v){
 	/// draw_rectangle_cd(x1, y1, x2, y2, value)
-	//modification of the YAL script
-	/// draw_rectangle_cd(x1, y1, x2, y2, value)
+	//modification of the YAL script with x coords reversed to flip the shape and values reversed
 	var xm, ym, vd, vx, vy, vl;
-	if (v <= 0) return 0 // nothing to be drawn
-	if (v >= 1) return draw_rectangle(x1, y1, x2, y2, false) // entirely filled
+	
+	//Inversion
+	var temp_x = x2
+	x2 = x1
+	x1 = temp_x
+	v = 1 - v
+	
+	
+	if (v <= 0) return draw_rectangle(x1, y1, x2, y2, false) // entirely filled
+	if (v >= 1) return 0 // nothing to be drawn
 	xm = (x1 + x2) / 2; ym = (y1 + y2) / 2; // middle point
 	draw_primitive_begin(pr_trianglefan)
 	draw_vertex(xm, ym); draw_vertex(xm, y1)
