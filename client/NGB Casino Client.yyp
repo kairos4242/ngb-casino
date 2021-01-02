@@ -22,6 +22,7 @@
     {"id":{"name":"card_bluff","path":"sprites/card_bluff/card_bluff.yy",},"order":7,},
     {"id":{"name":"obj_DeathScreen","path":"objects/obj_DeathScreen/obj_DeathScreen.yy",},"order":1,},
     {"id":{"name":"obj_Fireball","path":"objects/obj_Fireball/obj_Fireball.yy",},"order":2,},
+    {"id":{"name":"draw_rectangle_cd","path":"scripts/draw_rectangle_cd/draw_rectangle_cd.yy",},"order":3,},
     {"id":{"name":"obj_Wall","path":"objects/obj_Wall/obj_Wall.yy",},"order":8,},
     {"id":{"name":"obj_Projectile","path":"objects/obj_Projectile/obj_Projectile.yy",},"order":4,},
     {"id":{"name":"spr_Player","path":"sprites/spr_Player/spr_Player.yy",},"order":0,},

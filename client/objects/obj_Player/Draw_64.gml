@@ -12,4 +12,5 @@ for (i = 0; i < 5; i++)
 	var card_to_draw = string_delete(temp_card_to_draw, 1, 5)
 	card_to_draw = "card" + card_to_draw
 	draw_sprite_ext(asset_get_index(card_to_draw), 0, 165 * i, window_get_height() - 225, 0.2, 0.2, 0, c_white, 0.5)
+	draw_rectangle_cd(165 * i, window_get_height() - 225, (165 * i) + 165, window_get_height(), 1 - (cooldown[0] / max_cooldown[0]))
 }

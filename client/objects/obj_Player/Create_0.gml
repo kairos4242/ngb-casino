@@ -34,6 +34,7 @@ balance = 1000//chips
 for (i = 0; i < 6; i++)
 {
 	cooldown[i] = 0
+	max_cooldown[i] = 0//for purposes of drawing cooldown box
 }
 //cooldown[0] corresponds to basic attack
 //every cooldown after that corresponds to the ability of said number

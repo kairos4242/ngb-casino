@@ -102,6 +102,7 @@ if (cooldown_to_set != 0)
 	if (ability_to_set == "Basic Attack")
 	{
 		cooldown[0] = cooldown_to_set
+		max_cooldown[0] = cooldown_to_set
 	}
 	else
 	{
@@ -115,6 +116,7 @@ if (cooldown_to_set != 0)
 				if (obj_GameController.spells[variable_instance_get(id, "card_" + string(i))][0] == ability_to_set)
 				{
 					cooldown[i] = cooldown_to_set
+					max_cooldown[i] = cooldown_to_set
 				}
 			}
 		}
