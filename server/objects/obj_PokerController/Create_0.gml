@@ -28,6 +28,7 @@ turn_order = ds_priority_create()
 ds_priority_copy(turn_order, master_turn_order)
 
 //Initialize Map Array
+//[0] name, [1] resource, [2] xpos 1, [3] ypos 1 and etc for four players so up to [9] in total
 maps[0][0] = "Default Map"
 maps[0][1] = RoomViewTest
 maps[1][0] = "Final Destination"
