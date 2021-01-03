@@ -10,3 +10,4 @@ card_4 = "?"
 card_5 = "?"
 my_turn = 0
 abilities_sent = false
+pot = 0
