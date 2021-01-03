@@ -29,6 +29,8 @@ with obj_Server
 {
 	network_modify_player_property(other.current_player.socket, "balance", "u16", other.current_player.balance)
 	network_modify_player_property(other.current_player.socket, "pot", "u16", other.pot)
+	network_modify_player_property(other.current_player.socket, "current_max_bet", "u16", other.current_max_bet)
+	network_modify_player_property(other.current_player.socket, "round_bet", "u16", other.current_player.round_bet)
 }
 
 ds_priority_delete_max(turn_order)//get rid of the person who just bet

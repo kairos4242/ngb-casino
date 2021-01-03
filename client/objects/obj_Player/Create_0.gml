@@ -29,6 +29,8 @@ card_5 = -1
 
 balance = 1000//chips
 pot = 0
+round_bet = 0//how much you contributed this round
+current_max_bet = 0//bet to stay in
 
 
 //Ability Cooldowns

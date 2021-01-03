@@ -3,43 +3,49 @@
 
 if (my_turn == 1)
 {
-	//check for keypresses to see what we want to do
-	if keyboard_check_pressed(ord("1"))
+	if buttons[0][1] == 1
 	{
-		//send packet to bet 100
+		//button pressed to call
+		buttons[0][1] = 0//unpress button
+		var amount_to_bet = obj_Player.current_max_bet - obj_Player.round_bet
 		my_turn = 0
 		with obj_Client
 		{
 			buffer_seek(client_buffer, buffer_seek_start, 0)
 			buffer_write(client_buffer, buffer_u8, network.poker_bet)
-			buffer_write(client_buffer, buffer_u16, 100)
+			buffer_write(client_buffer, buffer_u16, amount_to_bet)
 			network_send_packet(client, client_buffer, buffer_tell(client_buffer));
 		}
 	}
-	else if keyboard_check_pressed(ord("2"))
+	if buttons[1][1] == 1
 	{
-		//send packet to fold
+		//button pressed to bet pot
+		buttons[1][1] = 0//unpress button
+		var amount_to_bet = obj_Player.pot
 		my_turn = 0
 		with obj_Client
 		{
 			buffer_seek(client_buffer, buffer_seek_start, 0)
 			buffer_write(client_buffer, buffer_u8, network.poker_bet)
-			buffer_write(client_buffer, buffer_u16, 0)
+			buffer_write(client_buffer, buffer_u16, amount_to_bet)
 			network_send_packet(client, client_buffer, buffer_tell(client_buffer));
 		}
 	}
-	else if keyboard_check_pressed(ord("3"))
+	if buttons[2][1] == 1
 	{
-		//send packet to bet 200
+		//button pressed to bet half pot
+		buttons[2][1] = 0//unpress button
+		var amount_to_bet = floor(obj_Player.pot / 2)
 		my_turn = 0
 		with obj_Client
 		{
 			buffer_seek(client_buffer, buffer_seek_start, 0)
 			buffer_write(client_buffer, buffer_u8, network.poker_bet)
-			buffer_write(client_buffer, buffer_u16, 200)
+			buffer_write(client_buffer, buffer_u16, amount_to_bet)
 			network_send_packet(client, client_buffer, buffer_tell(client_buffer));
 		}
 	}
+	
 }
 //check whether to send spells to player
 if abilities_sent == false

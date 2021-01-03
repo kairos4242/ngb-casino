@@ -1,5 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
+draw_set_font(fnt_Anonymous_12)
+
 default_username = ""
 if (file_exists("preferences.ini"))
 {
