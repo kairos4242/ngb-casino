@@ -16,7 +16,7 @@ enum network {
 	poker_bet
 }
 
-
+//randomise()//sets random seed to a truly random value
 
 port = 25566
 max_clients = 6

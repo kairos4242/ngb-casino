@@ -28,6 +28,7 @@ card_5 = -1
 
 
 balance = 1000//chips
+pot = 0
 
 
 //Ability Cooldowns
