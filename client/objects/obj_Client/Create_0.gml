@@ -19,5 +19,8 @@ enum network {
 	poker_bet
 }
 
-address = get_string_async("Enter the IP of the server to connect to", "10.0.1.49")
+address = "192.168.1.64";
+var init = true;
+
+address = get_string_async("Enter the IP of the server to connect to", address)
 port = 25566
