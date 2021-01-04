@@ -31,6 +31,24 @@ if (collision != noone) and (collision != owner)
 	instance_destroy()
 	exit;
 }
+//if colliding with object, damage said object
+collision = instance_place(x, y, obj_GameObject)
+if (collision != noone) and (collision != owner)
+{
+	//deal damage to said player
+	deal_damage(damage, id, collision)
+	
+	with obj_Server
+	{
+		//send network message to deal damage to said player
+		network_modify_property(other.collision.network_id, "hp", "u16", other.collision.hp)
+		//send network message to destroy this projectile
+		network_destroy_object(other.network_id)
+	}
+	//destroy self now that job complete
+	instance_destroy()
+	exit;
+}
 x_speed -= x_dir
 y_speed -= y_dir
 if ((sign(x_speed) != sign(x_dir)) and (damage_increased == false))

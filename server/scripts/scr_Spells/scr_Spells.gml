@@ -336,3 +336,20 @@ function spell_boomerang(caster, target)
 	network_modify_player_property(caster.socket, "cooldown_to_set", "f32", 60)
 	network_modify_player_property(caster.socket, "ability_to_set", "string", "Boomerang")
 }
+
+function spell_voodoo_doll(caster, target)
+{
+	var cast_radius = 500
+	if point_distance(caster.x, caster.y, target[0], target[1]) <= cast_radius
+	{
+		var voodoo_doll = instance_create_layer(target[0], target[1], "Instances", obj_VoodooDoll)
+		with voodoo_doll{
+			network_id = new_network_id()
+			owner = caster
+		}
+		
+		//send packet to all players to create a voodoo doll
+		network_create_object("obj_VoodooDoll", voodoo_doll.network_id, voodoo_doll.x, voodoo_doll.y)
+		
+	}
+}
