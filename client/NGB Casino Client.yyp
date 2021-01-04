@@ -12,6 +12,7 @@
     {"id":{"name":"spr_Turret","path":"sprites/spr_Turret/spr_Turret.yy",},"order":2,},
     {"id":{"name":"card_tag","path":"sprites/card_tag/card_tag.yy",},"order":18,},
     {"id":{"name":"card_ignite","path":"sprites/card_ignite/card_ignite.yy",},"order":10,},
+    {"id":{"name":"obj_Solid","path":"objects/obj_Solid/obj_Solid.yy",},"order":14,},
     {"id":{"name":"card_switch","path":"sprites/card_switch/card_switch.yy",},"order":17,},
     {"id":{"name":"spr_BasicProjectile","path":"sprites/spr_BasicProjectile/spr_BasicProjectile.yy",},"order":0,},
     {"id":{"name":"spr_Immolate","path":"sprites/spr_Immolate/spr_Immolate.yy",},"order":3,},

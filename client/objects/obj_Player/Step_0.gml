@@ -58,7 +58,7 @@ if (can_move)
 }
 y_speed = y_speed + grav
 
-if (place_meeting(x, y + 1, obj_Wall))
+if (place_meeting(x, y + 1, obj_Solid))
 {
 	jumps = max_jumps
 }
@@ -70,9 +70,9 @@ if (key_jump) && (jumps > 0)
 }
 
 //Horizontal Collision
-if (place_meeting(x + x_speed, y, obj_Wall))
+if (place_meeting(x + x_speed, y, obj_Solid))
 {
-	while (!place_meeting(x + sign(x_speed), y, obj_Wall))
+	while (!place_meeting(x + sign(x_speed), y, obj_Solid))
 	{
 		x += sign(x_speed)
 	}
@@ -81,10 +81,10 @@ if (place_meeting(x + x_speed, y, obj_Wall))
 x += x_speed
 
 //Vertical Collision
-if (place_meeting(x, y + y_speed, obj_Wall))
+if (place_meeting(x, y + y_speed, obj_Solid))
 {
 	
-	while (!place_meeting(x, y + sign(y_speed), obj_Wall))
+	while (!place_meeting(x, y + sign(y_speed), obj_Solid))
 	{
 		y += sign(y_speed)
 	}

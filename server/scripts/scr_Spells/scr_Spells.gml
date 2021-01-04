@@ -357,17 +357,20 @@ function spell_voodoo_doll(caster, target)
 
 function spell_pillar(caster, target)
 {
-	var cast_radius = 100;
+	var MAX_RADIUS = 100;
 	
 	//Make sure only placed on ground/walls
 	//if(place_meeting(target[0], target[1], obj_Wall) == false)
 		//return;
 	
+	cast_length = point_direction(caster.x, caster.y, target[0], target[1]);
+	cast_direction = round(cast_length/90)*90; //round to nearest 90 deg
 	
-	if(point_direction(caster.x, caster.y, target[0], target[1]) <= cast_radius)
+	
+	if(cast_length <= MAX_RADIUS)
 	{
 		var pillar = instance_create_layer(target[0], target[1], "Instances", obj_Pillar)
-	
+			
 		with pillar{
 		network_id = new_network_id();
 		owner = caster;
