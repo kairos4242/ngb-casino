@@ -8,3 +8,4 @@ for (i = 0; i < array_length(buttons); i++)
 {
 	with buttons[i][0] instance_destroy()
 }
+with bet_box instance_destroy()

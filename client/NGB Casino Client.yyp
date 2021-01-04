@@ -57,6 +57,7 @@
     {"id":{"name":"card_fireball","path":"sprites/card_fireball/card_fireball.yy",},"order":9,},
     {"id":{"name":"card_shackles","path":"sprites/card_shackles/card_shackles.yy",},"order":2,},
     {"id":{"name":"spr_Fireball","path":"sprites/spr_Fireball/spr_Fireball.yy",},"order":1,},
+    {"id":{"name":"obj_TextBox","path":"objects/obj_TextBox/obj_TextBox.yy",},"order":1,},
     {"id":{"name":"obj_PokerController","path":"objects/obj_PokerController/obj_PokerController.yy",},"order":4,},
     {"id":{"name":"card_heal","path":"sprites/card_heal/card_heal.yy",},"order":14,},
     {"id":{"name":"obj_Player","path":"objects/obj_Player/obj_Player.yy",},"order":3,},

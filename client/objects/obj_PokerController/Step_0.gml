@@ -45,6 +45,19 @@ if (my_turn == 1)
 			network_send_packet(client, client_buffer, buffer_tell(client_buffer));
 		}
 	}
+	if buttons[3][1] == 1
+	{
+		//buttons pressed for custom bet, so get custom bet amount and send it
+		var amount_to_bet = real(string_digits(bet_box.text_string))
+		my_turn = 0
+		with obj_Client
+		{
+			buffer_seek(client_buffer, buffer_seek_start, 0)
+			buffer_write(client_buffer, buffer_u8, network.poker_bet)
+			buffer_write(client_buffer, buffer_u16, amount_to_bet)
+			network_send_packet(client, client_buffer, buffer_tell(client_buffer));
+		}
+	}
 	
 }
 //check whether to send spells to player
