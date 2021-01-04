@@ -32,6 +32,10 @@ function network_create_object(object_to_create, id_to_create, x_to_create, y_to
 
 function network_modify_property(id_to_modify, property_to_modify, type_to_write, value_to_write)
 {
+	//id to modify is the network id of the object to modify
+	//property to modify is a string of the variable on the object to modify
+	//type to write is the type of data to send, currently we only have string, u16, f32, s16
+	//value to write is yknow just the value to write
 	for (i = 0; i < ds_list_size(socket_list); i++)
 	{
 		//send packet to modify property
