@@ -23,17 +23,26 @@ if keyboard_check_pressed(ord("W"))
 if keyboard_check_pressed(vk_shift)
 {
 	//use common ability 1
-	if (cooldown[3] == 0) network_cast_spell(obj_GameController.spells[card_3][1],mouse_x, mouse_y)
+	if card_3 != -1
+	{
+		if (cooldown[3] == 0) network_cast_spell(obj_GameController.spells[card_3][1],mouse_x, mouse_y)
+	}
 }
 if keyboard_check_pressed(ord("S"))
 {
 	//use common ability 2
-	if (cooldown[4] == 0) network_cast_spell(obj_GameController.spells[card_4][1],mouse_x, mouse_y)
+	if card_4 != -1
+	{
+		if (cooldown[4] == 0) network_cast_spell(obj_GameController.spells[card_4][1],mouse_x, mouse_y)
+	}
 }
 if keyboard_check_pressed(ord("Q"))
 {
 	//use common ability 3
-	if (cooldown[5] == 0) network_cast_spell(obj_GameController.spells[card_5][1],mouse_x, mouse_y)
+	if card_5 != -1
+	{
+		if (cooldown[5] == 0) network_cast_spell(obj_GameController.spells[card_5][1],mouse_x, mouse_y)
+	}
 }
 
 //Keyboard Input for Movement

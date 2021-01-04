@@ -6,6 +6,7 @@
 function spell_basic_attack(caster, target){
 	basic_projectile_speed = 15
 	cast_direction = point_direction(caster.x, caster.y, target[0], target[1])
+	if collision_line(caster.x, caster.y, caster.x + lengthdir_x(caster.sprite_width, cast_direction), caster.y + lengthdir_y(caster.sprite_height, cast_direction), obj_Wall, false, false) != noone exit;
 	var basic_projectile = instance_create_layer(caster.x + lengthdir_x(caster.sprite_width, cast_direction), caster.y + lengthdir_y(caster.sprite_height, cast_direction), "Instances", obj_BasicProjectile)
 	with basic_projectile {
 		owner = caster//for purposes of checking hit
