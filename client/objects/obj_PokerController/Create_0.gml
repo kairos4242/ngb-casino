@@ -24,8 +24,11 @@ buttons[1][1] = 0
 buttons[2][0] = instance_create_layer(window_get_width() - 250, window_get_height() - 50, "Instances", obj_UIButton1)
 buttons[2][1] = 0
 
-with buttons[0][0]
+for (i = 0; i < 3; i++)
 {
-	owner = other.id
-	i = 0
+	with buttons[i][0]
+	{
+		owner = other.id
+		i = other.i
+	}
 }
