@@ -354,3 +354,22 @@ function spell_voodoo_doll(caster, target)
 		
 	}
 }
+
+function spell_pillar(caster, target)
+{
+	var cast_radius = 500;
+	
+	if(point_distance(caster.x, caster.y, target[0], target[1] > cast_radius))
+		return;
+	
+	var pillar = instance_create_layer(target[0], target[1], "Instances", obj_Pillar)
+	
+	with pillar{
+		network_id = new_network_id();
+		owner = caster;
+	}
+	
+	//send packet to all players to create a pillar
+	network_create_object("obj_Pillar", pillar.network_id, pillar.x, pillar.y)	
+	
+}
