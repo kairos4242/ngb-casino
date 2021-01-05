@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_Wall",
-    "path": "sprites/spr_Wall/spr_Wall.yy",
+    "name": "spr_Thorns",
+    "path": "sprites/spr_Thorns/spr_Thorns.yy",
   },
   "solid": false,
   "visible": true,
@@ -23,17 +23,15 @@
   "physicsStartAwake": true,
   "physicsKinematic": false,
   "physicsShapePoints": [],
-  "eventList": [
-    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"parent":{"name":"obj_Wall","path":"objects/obj_Wall/obj_Wall.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-  ],
+  "eventList": [],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "Game",
+    "path": "folders/Objects/Game.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_Wall",
+  "name": "obj_Thorns",
   "tags": [],
   "resourceType": "GMObject",
 }
