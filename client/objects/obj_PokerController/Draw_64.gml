@@ -24,7 +24,7 @@ draw_text(window_width / 2, window_height - 50, "Current Bet: " + string(obj_Pla
 draw_text(window_width / 2, window_height - 25, "My Bet: " + string(obj_Player.round_bet))
 
 //draw button text
-draw_text(window_width - 38, window_height - 75, "Call")
-draw_text(window_width - 123, window_height - 75, "Bet Pot")
-draw_text(window_width - 208, window_height - 75, "Bet 1/2 Pot")
-draw_text(window_width - 293, window_height - 75, "Custom Bet")
+draw_text(window_width - 38, window_height - 80, "Call")
+draw_text(window_width - 123, window_height - 80, "Bet Pot")
+draw_text(window_width - 208, window_height - 80, "Bet\n1/2 Pot")
+draw_text(window_width - 293, window_height - 80, "Custom\nBet")

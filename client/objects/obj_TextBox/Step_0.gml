@@ -13,7 +13,7 @@ if mouse_check_button_pressed(mb_left)
 		selected = false
 	}
 }
-if keyboard_check(vk_anykey)// and (selected = true)
+if keyboard_check(vk_anykey) and (selected = true)
 {
 	text_string = keyboard_string
 }

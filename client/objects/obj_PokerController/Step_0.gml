@@ -59,7 +59,6 @@ if (my_turn == 1)
 			network_send_packet(client, client_buffer, buffer_tell(client_buffer));
 		}
 	}
-	
 }
 //check whether to send spells to player
 if abilities_sent == false
