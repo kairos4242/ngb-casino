@@ -33,3 +33,6 @@ for (i = 0; i < 4; i++)
 		i = other.i
 	}
 }
+
+pot = 0
+current_max_bet = 0

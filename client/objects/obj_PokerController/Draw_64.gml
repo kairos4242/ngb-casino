@@ -19,8 +19,8 @@ draw_rectangle(bet_buttons_left_edge, window_height - 100, window_width, window_
 draw_set_alpha(1)
 draw_set_color(c_white)
 draw_set_font(fnt_Anonymous_24)
-draw_text(window_width / 2, window_height - 75, "Pot: " + string(obj_Player.pot))
-draw_text(window_width / 2, window_height - 50, "Current Bet: " + string(obj_Player.current_max_bet))
+draw_text(window_width / 2, window_height - 75, "Pot: " + string(pot))
+draw_text(window_width / 2, window_height - 50, "Current Bet: " + string(current_max_bet))
 draw_text(window_width / 2, window_height - 25, "My Bet: " + string(obj_Player.round_bet))
 
 //draw button text

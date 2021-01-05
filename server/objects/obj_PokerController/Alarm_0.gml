@@ -28,9 +28,13 @@ if (current_bet == 0) and (current_max_bet != 0)
 with obj_Server
 {
 	network_modify_player_property(other.current_player.socket, "balance", "u16", other.current_player.balance)
-	network_modify_player_property(other.current_player.socket, "pot", "u16", other.pot)
-	network_modify_player_property(other.current_player.socket, "current_max_bet", "u16", other.current_max_bet)
 	network_modify_player_property(other.current_player.socket, "round_bet", "u16", other.current_player.round_bet)
+}
+//modify max bet for all players
+with obj_Server
+{
+	network_modify_property(other.network_id, "current_max_bet", "u16", other.current_max_bet)
+	network_modify_property(other.network_id, "pot", "u16", other.pot)
 }
 
 ds_priority_delete_max(turn_order)//get rid of the person who just bet

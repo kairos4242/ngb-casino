@@ -7,7 +7,7 @@ if (my_turn == 1)
 	{
 		//button pressed to call
 		buttons[0][1] = 0//unpress button
-		var amount_to_bet = obj_Player.current_max_bet - obj_Player.round_bet
+		var amount_to_bet = current_max_bet - obj_Player.round_bet
 		my_turn = 0
 		with obj_Client
 		{
@@ -21,7 +21,7 @@ if (my_turn == 1)
 	{
 		//button pressed to bet pot
 		buttons[1][1] = 0//unpress button
-		var amount_to_bet = obj_Player.pot
+		var amount_to_bet = pot
 		my_turn = 0
 		with obj_Client
 		{
@@ -35,7 +35,7 @@ if (my_turn == 1)
 	{
 		//button pressed to bet half pot
 		buttons[2][1] = 0//unpress button
-		var amount_to_bet = floor(obj_Player.pot / 2)
+		var amount_to_bet = floor(pot / 2)
 		my_turn = 0
 		with obj_Client
 		{
