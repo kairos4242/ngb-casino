@@ -1,8 +1,9 @@
 /// @description Check for collisions & deal damage
 // You can write your code in this editor
 
-collision_list = ds_list_create();
+ds_list_clear(collision_list);
 
+//This collision checking is lowkey pretty ghetto and shit
 num_collisions = collision_rectangle_list(x - sprite_width/2 - 1, y - sprite_height/2 - 1 , x + sprite_width/2 + 1, y + sprite_height/2 + 1, obj_Player, false, false, collision_list, false);
 
 for (i = 0; i < num_collisions; i++)

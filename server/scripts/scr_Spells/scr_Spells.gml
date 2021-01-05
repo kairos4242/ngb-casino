@@ -357,19 +357,17 @@ function spell_voodoo_doll(caster, target)
 
 function spell_pillar(caster, target)
 {
-	//Make sure only placed on ground/walls
-	//if(place_meeting(target[0], target[1], obj_Wall) == false)
-		//return;
+	//To implement: make sure only placed on ground/walls 
 	
 	angle = point_direction(caster.x, caster.y, target[0], target[1]);
 	
 	cast_dir = !(angle >= 90 && angle <= 270); //Determines if facing left (-) or right (+)
 		
-	var pillar = instance_create_layer(clamp(caster.sprite_width.x + 1000*cast_dir, 0, room_width), clamp(sprite_height.y + 1000*cast_dir, 0, room_height), "Instances", obj_Pillar);
+	var pillar = instance_create_layer(clamp(caster.x + caster.sprite_width*cast_dir, 0, room_width), caster.y, "Instances", obj_Pillar);
 			
 	with pillar{
-	network_id = new_network_id();
-	owner = caster;
+		network_id = new_network_id();
+		owner = caster;
 	}
 	
 	//send packet to all players to create a pillar
