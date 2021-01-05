@@ -48,6 +48,7 @@ if (my_turn == 1)
 	if buttons[3][1] == 1
 	{
 		//buttons pressed for custom bet, so get custom bet amount and send it
+		buttons[3][1] = 0//unpress button
 		var amount_to_bet = real(string_digits(bet_box.text_string))
 		my_turn = 0
 		with obj_Client
