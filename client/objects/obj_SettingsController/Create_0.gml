@@ -1,15 +1,23 @@
 /// @description Insert description here
 // You can write your code in this editor
 //create buttons
-button_count = 1
-//padding = 80
-//increment = ((window_get_width() - (2 * padding))  / button_count)//amount to increase x button pos by to get even distribution
+button_count = 1//only for buttons in a row horizontally
+padding = 80
+increment = ((display_get_gui_width() - (2 * padding))  / (button_count + 1))//amount to increase x button pos by to get even distribution
 for (i = 0; i < button_count; i++)
 {
-	buttons[i][0] = instance_create_layer(128, window_get_height() - 128, "Instances", obj_UIButton2)
-	buttons[i][1] = 0
+	buttons[i][0] = instance_create_layer(padding + 152 + (i * increment), display_get_gui_height() / 2, "Instances", obj_UIButton2)
 }
-for (i = 0; i < button_count; i++)
+
+buttons[button_count][0] = instance_create_layer(128, display_get_gui_height() - 128, "Instances", obj_UIButton2)
+buttons[button_count][1] = 0
+
+//manually do text
+buttons[0][2] = "Toggle Fullscreen"
+buttons[1][2] = "Back"
+
+
+for (i = 0; i < button_count + 1; i++)
 {
 	with buttons[i][0]
 	{
@@ -17,6 +25,3 @@ for (i = 0; i < button_count; i++)
 		i = other.i
 	}
 }
-
-//manually do text
-buttons[0][2] = "Back"

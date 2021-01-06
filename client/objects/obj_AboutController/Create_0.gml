@@ -3,10 +3,10 @@
 //create buttons
 button_count = 1
 //padding = 80
-//increment = ((window_get_width() - (2 * padding))  / button_count)//amount to increase x button pos by to get even distribution
+//increment = ((display_get_gui_width() - (2 * padding))  / button_count)//amount to increase x button pos by to get even distribution
 for (i = 0; i < button_count; i++)
 {
-	buttons[i][0] = instance_create_layer(128, window_get_height() - 128, "Instances", obj_UIButton2)
+	buttons[i][0] = instance_create_layer(128, display_get_gui_height() - 128, "Instances", obj_UIButton2)
 	buttons[i][1] = 0
 }
 for (i = 0; i < button_count; i++)

@@ -19,11 +19,11 @@ c_honeydew = make_color_rgb(223, 248, 235)
 //create buttons
 for (i = 0; i < 4; i++)
 {
-	buttons[i][0] = instance_create_layer(window_get_width() - 38 - (i * 85), window_get_height() - 38, "Instances", obj_UIButton1)
+	buttons[i][0] = instance_create_layer(window_get_width() - 38 - (i * 85), display_get_gui_height() - 38, "Instances", obj_UIButton1)
 	buttons[i][1] = 0
 }
 //create custom bet amount box
-bet_box = instance_create_layer(window_get_width() * 3 / 4, window_get_height() - 200, "Instances", obj_TextBox)
+bet_box = instance_create_layer(window_get_width() * 3 / 4, display_get_gui_height() - 200, "Instances", obj_TextBox)
 
 for (i = 0; i < 4; i++)
 {

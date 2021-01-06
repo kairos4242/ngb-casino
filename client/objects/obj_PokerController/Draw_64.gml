@@ -3,7 +3,7 @@
 
 //draw box for current pot
 var window_width = window_get_width()
-var window_height = window_get_height()
+var window_height = display_get_gui_height()
 draw_set_halign(fa_center)
 draw_set_colour(c_black)
 draw_set_alpha(0.5)
