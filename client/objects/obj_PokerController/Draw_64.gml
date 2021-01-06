@@ -2,7 +2,7 @@
 // You can write your code in this editor
 
 //draw box for current pot
-var window_width = window_get_width()
+var window_width = display_get_gui_width()
 var window_height = display_get_gui_height()
 draw_set_halign(fa_center)
 draw_set_colour(c_black)
