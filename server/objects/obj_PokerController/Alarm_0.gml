@@ -3,7 +3,6 @@
 
 //increment the poker game
 //first player is out of time or a bet has been received
-show_message("Player bet " + string(current_bet))
 pot += current_bet
 with (current_player)
 {
@@ -20,7 +19,6 @@ if (current_player.round_bet > current_max_bet)
 if (current_bet == 0) and (current_max_bet != 0)
 {
 	//player has folded, remove them from all turn orders
-	show_message("Player folded")
 	ds_priority_delete_value(master_turn_order, current_player)
 	ds_priority_delete_value(turn_order, current_player)
 	ds_priority_delete_value(temp_order, current_player)
