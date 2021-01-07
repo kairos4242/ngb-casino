@@ -19,5 +19,12 @@ enum network {
 	poker_bet
 }
 
-address = get_string_async("Enter the IP of the server to connect to", "10.0.1.49")
+//address = get_string_async("Enter the IP of the server to connect to", "10.0.1.49")
+buttons[0][0] = instance_create_layer(display_get_gui_width() / 2 - 200, display_get_gui_height() / 2, "Instances", obj_TextBox)
+with buttons[0][0]
+{
+	owner = other.id
+	i = 0
+	default_string = "Enter the IP of the server to connect to and hit Enter"
+}
 port = 25566
