@@ -8,4 +8,5 @@ if room == rm_LobbyMenu
 	draw_text(room_width / 2, room_height - 90, "Press Space to Enter Game")
 	draw_text(room_width / 2, room_height - 60, spells[global.player_ability_1][0] + " " + spells[global.player_ability_2][0])
 	draw_text(room_width / 2, room_height - 30, classes[selected_class][0])
+	
 }
