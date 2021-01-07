@@ -25,6 +25,6 @@ with buttons[0][0]
 {
 	owner = other.id
 	i = 0
-	default_string = "Enter the IP of the server to connect to and hit Enter"
+	default_string = "Enter the IP of the server and hit Enter"
 }
 port = 25566
