@@ -59,7 +59,47 @@ if (my_turn == 1)
 			network_send_packet(client, client_buffer, buffer_tell(client_buffer));
 		}
 	}
+	if keyboard_check_pressed(ord("1"))
+	{
+		//bet 100
+		var amount_to_bet = 100
+		my_turn = 0
+		with obj_Client
+		{
+			buffer_seek(client_buffer, buffer_seek_start, 0)
+			buffer_write(client_buffer, buffer_u8, network.poker_bet)
+			buffer_write(client_buffer, buffer_u16, amount_to_bet)
+			network_send_packet(client, client_buffer, buffer_tell(client_buffer));
+		}
+	}
+	if keyboard_check_pressed(ord("2"))
+	{
+		//bet 100
+		var amount_to_bet = 0
+		my_turn = 0
+		with obj_Client
+		{
+			buffer_seek(client_buffer, buffer_seek_start, 0)
+			buffer_write(client_buffer, buffer_u8, network.poker_bet)
+			buffer_write(client_buffer, buffer_u16, amount_to_bet)
+			network_send_packet(client, client_buffer, buffer_tell(client_buffer));
+		}
+	}
+	if keyboard_check_pressed(ord("3"))
+	{
+		//bet 100
+		var amount_to_bet = 200
+		my_turn = 0
+		with obj_Client
+		{
+			buffer_seek(client_buffer, buffer_seek_start, 0)
+			buffer_write(client_buffer, buffer_u8, network.poker_bet)
+			buffer_write(client_buffer, buffer_u16, amount_to_bet)
+			network_send_packet(client, client_buffer, buffer_tell(client_buffer));
+		}
+	}
 }
+
 //check whether to send spells to player
 if abilities_sent == false
 {
