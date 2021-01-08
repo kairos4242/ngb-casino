@@ -59,6 +59,10 @@ spells[12][0] = "Boomerang"
 spells[12][1] = "spell_boomerang"
 spells[13][0] = "Voodoo Doll"
 spells[13][1] = "spell_voodoo_doll"
+spells[14][0] = "Pillar";
+spells[14][1] = "spell_pillar";
+spells[15][0] = "Thorns";
+spells[15][1] = "spell_thorns";
 
 global.player_ability_1 = 1 //Fireball by default
 global.player_ability_2 = 6 //turret by default

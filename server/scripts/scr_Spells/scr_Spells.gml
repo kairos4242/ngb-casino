@@ -354,3 +354,57 @@ function spell_voodoo_doll(caster, target)
 		
 	}
 }
+
+function spell_pillar(caster, target)
+{
+	//To implement: make sure only placed on ground/walls 
+	
+	angle = point_direction(caster.x, caster.y, target[0], target[1]);
+	
+	cast_dir = !(angle >= 90 && angle <= 270); //Determines if facing left (-) or right (+)
+		
+	var pillar = instance_create_layer(clamp(caster.x + caster.sprite_width*cast_dir, 0, room_width), caster.y, "Instances", obj_Pillar);
+			
+	with pillar{
+		network_id = new_network_id();
+		owner = caster;
+	}
+	
+	//send packet to all players to create a pillar
+	network_create_object("obj_Pillar", pillar.network_id, pillar.x, pillar.y)
+	
+}
+
+function spell_pulse(caster, target)
+{
+	//This function is only used as part of the pillar spell
+	
+	var pulse = instance_create_layer(target[0], target[1], "Instances", obj_Pulse);
+	
+	with pulse{
+		owner = caster;
+		network_id = new_network_id();
+	}
+	
+	//Send packet to create pulse obj
+	network_create_object("obj_Pulse", pulse.network_id, pulse.x, pulse.y);
+	network_modify_property(pulse.network_id, "owner", "u16", caster.socket);
+}
+
+function spell_thorns(caster, target)
+{
+	var CAST_RADIUS = 350;
+	
+	if(point_distance(caster.x, caster.y, target[0], target[1]) <= CAST_RADIUS)
+	{
+		var thorns = instance_create_layer(target[0], target[1], "Instances", obj_Thorns);
+		
+		with thorns{
+			network_id = new_network_id();
+			owner = caster;
+		}
+	
+	network_create_object("obj_Thorns", thorns.network_id, thorns.x, thorns.y);
+	}
+}
+
