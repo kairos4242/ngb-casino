@@ -17,15 +17,22 @@ c_flame = make_color_rgb(229, 61, 0)
 c_honeydew = make_color_rgb(223, 248, 235)
 
 //create buttons
-buttons[0][0] = instance_create_layer(window_get_width() - 50, window_get_height() - 50, "Instances", obj_UIButton1)
-buttons[0][1] = 0//check for if button activated
-buttons[1][0] = instance_create_layer(window_get_width() - 150, window_get_height() - 50, "Instances", obj_UIButton1)
-buttons[1][1] = 0
-buttons[2][0] = instance_create_layer(window_get_width() - 250, window_get_height() - 50, "Instances", obj_UIButton1)
-buttons[2][1] = 0
-
-with buttons[0][0]
+for (i = 0; i < 4; i++)
 {
-	owner = other.id
-	i = 0
+	buttons[i][0] = instance_create_layer(display_get_gui_width() - 38 - (i * 85), display_get_gui_height() - 38, "Instances", obj_UIButton1)
+	buttons[i][1] = 0
 }
+//create custom bet amount box
+bet_box = instance_create_layer(display_get_gui_width() * 3 / 4, display_get_gui_height() - 200, "Instances", obj_TextBox)
+
+for (i = 0; i < 4; i++)
+{
+	with buttons[i][0]
+	{
+		owner = other.id
+		i = other.i
+	}
+}
+
+pot = 0
+current_max_bet = 0

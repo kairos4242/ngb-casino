@@ -38,7 +38,7 @@ maps[2][1] = rm_HabitationStation
 
 
 //it is now the first round, choose the map and give each player their two cards
-map = irandom(array_length(maps))
+map = irandom(array_length(maps) - 1)
 for (i = 0; i < ds_list_size(obj_Server.socket_list); i++)
 {
 	//deal two cards to player

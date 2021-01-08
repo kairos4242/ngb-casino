@@ -1,6 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
-if point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), bbox_left, bbox_top, bbox_right, bbox_bottom)
+if collision_point(mouse_x, mouse_y, id, true, false)
 {
 	mouse_on = true
 }

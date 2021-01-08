@@ -12,7 +12,16 @@ if (file_exists("preferences.ini"))
 	
 }
 	
-username_callback = get_string_async("Please Enter a Username", default_username)
+buttons[0][0] = instance_create_layer(display_get_gui_width() - 402, 0, "Instances", obj_TextBox)
+buttons[0][1] = 0
+buttons[0][2] = "Enter Username"
+
+with buttons[0][0]
+{
+	owner = other.id
+	i = 0
+	default_string = "Enter username..."
+}
 
 
 //0 is name, 1 is script reference

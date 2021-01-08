@@ -11,13 +11,13 @@ for (i = 0; i < 5; i++)
 	var temp_card_to_draw = obj_GameController.spells[current_spell][1]
 	var card_to_draw = string_delete(temp_card_to_draw, 1, 5)
 	card_to_draw = "card" + card_to_draw
-	draw_sprite_ext(asset_get_index(card_to_draw), 0, 165 * i, window_get_height() - 225, 0.2, 0.2, 0, c_white, 0.5)
+	draw_sprite_ext(asset_get_index(card_to_draw), 0, 165 * i, display_get_gui_height() - 225, 0.2, 0.2, 0, c_white, 0.5)
 	var box_value = 1 - cooldown[i + 1] / max_cooldown[i + 1]
 	if box_value != 1//catches case where cooldown done
 	{
 		draw_set_alpha(0.5)
 		draw_set_color(c_black)
-		draw_rectangle_cd_inverse(165 * i, window_get_height() - 225, (165 * i) + 165, window_get_height(), box_value)
+		draw_rectangle_cd_inverse(165 * i, display_get_gui_height() - 225, (165 * i) + 165, display_get_gui_height(), box_value)
 		draw_set_color(c_white)
 		draw_set_alpha(1)
 	}

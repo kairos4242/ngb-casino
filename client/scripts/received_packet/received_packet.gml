@@ -49,9 +49,12 @@ function received_packet(buffer){
 			var curr_player = ds_map_find_value(socket_to_instanceid, curr_socket);
 			
 			//player has left so remove their instance and remove them from map
-			with (curr_player)
+			if instance_exists(curr_player)
 			{
-				instance_destroy()
+				with (curr_player)
+				{
+					instance_destroy()
+				}
 			}
 			ds_map_delete(socket_to_instanceid, curr_socket);
 			

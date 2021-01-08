@@ -3,7 +3,6 @@
 
 //increment the poker game
 //first player is out of time or a bet has been received
-show_message("Player bet " + string(current_bet))
 pot += current_bet
 with (current_player)
 {
@@ -20,7 +19,6 @@ if (current_player.round_bet > current_max_bet)
 if (current_bet == 0) and (current_max_bet != 0)
 {
 	//player has folded, remove them from all turn orders
-	show_message("Player folded")
 	ds_priority_delete_value(master_turn_order, current_player)
 	ds_priority_delete_value(turn_order, current_player)
 	ds_priority_delete_value(temp_order, current_player)
@@ -28,9 +26,13 @@ if (current_bet == 0) and (current_max_bet != 0)
 with obj_Server
 {
 	network_modify_player_property(other.current_player.socket, "balance", "u16", other.current_player.balance)
-	network_modify_player_property(other.current_player.socket, "pot", "u16", other.pot)
-	network_modify_player_property(other.current_player.socket, "current_max_bet", "u16", other.current_max_bet)
 	network_modify_player_property(other.current_player.socket, "round_bet", "u16", other.current_player.round_bet)
+}
+//modify max bet for all players
+with obj_Server
+{
+	network_modify_property(other.network_id, "current_max_bet", "u16", other.current_max_bet)
+	network_modify_property(other.network_id, "pot", "u16", other.pot)
 }
 
 ds_priority_delete_max(turn_order)//get rid of the person who just bet

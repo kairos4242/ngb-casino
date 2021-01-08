@@ -1,6 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
-if (ds_map_find_value(async_load, "id") != username_callback)
+/*if (ds_map_find_value(async_load, "id") != username_callback)
 {
 	exit;
 }
@@ -19,4 +19,4 @@ if (!(file_exists("preferences.ini")))
 	ini_open("preferences.ini")
 	ini_write_string("user", "last_username", username)
 	ini_close()
-}
+}*/
