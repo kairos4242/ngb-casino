@@ -7,3 +7,4 @@ with obj_Server
 {
 	network_modify_player_property(other.owner.socket, "hp", "u16", other.owner.hp)
 }
+alarm[0] = 60
