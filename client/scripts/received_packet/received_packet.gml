@@ -36,11 +36,14 @@ function received_packet(buffer){
 			var player_x = buffer_read(buffer, buffer_u16);
 			var player_y = buffer_read(buffer, buffer_u16);
 			var player_username = buffer_read(buffer, buffer_string);
+			var player_hp = buffer_read(buffer, buffer_u16)
+			var player_max_hp = buffer_read(buffer, buffer_u16)
 			
 			var slave_instance = instance_create_depth(player_x, player_y, depth, obj_Slave)
 			slave_instance.socket = socket_read
 			slave_instance.username = player_username
-			
+			slave_instance.hp = player_hp
+			slave_instance.max_hp = player_max_hp
 			ds_map_add(socket_to_instanceid, socket_read, slave_instance)
 			break;
 			

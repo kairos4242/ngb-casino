@@ -30,6 +30,8 @@ function network_player_join(username){
 			buffer_write(server_buffer, buffer_u16, slave_instance.x);
 			buffer_write(server_buffer, buffer_u16, slave_instance.y);
 			buffer_write(server_buffer, buffer_string, slave_instance.username);
+			buffer_write(server_buffer, buffer_u16, slave_instance.hp)
+			buffer_write(server_buffer, buffer_u16, slave_instance.max_hp)
 			network_send_packet(socket, server_buffer, buffer_tell(server_buffer));
 		}
 	}
@@ -46,6 +48,8 @@ function network_player_join(username){
 			buffer_write(server_buffer, buffer_u16, player_instance.x);
 			buffer_write(server_buffer, buffer_u16, player_instance.y);
 			buffer_write(server_buffer, buffer_string, player_instance.username);
+			buffer_write(server_buffer, buffer_u16, player_instance.hp)
+			buffer_write(server_buffer, buffer_u16, player_instance.max_hp)
 			network_send_packet(curr_socket, server_buffer, buffer_tell(server_buffer));
 		}
 	}
