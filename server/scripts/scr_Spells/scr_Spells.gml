@@ -351,7 +351,9 @@ function spell_voodoo_doll(caster, target)
 		
 		//send packet to all players to create a voodoo doll
 		network_create_object("obj_VoodooDoll", voodoo_doll.network_id, voodoo_doll.x, voodoo_doll.y)
-		
+		//send cooldown packets
+		network_modify_player_property(caster.socket, "cooldown_to_set", "f32", 240)
+		network_modify_player_property(caster.socket, "ability_to_set", "string", "Voodoo Doll")
 	}
 }
 
@@ -405,6 +407,9 @@ function spell_thorns(caster, target)
 		}
 	
 	network_create_object("obj_Thorns", thorns.network_id, thorns.x, thorns.y);
+	//send cooldown packets
+	network_modify_player_property(caster.socket, "cooldown_to_set", "f32", 60)
+	network_modify_player_property(caster.socket, "ability_to_set", "string", "Thorns")
 	}
 }
 
@@ -421,5 +426,8 @@ function spell_totem(caster, target)
 		}
 	
 	network_create_object("obj_Totem", totem.network_id, totem.x, totem.y);
+	//send cooldown packets
+	network_modify_player_property(caster.socket, "cooldown_to_set", "f32", 240)
+	network_modify_player_property(caster.socket, "ability_to_set", "string", "Totem")
 	}
 }
