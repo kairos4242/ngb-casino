@@ -100,6 +100,7 @@ function spell_wall(caster, target){
 		image_angle = other.cast_direction
 		image_yscale = 3
 		network_id = new_network_id()
+		alarm[0] = 1200
 	}
 	
 	//network implementation

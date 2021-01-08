@@ -13,3 +13,4 @@ else
 	draw_sprite(spr_DeadPlayer, 0, x, y)
 }
 draw_text(x, y - sprite_height, username)
+draw_text(x, y - 1.5 * sprite_height, string(hp) + " / " + string(max_hp))
