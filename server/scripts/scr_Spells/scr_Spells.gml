@@ -408,3 +408,18 @@ function spell_thorns(caster, target)
 	}
 }
 
+function spell_totem(caster, target)
+{
+	var cast_radius = 350
+	if(point_distance(caster.x, caster.y, target[0], target[1]) <= cast_radius)
+	{
+		var totem = instance_create_layer(target[0], target[1], "Instances", obj_Totem);
+		
+		with totem{
+			network_id = new_network_id();
+			owner = caster;
+		}
+	
+	network_create_object("obj_Totem", totem.network_id, totem.x, totem.y);
+	}
+}

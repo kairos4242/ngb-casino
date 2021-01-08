@@ -52,7 +52,7 @@ function deal_damage(amount, source, target){
 			//not a player so we can just send a network_destroy_object
 			with obj_Server
 			{
-				network_destroy_object(other.target.network_id)
+				network_destroy_object(target.network_id)
 			}
 		}
 	}

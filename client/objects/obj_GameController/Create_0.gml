@@ -63,6 +63,8 @@ spells[14][0] = "Pillar";
 spells[14][1] = "spell_pillar";
 spells[15][0] = "Thorns";
 spells[15][1] = "spell_thorns";
+spells[16][0] = "Totem"
+spells[16][1] = "spell_totem"
 
 global.player_ability_1 = 1 //Fireball by default
 global.player_ability_2 = 6 //turret by default

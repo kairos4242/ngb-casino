@@ -117,7 +117,7 @@ function received_packet(buffer){
 			//more data types can be added as the need arises
 			
 			var object_instance_id = ds_map_find_value(network_id_to_instanceid, object_network_id)
-			variable_instance_set(object_instance_id, property_to_modify, value_to_set)
+			if !is_undefined(object_instance_id) variable_instance_set(object_instance_id, property_to_modify, value_to_set)
 			
 			break;
 		

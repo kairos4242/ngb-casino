@@ -3,8 +3,8 @@
 poker_step = 0//step controls which phase of the hand we are on
 current_player = 0//controls who is currently betting
 turn_length = 1500
-card_count = 10///this needs to change whenever new cards are added, but surely there is a way to automate it
-//deserves further thought
+card_count = 17///this needs to change whenever new cards are added, but surely there is a way to automate it
+//deserves further thought, easiest way is counting functions in scr_Spells
 card_3 = irandom(card_count) + 1
 card_4 = irandom(card_count) + 1
 card_5 = irandom(card_count) + 1

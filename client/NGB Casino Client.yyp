@@ -31,6 +31,7 @@
     {"id":{"name":"spr_Card","path":"sprites/spr_Card/spr_Card.yy",},"order":3,},
     {"id":{"name":"obj_TagProjectile","path":"objects/obj_TagProjectile/obj_TagProjectile.yy",},"order":9,},
     {"id":{"name":"card_bluff","path":"sprites/card_bluff/card_bluff.yy",},"order":7,},
+    {"id":{"name":"card_totem","path":"sprites/card_totem/card_totem.yy",},"order":23,},
     {"id":{"name":"obj_DeathScreen","path":"objects/obj_DeathScreen/obj_DeathScreen.yy",},"order":1,},
     {"id":{"name":"spr_Thorns","path":"sprites/spr_Thorns/spr_Thorns.yy",},"order":8,},
     {"id":{"name":"obj_UIButton2","path":"objects/obj_UIButton2/obj_UIButton2.yy",},"order":2,},
@@ -56,6 +57,7 @@
     {"id":{"name":"rm_LobbyMenu","path":"rooms/rm_LobbyMenu/rm_LobbyMenu.yy",},"order":1,},
     {"id":{"name":"rm_MainMenu","path":"rooms/rm_MainMenu/rm_MainMenu.yy",},"order":3,},
     {"id":{"name":"rm_Instructions","path":"rooms/rm_Instructions/rm_Instructions.yy",},"order":4,},
+    {"id":{"name":"spr_Totem","path":"sprites/spr_Totem/spr_Totem.yy",},"order":9,},
     {"id":{"name":"spr_Boomerang","path":"sprites/spr_Boomerang/spr_Boomerang.yy",},"order":4,},
     {"id":{"name":"obj_VoodooDoll","path":"objects/obj_VoodooDoll/obj_VoodooDoll.yy",},"order":12,},
     {"id":{"name":"card_reposition","path":"sprites/card_reposition/card_reposition.yy",},"order":1,},
@@ -81,6 +83,7 @@
     {"id":{"name":"card_heal","path":"sprites/card_heal/card_heal.yy",},"order":14,},
     {"id":{"name":"obj_Player","path":"objects/obj_Player/obj_Player.yy",},"order":3,},
     {"id":{"name":"obj_Boomerang","path":"objects/obj_Boomerang/obj_Boomerang.yy",},"order":11,},
+    {"id":{"name":"obj_Totem","path":"objects/obj_Totem/obj_Totem.yy",},"order":19,},
     {"id":{"name":"obj_Immolate","path":"objects/obj_Immolate/obj_Immolate.yy",},"order":10,},
   ],
   "Options": [

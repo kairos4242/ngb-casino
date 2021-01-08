@@ -44,13 +44,17 @@ if (collision != noone) and (collision != owner)
 collision = instance_place(x, y, obj_GameObject)
 if (collision != noone) and (collision != owner)
 {
-	//deal damage to said player
+	//deal damage to said object
 	deal_damage(damage, id, collision)
 	
 	with obj_Server
 	{
-		//send network message to deal damage to said player
-		network_modify_property(other.collision.network_id, "hp", "u16", other.collision.hp)
+		//check if dealing damage to collision didnt destroy it
+		if instance_exists(other.collision)
+		{
+			//send network message to deal damage to said object
+			network_modify_property(other.collision.network_id, "hp", "u16", other.collision.hp)
+		}
 		//send network message to destroy this projectile
 		network_destroy_object(other.network_id)
 	}
