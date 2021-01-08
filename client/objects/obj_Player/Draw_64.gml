@@ -22,3 +22,9 @@ for (i = 0; i < 5; i++)
 		draw_set_alpha(1)
 	}
 }
+//draw hotkey text
+draw_text(0, display_get_gui_height() - 250, "Right Click")
+draw_text(165, display_get_gui_height() - 250, "W")
+draw_text(330, display_get_gui_height() - 250, "S")
+draw_text(495, display_get_gui_height() - 250, "Shift")
+draw_text(660, display_get_gui_height() - 250, "Q")
