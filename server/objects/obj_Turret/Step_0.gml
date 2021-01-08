@@ -33,7 +33,7 @@ else
 	else if alarm[0] <= 0//catches -1 not running case as well as 0 done case
 	{
 		//fire at targets
-		alarm[0] = 30
+		alarm[0] = 60
 		turret_projectile_speed = 10
 		cast_direction = point_direction(x, y, target.x, target.y)
 		turret_projectile = instance_create_layer(x + lengthdir_x(sprite_width, cast_direction), y + lengthdir_y(sprite_height, cast_direction), "Instances", obj_BasicProjectile)
