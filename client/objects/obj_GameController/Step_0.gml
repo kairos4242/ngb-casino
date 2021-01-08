@@ -13,3 +13,21 @@ if keyboard_check_pressed(vk_left) or keyboard_check_pressed(ord("A"))
 	selected_class--
 	if (selected_class < 0) selected_class = array_length(classes) - 1
 }
+
+//checks for move card ability list
+if keyboard_check_pressed(vk_down) or keyboard_check_pressed(ord("S"))
+{
+	//move cards down by one
+	with obj_Card
+	{
+		y -= sprite_height
+	}
+}
+if keyboard_check_pressed(vk_up) or keyboard_check_pressed(ord("W"))
+{
+	//move cards down by one
+	with obj_Card
+	{
+		y += sprite_height
+	}
+}
