@@ -4,3 +4,4 @@ alarm[0] = 120
 hp = 1000
 hp_previous = 1000
 owner = -1
+effect_radius = 1000

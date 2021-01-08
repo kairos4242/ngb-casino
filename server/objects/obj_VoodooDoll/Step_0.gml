@@ -11,10 +11,13 @@ if (hp_previous != hp)
 		target_player = instance_nth_nearest(x, y, obj_Player, 2)
 	}
 	//deal damage
-	deal_damage(hp_difference, id, target_player)
-	with obj_Server
+	if distance_to_object(target_player) < effect_radius
 	{
-		network_modify_player_property(target_player.socket, "hp", "u16", target_player.hp)
+		deal_damage(hp_difference, id, target_player)
+		with obj_Server
+		{
+			network_modify_player_property(target_player.socket, "hp", "u16", target_player.hp)
+		}
 	}
 }
 
