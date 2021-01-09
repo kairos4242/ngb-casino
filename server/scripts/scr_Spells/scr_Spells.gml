@@ -241,8 +241,11 @@ function spell_knockback(caster, target){
 	}
 	
 	//send cooldown packets
-	network_modify_player_property(caster.socket, "cooldown_to_set", "f32", 480)
-	network_modify_player_property(caster.socket, "ability_to_set", "string", "Knockback")
+	with obj_Server
+	{
+		network_modify_player_property(caster.socket, "cooldown_to_set", "f32", 480)
+		network_modify_player_property(caster.socket, "ability_to_set", "string", "Knockback")
+	}
 }
 
 function spell_tag(caster, target)
@@ -361,7 +364,7 @@ function spell_voodoo_doll(caster, target)
 function spell_pillar(caster, target)
 {
 	//To implement: make sure only placed on ground/walls 
-	
+	/*
 	angle = point_direction(caster.x, caster.y, target[0], target[1]);
 	
 	cast_dir = !(angle >= 90 && angle <= 270); //Determines if facing left (-) or right (+)
@@ -374,13 +377,13 @@ function spell_pillar(caster, target)
 	}
 	
 	//send packet to all players to create a pillar
-	network_create_object("obj_Pillar", pillar.network_id, pillar.x, pillar.y)
+	network_create_object("obj_Pillar", pillar.network_id, pillar.x, pillar.y)*/
 	
 }
 
 function spell_pulse(caster, target)
 {
-	//This function is only used as part of the pillar spell
+	/*//This function is only used as part of the pillar spell
 	
 	var pulse = instance_create_layer(target[0], target[1], "Instances", obj_Pulse);
 	
@@ -391,7 +394,7 @@ function spell_pulse(caster, target)
 	
 	//Send packet to create pulse obj
 	network_create_object("obj_Pulse", pulse.network_id, pulse.x, pulse.y);
-	network_modify_property(pulse.network_id, "owner", "u16", caster.socket);
+	network_modify_property(pulse.network_id, "owner", "u16", caster.socket);*/
 }
 
 function spell_thorns(caster, target)

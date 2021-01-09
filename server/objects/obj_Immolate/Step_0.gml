@@ -23,7 +23,7 @@ for (i = 0; i < num_collisions; i++)
 	var current_player = ds_list_find_value(collision_list, i)
 	if (current_player != owner)
 	{
-		deal_damage(30, owner, target)
+		deal_damage(30, owner, current_player)
 		with obj_Server
 		{
 			network_modify_player_property(current_player.socket, "hp", "u16", current_player.hp)
