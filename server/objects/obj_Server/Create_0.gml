@@ -122,3 +122,5 @@ classes[7][5] = 6
 classes[7][6] = "Ranged"
 classes[7][7] = "Slow"
 classes[7][8] = 5
+
+alarm[1] = 300//5 seconds
