@@ -32,6 +32,7 @@
     {"id":{"name":"obj_TagProjectile","path":"objects/obj_TagProjectile/obj_TagProjectile.yy",},"order":9,},
     {"id":{"name":"card_bluff","path":"sprites/card_bluff/card_bluff.yy",},"order":7,},
     {"id":{"name":"card_totem","path":"sprites/card_totem/card_totem.yy",},"order":23,},
+    {"id":{"name":"snd_MenuClick","path":"sounds/snd_MenuClick/snd_MenuClick.yy",},"order":0,},
     {"id":{"name":"obj_DeathScreen","path":"objects/obj_DeathScreen/obj_DeathScreen.yy",},"order":1,},
     {"id":{"name":"spr_Thorns","path":"sprites/spr_Thorns/spr_Thorns.yy",},"order":8,},
     {"id":{"name":"obj_UIButton2","path":"objects/obj_UIButton2/obj_UIButton2.yy",},"order":2,},
