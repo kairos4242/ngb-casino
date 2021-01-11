@@ -4,7 +4,9 @@
 //Target is an array of [x, y] so target[0] will get target xpos and target[1] will get target ypos
 
 function spell_basic_attack(caster, target){
-	
+	var mana_cost = 10
+	if caster.mana < mana_cost exit;
+	caster.mana -= mana_cost
 	basic_projectile_speed = 15
 	switch caster.attack_speed
 	{
@@ -31,6 +33,9 @@ function spell_basic_attack(caster, target){
 		network_modify_property(basic_projectile.network_id, "image_angle", "u16", cast_direction)
 		network_modify_property(basic_projectile.network_id, "x_speed", "s16", lengthdir_x(basic_projectile_speed, cast_direction))
 		network_modify_property(basic_projectile.network_id, "y_speed", "s16", lengthdir_y(basic_projectile_speed, cast_direction))
+		
+		//modify caster mana to test mana
+		network_modify_player_property(caster.socket, "mana", "f32", caster.mana)
 	}
 	else if caster.attack_type == "Melee"
 	{

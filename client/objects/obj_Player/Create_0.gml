@@ -13,6 +13,9 @@ y_speed = 0
 
 hp = 100
 max_hp = 100
+mana = 100
+max_mana = 100
+mana_regen = 5
 
 update_delay = 2//in frames
 alarm[0] = update_delay

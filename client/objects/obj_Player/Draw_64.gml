@@ -1,7 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
 //draw balance in upper left
-draw_text(16, 16, string(balance))
+draw_text(16, 32, string(balance))
 
 //dynamically get and draw sprites of spells
 for (i = 0; i < 5; i++)
@@ -28,3 +28,6 @@ draw_text(165, display_get_gui_height() - 250, "W")
 draw_text(330, display_get_gui_height() - 250, "S")
 draw_text(495, display_get_gui_height() - 250, "Shift")
 draw_text(660, display_get_gui_height() - 250, "Q")
+
+//draw mana bar
+draw_healthbar(0, 0, display_get_gui_width(), 25, (mana / max_mana) * 100, c_black, c_red, c_blue, 0, false, true)
