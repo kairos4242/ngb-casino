@@ -39,6 +39,8 @@ maps[3][0] = "Chessboard"
 maps[3][1] = rm_Chessboard
 maps[4][0] = "Poker Table"
 maps[4][1] = rm_PokerTable
+maps[5][0] = "Pokemon Stadium 2"
+maps[5][1] = rm_PokemonStadium
 
 
 //it is now the first round, choose the map and give each player their two cards
