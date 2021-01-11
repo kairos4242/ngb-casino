@@ -21,7 +21,7 @@
     {"id":{"name":"obj_Thorns","path":"objects/obj_Thorns/obj_Thorns.yy",},"order":10,},
     {"id":{"name":"spr_Thorns","path":"sprites/spr_Thorns/spr_Thorns.yy",},"order":9,},
     {"id":{"name":"obj_Immolate","path":"objects/obj_Immolate/obj_Immolate.yy",},"order":5,},
-    {"id":{"name":"rm_Candyland","path":"rooms/rm_Candyland/rm_Candyland.yy",},"order":2,},
+    {"id":{"name":"rm_Chessboard","path":"rooms/rm_Chessboard/rm_Chessboard.yy",},"order":2,},
     {"id":{"name":"spr_Player","path":"sprites/spr_Player/spr_Player.yy",},"order":0,},
     {"id":{"name":"spr_Fireball","path":"sprites/spr_Fireball/spr_Fireball.yy",},"order":1,},
     {"id":{"name":"obj_Server","path":"objects/obj_Server/obj_Server.yy",},"order":0,},
@@ -67,7 +67,7 @@
     {"roomId":{"name":"rm_HabitationStation","path":"rooms/rm_HabitationStation/rm_HabitationStation.yy",},},
     {"roomId":{"name":"rm_FinalDestination","path":"rooms/rm_FinalDestination/rm_FinalDestination.yy",},},
     {"roomId":{"name":"rm_HabitationStationOG","path":"rooms/rm_HabitationStationOG/rm_HabitationStationOG.yy",},},
-    {"roomId":{"name":"rm_Candyland","path":"rooms/rm_Candyland/rm_Candyland.yy",},},
+    {"roomId":{"name":"rm_Chessboard","path":"rooms/rm_Chessboard/rm_Chessboard.yy",},},
   ],
   "Folders": [
     {"folderPath":"folders/Sprites.yy","order":0,"resourceVersion":"1.0","name":"Sprites","tags":[],"resourceType":"GMFolder",},
