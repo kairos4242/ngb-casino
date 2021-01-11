@@ -545,14 +545,14 @@ function spell_thorns(caster, target)
 {
 	var CAST_RADIUS = 350;
 	
-	if((point_distance(caster.x, caster.y, target[0], target[1]) <= CAST_RADIUS) and (!place_meeting(target[0], target[1], obj_Player)))
+	if(point_distance(caster.x, caster.y, target[0], target[1]) <= CAST_RADIUS) and (collision_rectangle(target[0] - 32, target[1] - 32, target[0] + 32, target[1] + 32, obj_Player, false, true) == noone)
 	{
 		var mana_cost = 20
 		if caster.mana < mana_cost exit;
 		caster.mana -= mana_cost
 		var thorns = instance_create_layer(target[0], target[1], "Instances", obj_Thorns);
-		
 		with thorns{
+			
 			network_id = new_network_id();
 			owner = caster;
 		}
