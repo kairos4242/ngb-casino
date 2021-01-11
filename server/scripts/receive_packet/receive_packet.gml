@@ -19,6 +19,10 @@ function receive_packet(buffer, socket){
 			player_instance.walk_speed = classes[player_class][4]
 			player_instance.jumps = classes[player_class][5]
 			player_instance.max_jumps = classes[player_class][5]
+			player_instance.class_name = classes[player_class][0]
+			player_instance.attack_type = classes[player_class][6]
+			player_instance.attack_speed = classes[player_class][7]
+			player_instance.attack_damage = classes[player_class][8]
 			
 			//set all class properties for network
 			network_modify_player_property(socket, "hp", "u16", classes[player_class][1])

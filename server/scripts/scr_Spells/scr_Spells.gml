@@ -4,22 +4,48 @@
 //Target is an array of [x, y] so target[0] will get target xpos and target[1] will get target ypos
 
 function spell_basic_attack(caster, target){
+	
 	basic_projectile_speed = 15
-	cast_direction = point_direction(caster.x, caster.y, target[0], target[1])
-	if collision_line(caster.x, caster.y, caster.x + lengthdir_x(caster.sprite_width, cast_direction), caster.y + lengthdir_y(caster.sprite_height, cast_direction), obj_Wall, false, false) != noone exit;
-	var basic_projectile = instance_create_layer(caster.x + lengthdir_x(caster.sprite_width, cast_direction), caster.y + lengthdir_y(caster.sprite_height, cast_direction), "Instances", obj_BasicProjectile)
-	with basic_projectile {
-		owner = caster//for purposes of checking hit
-		network_id = new_network_id()
-		image_angle = other.cast_direction
-		x_speed = lengthdir_x(other.basic_projectile_speed, other.cast_direction)
-		y_speed = lengthdir_y(other.basic_projectile_speed, other.cast_direction)
+	switch caster.attack_speed
+	{
+		default: break;
+		case "Slow": basic_projectile_speed = 15
+		case "Fast": basic_projectile_speed = 30
 	}
-	//send packet to all players to create a fireball object then send a packet to change fireball angle
-	network_create_object("obj_BasicProjectile", basic_projectile.network_id, basic_projectile.x, basic_projectile.y)
-	network_modify_property(basic_projectile.network_id, "image_angle", "u16", cast_direction)
-	network_modify_property(basic_projectile.network_id, "x_speed", "s16", lengthdir_x(basic_projectile_speed, cast_direction))
-	network_modify_property(basic_projectile.network_id, "y_speed", "s16", lengthdir_y(basic_projectile_speed, cast_direction))
+	cast_direction = point_direction(caster.x, caster.y, target[0], target[1])
+	if caster.attack_type == "Ranged"
+	{
+		//shoot a projectile
+		if collision_line(caster.x, caster.y, caster.x + lengthdir_x(caster.sprite_width, cast_direction), caster.y + lengthdir_y(caster.sprite_height, cast_direction), obj_Wall, false, false) != noone exit;
+		var basic_projectile = instance_create_layer(caster.x + lengthdir_x(caster.sprite_width, cast_direction), caster.y + lengthdir_y(caster.sprite_height, cast_direction), "Instances", obj_BasicProjectile)
+		with basic_projectile {
+			owner = caster//for purposes of checking hit
+			network_id = new_network_id()
+			image_angle = other.cast_direction
+			x_speed = lengthdir_x(other.basic_projectile_speed, other.cast_direction)
+			y_speed = lengthdir_y(other.basic_projectile_speed, other.cast_direction)
+			damage = caster.attack_damage
+		}
+		//send packet to all players to create a projectile object then send a packet to change fireball angle
+		network_create_object("obj_BasicProjectile", basic_projectile.network_id, basic_projectile.x, basic_projectile.y)
+		network_modify_property(basic_projectile.network_id, "image_angle", "u16", cast_direction)
+		network_modify_property(basic_projectile.network_id, "x_speed", "s16", lengthdir_x(basic_projectile_speed, cast_direction))
+		network_modify_property(basic_projectile.network_id, "y_speed", "s16", lengthdir_y(basic_projectile_speed, cast_direction))
+	}
+	else if caster.attack_type == "Melee"
+	{
+		//check for collision in line"
+		with caster
+		{
+			var melee_target = collision_line(x, y, x + lengthdir_x(100, other.cast_direction), y + lengthdir_y(100, other.cast_direction), obj_Player, false, true)
+			if (melee_target != noone)
+			{
+				deal_damage(caster.attack_damage, caster, melee_target)
+			}
+		}
+		if melee_target != noone network_modify_player_property(melee_target.socket, "hp", "u16", melee_target.hp)
+	}
+		
 	
 	//send cooldown packets
 	network_modify_player_property(caster.socket, "cooldown_to_set", "f32", 60)
