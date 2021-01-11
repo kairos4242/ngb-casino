@@ -436,7 +436,7 @@ function spell_immolate(caster, target)
 	network_create_object("obj_Immolate", immolate.network_id, immolate.x, immolate.y)
 	network_modify_property(immolate.network_id, "owner", "u16", caster.socket)
 	//damage self
-	caster.hp -= 10
+	deal_damage(10, caster, caster)
 	network_modify_player_property(caster.socket, "hp", "u16", caster.hp)
 	
 	//send cooldown packets
