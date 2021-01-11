@@ -152,21 +152,32 @@ function spell_wall(caster, target){
 	cast_direction = round(cast_direction / 90) * 90 //round to the nearest 90 degrees
 	if (place_meeting(target[0], target[1], obj_Player)) exit;
 	var wall = instance_create_layer(caster.x + 2 * lengthdir_x(caster.sprite_width, cast_direction), caster.y + 2 * lengthdir_y(caster.sprite_height, cast_direction), "Instances", obj_Wall)
+	var collision = false;//check if colliding with player
 	with wall {
 		image_angle = other.cast_direction
 		image_yscale = 3
 		network_id = new_network_id()
 		alarm[0] = 1200
+		if place_meeting(x, y, obj_Player) collision = true
 	}
+	if (collision)
+	{
+		with wall
+		{
+			instance_destroy()//since player not allowed to be stuck in a wall by wall
+		}
+	}
+	else
+	{
+		//network implementation
+		network_create_object("obj_Wall", wall.network_id, wall.x, wall.y)
+		network_modify_property(wall.network_id, "image_angle", "u16", wall.image_angle)
+		network_modify_property(wall.network_id, "image_yscale", "u16", wall.image_yscale)
 	
-	//network implementation
-	network_create_object("obj_Wall", wall.network_id, wall.x, wall.y)
-	network_modify_property(wall.network_id, "image_angle", "u16", wall.image_angle)
-	network_modify_property(wall.network_id, "image_yscale", "u16", wall.image_yscale)
-	
-	//send cooldown packets
-	network_modify_player_property(caster.socket, "cooldown_to_set", "f32", 60)
-	network_modify_player_property(caster.socket, "ability_to_set", "string", "Wall")
+		//send cooldown packets
+		network_modify_player_property(caster.socket, "cooldown_to_set", "f32", 60)
+		network_modify_player_property(caster.socket, "ability_to_set", "string", "Wall")
+	}
 	
 	//send mana packet
 	network_modify_player_property(caster.socket, "mana", "f32", caster.mana)
