@@ -30,4 +30,7 @@ draw_text(495, display_get_gui_height() - 250, "Shift")
 draw_text(660, display_get_gui_height() - 250, "Q")
 
 //draw mana bar
-draw_healthbar(0, 0, display_get_gui_width(), 25, (mana / max_mana) * 100, c_black, c_red, c_blue, 0, false, true)
+if max_mana != 0
+{
+	draw_healthbar(0, 0, display_get_gui_width(), 25, (mana / max_mana) * 100, c_black, c_red, c_blue, 0, false, true)
+}

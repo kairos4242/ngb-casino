@@ -43,7 +43,11 @@ function spell_basic_attack(caster, target){
 				deal_damage(caster.attack_damage, caster, melee_target)
 			}
 		}
-		if melee_target != noone network_modify_player_property(melee_target.socket, "hp", "u16", melee_target.hp)
+		if melee_target != noone
+		{
+			network_modify_player_property(melee_target.socket, "hp", "u16", melee_target.hp)
+			network_create_object("obj_Explosion", -1, melee_target.x, melee_target.y)
+		}
 	}
 		
 	

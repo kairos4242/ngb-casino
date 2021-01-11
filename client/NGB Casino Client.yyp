@@ -28,6 +28,7 @@
     {"id":{"name":"spr_VoodooDoll","path":"sprites/spr_VoodooDoll/spr_VoodooDoll.yy",},"order":5,},
     {"id":{"name":"card_acrobatics","path":"sprites/card_acrobatics/card_acrobatics.yy",},"order":12,},
     {"id":{"name":"obj_Solid","path":"objects/obj_Solid/obj_Solid.yy",},"order":17,},
+    {"id":{"name":"obj_Explosion","path":"objects/obj_Explosion/obj_Explosion.yy",},"order":7,},
     {"id":{"name":"spr_Card","path":"sprites/spr_Card/spr_Card.yy",},"order":3,},
     {"id":{"name":"obj_TagProjectile","path":"objects/obj_TagProjectile/obj_TagProjectile.yy",},"order":9,},
     {"id":{"name":"card_bluff","path":"sprites/card_bluff/card_bluff.yy",},"order":7,},
