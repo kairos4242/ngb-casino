@@ -23,3 +23,9 @@ buttons[0][2] = "Play!"
 buttons[1][2] = "Instructions"
 buttons[2][2] = "Settings"
 buttons[3][2] = "About"
+
+//play menu music
+if !audio_is_playing(snd_MenuMusic)
+{
+	audio_play_sound(snd_MenuMusic, 1, 1)
+}
