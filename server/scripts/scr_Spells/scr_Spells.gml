@@ -111,7 +111,8 @@ function spell_switch(caster, target){
 	caster.mana -= mana_cost
 	
 	//update server representation
-	target_object = collision_point(target[0], target[1], obj_Player, false, true)
+	var collision_radius = 32
+	target_object = collision_rectangle(target[0] - collision_radius, target[1] - collision_radius, target[0] + collision_radius, target[1] + collision_radius, obj_Player, false, true)
 	if target_object = noone exit
 	else
 	{
