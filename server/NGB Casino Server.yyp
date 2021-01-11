@@ -2,6 +2,7 @@
   "resources": [
     {"id":{"name":"spr_Turret","path":"sprites/spr_Turret/spr_Turret.yy",},"order":2,},
     {"id":{"name":"new_network_id","path":"scripts/new_network_id/new_network_id.yy",},"order":3,},
+    {"id":{"name":"rm_House","path":"rooms/rm_House/rm_House.yy",},"order":5,},
     {"id":{"name":"network_player_join","path":"scripts/network_player_join/network_player_join.yy",},"order":1,},
     {"id":{"name":"spr_BasicProjectile","path":"sprites/spr_BasicProjectile/spr_BasicProjectile.yy",},"order":0,},
     {"id":{"name":"rm_PokemonStadium","path":"rooms/rm_PokemonStadium/rm_PokemonStadium.yy",},"order":4,},
@@ -72,6 +73,7 @@
     {"roomId":{"name":"rm_Chessboard","path":"rooms/rm_Chessboard/rm_Chessboard.yy",},},
     {"roomId":{"name":"rm_PokerTable","path":"rooms/rm_PokerTable/rm_PokerTable.yy",},},
     {"roomId":{"name":"rm_PokemonStadium","path":"rooms/rm_PokemonStadium/rm_PokemonStadium.yy",},},
+    {"roomId":{"name":"rm_House","path":"rooms/rm_House/rm_House.yy",},},
   ],
   "Folders": [
     {"folderPath":"folders/Sprites.yy","order":0,"resourceVersion":"1.0","name":"Sprites","tags":[],"resourceType":"GMFolder",},

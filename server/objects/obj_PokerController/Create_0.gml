@@ -41,6 +41,8 @@ maps[4][0] = "Poker Table"
 maps[4][1] = rm_PokerTable
 maps[5][0] = "Pokemon Stadium 2"
 maps[5][1] = rm_PokemonStadium
+maps[6][0] = "House"
+maps[6][1] = rm_House
 
 
 //it is now the first round, choose the map and give each player their two cards
