@@ -13,7 +13,18 @@ if mouse_check_button_pressed(mb_left)
 		selected = false
 	}
 }
-if keyboard_check(vk_anykey) and (selected = true)
+if keyboard_check(ord("V")) and (selected = true)
 {
+	//check for shift and if so paste from clipboard
+	if keyboard_check(vk_control)
+	{
+		//copy paste
+		keyboard_string = clipboard_get_text()
+		text_string = keyboard_string
+	}
+}
+else if keyboard_check(vk_anykey) and (selected = true)
+{
+
 	text_string = keyboard_string
 }
