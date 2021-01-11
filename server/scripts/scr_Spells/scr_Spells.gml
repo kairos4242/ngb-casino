@@ -95,6 +95,7 @@ function spell_wall(caster, target){
 	//server implementation
 	cast_direction = point_direction(caster.x, caster.y, target[0], target[1])
 	cast_direction = round(cast_direction / 90) * 90 //round to the nearest 90 degrees
+	if (place_meeting(target[0], target[1], obj_Player)) exit;
 	var wall = instance_create_layer(caster.x + 2 * lengthdir_x(caster.sprite_width, cast_direction), caster.y + 2 * lengthdir_y(caster.sprite_height, cast_direction), "Instances", obj_Wall)
 	with wall {
 		image_angle = other.cast_direction
@@ -176,7 +177,7 @@ function spell_heal(caster, target){
 	network_modify_player_property(caster.socket, "hp", "u16", caster.hp)
 	
 	//send cooldown packets
-	network_modify_player_property(caster.socket, "cooldown_to_set", "f32", 60)
+	network_modify_player_property(caster.socket, "cooldown_to_set", "f32", 240)
 	network_modify_player_property(caster.socket, "ability_to_set", "string", "Heal")
 }
 
@@ -401,7 +402,7 @@ function spell_thorns(caster, target)
 {
 	var CAST_RADIUS = 350;
 	
-	if(point_distance(caster.x, caster.y, target[0], target[1]) <= CAST_RADIUS)
+	if((point_distance(caster.x, caster.y, target[0], target[1]) <= CAST_RADIUS) and (!place_meeting(target[0], target[1], obj_Player)))
 	{
 		var thorns = instance_create_layer(target[0], target[1], "Instances", obj_Thorns);
 		
@@ -431,7 +432,7 @@ function spell_totem(caster, target)
 	
 	network_create_object("obj_Totem", totem.network_id, totem.x, totem.y);
 	//send cooldown packets
-	network_modify_player_property(caster.socket, "cooldown_to_set", "f32", 240)
+	network_modify_player_property(caster.socket, "cooldown_to_set", "f32", 480)
 	network_modify_player_property(caster.socket, "ability_to_set", "string", "Totem")
 	}
 }

@@ -328,8 +328,8 @@
     "PhysicsWorldPixToMetres": 0.1,
   },
   "parent": {
-    "name": "Maps",
-    "path": "folders/Rooms/Maps.yy",
+    "name": "NGB Casino Server",
+    "path": "NGB Casino Server.yyp",
   },
   "resourceVersion": "1.0",
   "name": "rm_HabitationStationOG",
