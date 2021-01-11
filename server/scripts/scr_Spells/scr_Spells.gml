@@ -4,9 +4,7 @@
 //Target is an array of [x, y] so target[0] will get target xpos and target[1] will get target ypos
 
 function spell_basic_attack(caster, target){
-	var mana_cost = 10
-	if caster.mana < mana_cost exit;
-	caster.mana -= mana_cost
+	
 	basic_projectile_speed = 15
 	switch caster.attack_speed
 	{
@@ -33,9 +31,6 @@ function spell_basic_attack(caster, target){
 		network_modify_property(basic_projectile.network_id, "image_angle", "u16", cast_direction)
 		network_modify_property(basic_projectile.network_id, "x_speed", "s16", lengthdir_x(basic_projectile_speed, cast_direction))
 		network_modify_property(basic_projectile.network_id, "y_speed", "s16", lengthdir_y(basic_projectile_speed, cast_direction))
-		
-		//modify caster mana to test mana
-		network_modify_player_property(caster.socket, "mana", "f32", caster.mana)
 	}
 	else if caster.attack_type == "Melee"
 	{
@@ -58,6 +53,9 @@ function spell_basic_attack(caster, target){
 }
 
 function spell_fireball(caster, target){
+	var mana_cost = 15
+	if caster.mana < mana_cost exit;
+	caster.mana -= mana_cost
 	//create server representation
 	fireball_speed = 20
 	cast_direction = point_direction(caster.x, caster.y, target[0], target[1])
@@ -79,9 +77,16 @@ function spell_fireball(caster, target){
 	//send cooldown packets
 	network_modify_player_property(caster.socket, "cooldown_to_set", "f32", 120)
 	network_modify_player_property(caster.socket, "ability_to_set", "string", "Fireball")
+	
+	//send mana packet
+	network_modify_player_property(caster.socket, "mana", "f32", caster.mana)
 }
 
 function spell_acrobatics(caster, target){
+	var mana_cost = 5
+	if caster.mana < mana_cost exit;
+	caster.mana -= mana_cost
+	
 	//change server side
 	caster.jumps = caster.max_jumps
 	
@@ -91,9 +96,16 @@ function spell_acrobatics(caster, target){
 	//send cooldown packets
 	network_modify_player_property(caster.socket, "cooldown_to_set", "f32", 240)
 	network_modify_player_property(caster.socket, "ability_to_set", "string", "Acrobatics")
+	
+	//send mana packet
+	network_modify_player_property(caster.socket, "mana", "f32", caster.mana)
 }
 
 function spell_switch(caster, target){
+	var mana_cost = 20
+	if caster.mana < mana_cost exit;
+	caster.mana -= mana_cost
+	
 	//update server representation
 	target_object = collision_point(target[0], target[1], obj_Player, false, true)
 	if target_object = noone exit
@@ -120,9 +132,16 @@ function spell_switch(caster, target){
 	//send cooldown packets
 	network_modify_player_property(caster.socket, "cooldown_to_set", "f32", 240)
 	network_modify_player_property(caster.socket, "ability_to_set", "string", "Switch")
+	
+	//send mana packet
+	network_modify_player_property(caster.socket, "mana", "f32", caster.mana)
 }
 
 function spell_wall(caster, target){
+	var mana_cost = 10
+	if caster.mana < mana_cost exit;
+	caster.mana -= mana_cost
+	
 	//server implementation
 	cast_direction = point_direction(caster.x, caster.y, target[0], target[1])
 	cast_direction = round(cast_direction / 90) * 90 //round to the nearest 90 degrees
@@ -144,6 +163,9 @@ function spell_wall(caster, target){
 	network_modify_player_property(caster.socket, "cooldown_to_set", "f32", 60)
 	network_modify_player_property(caster.socket, "ability_to_set", "string", "Wall")
 	
+	//send mana packet
+	network_modify_player_property(caster.socket, "mana", "f32", caster.mana)
+	
 }
 
 function spell_antigravity(caster, target){
@@ -157,6 +179,9 @@ function spell_antigravity(caster, target){
 		passive_target_variable: "grav"
 	}
 	create_effect(jump_passive, caster, target)*/
+	var mana_cost = 5
+	if caster.mana < mana_cost exit;
+	caster.mana -= mana_cost
 	if !(variable_instance_exists(id, "antigravity_on"))
 	{
 		antigravity_on = true
@@ -181,9 +206,16 @@ function spell_antigravity(caster, target){
 	//send cooldown packets, but does antigravity even need a cooldown?
 	network_modify_player_property(caster.socket, "cooldown_to_set", "f32", 15)
 	network_modify_player_property(caster.socket, "ability_to_set", "string", "Antigravity")
+	
+	//send mana packet
+	network_modify_player_property(caster.socket, "mana", "f32", caster.mana)
 }
 
 function spell_turret(caster, target){
+	var mana_cost = 45
+	if caster.mana < mana_cost exit;
+	caster.mana -= mana_cost
+	
 	turret_max_cast_distance = 200
 	cast_distance = point_distance(caster.x, caster.y, target[0], target[1])
 	if cast_distance > turret_max_cast_distance exit
@@ -198,9 +230,16 @@ function spell_turret(caster, target){
 	//send cooldown packets
 	network_modify_player_property(caster.socket, "cooldown_to_set", "f32", 720)
 	network_modify_player_property(caster.socket, "ability_to_set", "string", "Turret")
+	
+	//send mana packet
+	network_modify_player_property(caster.socket, "mana", "f32", caster.mana)
 }
 
 function spell_heal(caster, target){
+	var mana_cost = 20
+	if caster.mana < mana_cost exit;
+	caster.mana -= mana_cost
+	
 	//just a self heal right now, target does nothing
 	//can be changed later if game design team wants to make it more versatile
 	heal_amount = 7
@@ -210,9 +249,16 @@ function spell_heal(caster, target){
 	//send cooldown packets
 	network_modify_player_property(caster.socket, "cooldown_to_set", "f32", 240)
 	network_modify_player_property(caster.socket, "ability_to_set", "string", "Heal")
+	
+	//send mana packet
+	network_modify_player_property(caster.socket, "mana", "f32", caster.mana)
 }
 
 function spell_terrify(caster, target){
+	var mana_cost = 30
+	if caster.mana < mana_cost exit;
+	caster.mana -= mana_cost
+	
 	//prevents player from moving themself, but does not freeze all player movement
 	var target_player = collision_point(target[0], target[1], obj_Player, false, false)
 	if (target_player == noone) exit
@@ -235,10 +281,15 @@ function spell_terrify(caster, target){
 	//send cooldown packets
 	network_modify_player_property(caster.socket, "cooldown_to_set", "f32", 480)
 	network_modify_player_property(caster.socket, "ability_to_set", "string", "Terrify")
+	
+	//send mana packet
+	network_modify_player_property(caster.socket, "mana", "f32", caster.mana)
 }
 
 function spell_knockback(caster, target){
-	//prevent object player from moving for duration of knockback
+	var mana_cost = 5
+	if caster.mana < mana_cost exit;
+	caster.mana -= mana_cost
 	
 	//setup
 	var knockback_duration = 15
@@ -278,6 +329,9 @@ function spell_knockback(caster, target){
 		network_modify_player_property(caster.socket, "cooldown_to_set", "f32", 480)
 		network_modify_player_property(caster.socket, "ability_to_set", "string", "Knockback")
 	}
+	
+	//send mana packet
+	network_modify_player_property(caster.socket, "mana", "f32", caster.mana)
 }
 
 function spell_tag(caster, target)
@@ -310,6 +364,9 @@ function spell_tag(caster, target)
 	}
 	else
 	{
+		var mana_cost = 15
+		if caster.mana < mana_cost exit;
+		caster.mana -= mana_cost
 		//projectile exists, teleport to it
 		caster.tag_active = 0
 		caster.x = caster.tag_projectile.x
@@ -327,11 +384,18 @@ function spell_tag(caster, target)
 		network_modify_player_property(caster.socket, "cooldown_to_set", "f32", 120)
 		network_modify_player_property(caster.socket, "ability_to_set", "string", "Tag")
 		
+		//send mana packet (tag should only cost mana when you teleport to it)
+		network_modify_player_property(caster.socket, "mana", "f32", caster.mana)
+		
 	}
 }
 
 function spell_immolate(caster, target)
 {
+	var mana_cost = 50
+	if caster.mana < mana_cost exit;
+	caster.mana -= mana_cost
+	
 	var immolate = instance_create_layer(caster.x, caster.y, "Instances", obj_Immolate)
 	with immolate {
 		owner = caster//for purposes of checking hit
@@ -347,10 +411,17 @@ function spell_immolate(caster, target)
 	//send cooldown packets
 	network_modify_player_property(caster.socket, "cooldown_to_set", "f32", 120)
 	network_modify_player_property(caster.socket, "ability_to_set", "string", "Immolate")
+	
+	//send mana packet
+	network_modify_player_property(caster.socket, "mana", "f32", caster.mana)
 }
 
 function spell_boomerang(caster, target)
 {
+	var mana_cost = 15
+	if caster.mana < mana_cost exit;
+	caster.mana -= mana_cost
+	
 	boomerang_speed = 30
 	cast_direction = point_direction(caster.x, caster.y, target[0], target[1])
 	var boomerang = instance_create_layer(caster.x + lengthdir_x(caster.sprite_width, cast_direction), caster.y + lengthdir_y(caster.sprite_height, cast_direction), "Instances", obj_Boomerang)
@@ -372,6 +443,9 @@ function spell_boomerang(caster, target)
 	//send cooldown packets
 	network_modify_player_property(caster.socket, "cooldown_to_set", "f32", 60)
 	network_modify_player_property(caster.socket, "ability_to_set", "string", "Boomerang")
+	
+	//send mana packet
+	network_modify_player_property(caster.socket, "mana", "f32", caster.mana)
 }
 
 function spell_voodoo_doll(caster, target)
@@ -379,6 +453,10 @@ function spell_voodoo_doll(caster, target)
 	var cast_radius = 500
 	if point_distance(caster.x, caster.y, target[0], target[1]) <= cast_radius
 	{
+		var mana_cost = 30
+		if caster.mana < mana_cost exit;
+		caster.mana -= mana_cost
+		
 		var voodoo_doll = instance_create_layer(target[0], target[1], "Instances", obj_VoodooDoll)
 		with voodoo_doll{
 			network_id = new_network_id()
@@ -390,6 +468,9 @@ function spell_voodoo_doll(caster, target)
 		//send cooldown packets
 		network_modify_player_property(caster.socket, "cooldown_to_set", "f32", 240)
 		network_modify_player_property(caster.socket, "ability_to_set", "string", "Voodoo Doll")
+		
+		//send mana packet
+		network_modify_player_property(caster.socket, "mana", "f32", caster.mana)
 	}
 }
 
@@ -435,6 +516,9 @@ function spell_thorns(caster, target)
 	
 	if((point_distance(caster.x, caster.y, target[0], target[1]) <= CAST_RADIUS) and (!place_meeting(target[0], target[1], obj_Player)))
 	{
+		var mana_cost = 20
+		if caster.mana < mana_cost exit;
+		caster.mana -= mana_cost
 		var thorns = instance_create_layer(target[0], target[1], "Instances", obj_Thorns);
 		
 		with thorns{
@@ -442,10 +526,13 @@ function spell_thorns(caster, target)
 			owner = caster;
 		}
 	
-	network_create_object("obj_Thorns", thorns.network_id, thorns.x, thorns.y);
-	//send cooldown packets
-	network_modify_player_property(caster.socket, "cooldown_to_set", "f32", 60)
-	network_modify_player_property(caster.socket, "ability_to_set", "string", "Thorns")
+		network_create_object("obj_Thorns", thorns.network_id, thorns.x, thorns.y);
+		//send cooldown packets
+		network_modify_player_property(caster.socket, "cooldown_to_set", "f32", 60)
+		network_modify_player_property(caster.socket, "ability_to_set", "string", "Thorns")
+	
+		//send mana packet
+		network_modify_player_property(caster.socket, "mana", "f32", caster.mana)
 	}
 }
 
@@ -454,6 +541,10 @@ function spell_totem(caster, target)
 	var cast_radius = 350
 	if(point_distance(caster.x, caster.y, target[0], target[1]) <= cast_radius)
 	{
+		var mana_cost = 20
+		if caster.mana < mana_cost exit;
+		caster.mana -= mana_cost
+		
 		var totem = instance_create_layer(target[0], target[1], "Instances", obj_Totem);
 		
 		with totem{
@@ -461,9 +552,12 @@ function spell_totem(caster, target)
 			owner = caster;
 		}
 	
-	network_create_object("obj_Totem", totem.network_id, totem.x, totem.y);
-	//send cooldown packets
-	network_modify_player_property(caster.socket, "cooldown_to_set", "f32", 480)
-	network_modify_player_property(caster.socket, "ability_to_set", "string", "Totem")
+		network_create_object("obj_Totem", totem.network_id, totem.x, totem.y);
+		//send cooldown packets
+		network_modify_player_property(caster.socket, "cooldown_to_set", "f32", 480)
+		network_modify_player_property(caster.socket, "ability_to_set", "string", "Totem")
+	
+		//send mana packet
+		network_modify_player_property(caster.socket, "mana", "f32", caster.mana)
 	}
 }
