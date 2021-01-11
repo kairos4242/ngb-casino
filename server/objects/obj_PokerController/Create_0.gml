@@ -35,6 +35,8 @@ maps[1][0] = "Final Destination"
 maps[1][1] = rm_FinalDestination
 maps[2][0] = "Habitation Station"
 maps[2][1] = rm_HabitationStation
+maps[3][0] = "Chessboard"
+maps[3][1] = rm_Chessboard
 
 
 //it is now the first round, choose the map and give each player their two cards
