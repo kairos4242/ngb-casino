@@ -276,22 +276,37 @@ function spell_terrify(caster, target){
 	caster.mana -= mana_cost
 	
 	//prevents player from moving themself, but does not freeze all player movement
-	var target_player = collision_point(target[0], target[1], obj_Player, false, false)
-	if (target_player == noone) exit
-	with obj_Server
+	var radius = 200
+	var collision_list = ds_list_create()
+	var collision_count = collision_rectangle_list(caster.x - radius, caster.y - radius, caster.x + radius, caster.y + radius, obj_Player, false, true, collision_list, false)
+	//var target_player = collision_point(target[0], target[1], obj_Player, false, false)
+	//if (target_player == noone) exit
+	if collision_count == 0
 	{
-		network_modify_player_property(target_player.socket, "can_move", "u16", 0)
-		//reset player xspeed to 0 otherwise they keep skating for the two seconds
-		network_modify_player_property(target_player.socket, "x_speed", "u16", 0)
+		show_message("No collisions found")
+		exit;
 	}
-	var passive = instance_create_layer(0, 0, "Instances", obj_Passive)
-	with passive
+	for (j = 0; j < ds_list_size(collision_list); j++)
 	{
-		alarm[0] = 120
-		target_socket = target_player.socket
-		target_variable = "can_move"
-		target_variable_type = "u16"
-		target_value = 1
+		var target_player = ds_list_find_value(collision_list, j)
+		if (target_player != caster)//so we dont terrify ourself
+		{
+			with obj_Server
+			{
+				network_modify_player_property(target_player.socket, "can_move", "u16", 0)
+				//reset player xspeed to 0 otherwise they keep skating for the two seconds
+				network_modify_player_property(target_player.socket, "x_speed", "u16", 0)
+			}
+			var passive = instance_create_layer(0, 0, "Instances", obj_Passive)
+			with passive
+			{
+				alarm[0] = 120
+				target_socket = target_player.socket
+				target_variable = "can_move"
+				target_variable_type = "u16"
+				target_value = 1
+			}
+		}
 	}
 	
 	//send cooldown packets
