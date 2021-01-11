@@ -423,7 +423,7 @@ function spell_tag(caster, target)
 
 function spell_immolate(caster, target)
 {
-	var mana_cost = 50
+	var mana_cost = 30
 	if caster.mana < mana_cost exit;
 	caster.mana -= mana_cost
 	
