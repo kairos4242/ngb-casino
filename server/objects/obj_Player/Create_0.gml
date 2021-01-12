@@ -14,3 +14,6 @@ round_bet = 0
 total_bet = 0
 
 alive = true
+
+mana = 100
+max_mana = 100
