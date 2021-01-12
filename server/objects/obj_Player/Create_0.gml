@@ -17,3 +17,4 @@ alive = true
 
 mana = 100
 max_mana = 100
+mana_regen = 5
