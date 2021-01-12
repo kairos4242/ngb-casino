@@ -19,7 +19,7 @@ if (mouse_on)
 	if mouse_check_button_released(mb_left)
 	{
 		owner.buttons[i][1] = 1
-		audio_play_sound(snd_MenuClick, 1, 0)
+		//audio_play_sound(snd_MenuClick, 1, 0)
 	}
 }
 else

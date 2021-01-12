@@ -8,6 +8,6 @@ if room = rm_LobbyMenu
 	{
 		audio_stop_sound(snd_MenuMusic)
 	}
-	audio_play_sound(snd_MainMusic, 1, 1)
+	//audio_play_sound(snd_MainMusic, 1, 1)
 	room_goto_next()
 }

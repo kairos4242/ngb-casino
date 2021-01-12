@@ -27,5 +27,5 @@ buttons[3][2] = "About"
 //play menu music
 if !audio_is_playing(snd_MenuMusic)
 {
-	audio_play_sound(snd_MenuMusic, 1, 1)
+	//audio_play_sound(snd_MenuMusic, 1, 1)
 }
