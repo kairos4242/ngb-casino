@@ -15,6 +15,7 @@ for (j = 0; j < ds_list_size(socket_list); j++)
 	}
 	network_modify_player_property(curr_socket, "hp", "u16", curr_instance.hp)
 	network_modify_player_property(curr_socket, "alive", "u16", 1)
+	network_modify_player_property(curr_socket, "y_speed", "u16", 0)
 }
 
 //go to poker room
