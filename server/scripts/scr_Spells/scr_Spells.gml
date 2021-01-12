@@ -544,27 +544,31 @@ function spell_pulse(caster, target)
 function spell_thorns(caster, target)
 {
 	var CAST_RADIUS = 350;
+	var HALF_SIZE = 32 + 1; //1 for tolerance
 	
-	if(point_distance(caster.x, caster.y, target[0], target[1]) <= CAST_RADIUS) and (collision_rectangle(target[0] - 32, target[1] - 32, target[0] + 32, target[1] + 32, obj_Player, false, true) == noone)
-	{
-		var mana_cost = 20
-		if caster.mana < mana_cost exit;
-		caster.mana -= mana_cost
-		var thorns = instance_create_layer(target[0], target[1], "Instances", obj_Thorns);
-		with thorns{
+	if(point_distance(caster.x, caster.y, target[0], target[1]) > CAST_RADIUS)
+		return;
+	
+	if(collision_rectangle(target[0] - HALF_SIZE, target[1] - HALF_SIZE, target[0] + HALF_SIZE, target[1] + HALF_SIZE, obj_Player, false, true) != noone)
+		return;
+	
+	var mana_cost = 20
+	if caster.mana < mana_cost exit;
+	caster.mana -= mana_cost
+	var thorns = instance_create_layer(target[0], target[1], "Instances", obj_Thorns);
+	with thorns{
 			
-			network_id = new_network_id();
-			owner = caster;
-		}
-	
-		network_create_object("obj_Thorns", thorns.network_id, thorns.x, thorns.y);
-		//send cooldown packets
-		network_modify_player_property(caster.socket, "cooldown_to_set", "f32", 60)
-		network_modify_player_property(caster.socket, "ability_to_set", "string", "Thorns")
-	
-		//send mana packet
-		network_modify_player_property(caster.socket, "mana", "f32", caster.mana)
+		network_id = new_network_id();
+		owner = caster;
 	}
+	
+	network_create_object("obj_Thorns", thorns.network_id, thorns.x, thorns.y);
+	//send cooldown packets
+	network_modify_player_property(caster.socket, "cooldown_to_set", "f32", 60)
+	network_modify_player_property(caster.socket, "ability_to_set", "string", "Thorns")
+	
+	//send mana packet
+	network_modify_player_property(caster.socket, "mana", "f32", caster.mana)
 }
 
 function spell_totem(caster, target)
