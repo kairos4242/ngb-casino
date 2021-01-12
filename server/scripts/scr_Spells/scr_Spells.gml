@@ -37,7 +37,8 @@ function spell_basic_attack(caster, target){
 		//check for collision in line"
 		with caster
 		{
-			var melee_target = collision_line(x, y, x + lengthdir_x(100, other.cast_direction), y + lengthdir_y(100, other.cast_direction), obj_Player, false, true)
+			var radius = caster.sprite_width / 2
+			var melee_target = collision_rectangle(x - radius, y - radius, x + radius, y + radius, obj_Player, false, true)
 			if (melee_target != noone)
 			{
 				deal_damage(caster.attack_damage, caster, melee_target)
